@@ -1,0 +1,2 @@
+C:\android\proyandrStudio\android-fragments\app\build\intermediates\classes\debug
+C:\android\proyandrStudio\android-fragments\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-3685b1670ed8f1826a29cbd3786a2ba11db7c96c.jar

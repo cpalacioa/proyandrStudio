@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <ImageButton
+        android:id="@+id/logo"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_launcher"
+        android:paddingRight="50dp"
+        android:paddingTop="0dp"/>
+    <TextView
+        android:id="@+id/BarraTituloComunidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:textSize="18dp"
+        android:gravity="center_vertical"
+        android:paddingTop="10dp"
+        android:text="@string/title_activity_comunidad"
+        android:layout_toRightOf="@id/logo" />
+
+    <ImageButton
+        android:id="@+id/btn_Catalogo"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_action_catalogo_style"
+        android:paddingTop="6dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/BarraTituloComunidad"
+        android:layout_toEndOf="@+id/BarraTituloComunidad"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp" />
+
+    <ImageButton
+        android:id="@+id/btn_phone"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_action_communication_phone"
+        android:paddingTop="6dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/btn_Catalogo"
+        android:layout_toEndOf="@+id/btn_Catalogo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+
+
+
+</RelativeLayout>

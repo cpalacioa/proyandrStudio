@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Opciones</string>
+    <string name="app_name">WsRest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="idcliente">ID Cliente</string>
+    <string name="nombre">Nombre</string>
+    <string name="telefono">Telefono</string>
+    <string name="ins">Crear</string>
+    <string name="act">Actualizar</string>
+    <string name="obt">Obtener</string>
+    <string name="lis">Listar</string>
+
+
+</resources>

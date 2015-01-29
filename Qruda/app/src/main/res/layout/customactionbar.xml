@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <ImageButton
+        android:id="@+id/btn_slide"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_action_navigation_arrow_back"
+        android:paddingRight="50dp"
+        android:paddingTop="4dp"/>
+    <TextView
+        android:id="@+id/BarraTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:textSize="18dp"
+        android:paddingTop="4dp"
+        android:layout_toRightOf="@id/btn_slide" />
+
+    <ImageButton
+        android:id="@+id/btn_Share"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_action_social_share"
+        android:paddingRight="50dp"
+        android:paddingTop="4dp"
+        android:layout_toRightOf="@id/BarraTitulo"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:id="@+id/imagenArticulo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:contentDescription="icon"
+        android:gravity="left"
+        android:layout_gravity="left"
+        android:background="#00000000"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:id="@+id/NombreArticulo"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="left"
+        style="@style/Theme.Qruda.Comunidad.Nombre"
+
+        />
+
+    <TextView
+        android:id="@+id/FechaArticulo"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="left"
+        style="@style/Theme.Qruda.Comunidad.Fecha"
+        />
+
+</LinearLayout>

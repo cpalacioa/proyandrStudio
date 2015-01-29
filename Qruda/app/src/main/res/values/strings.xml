@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Qruda</string>
+    <string name="action_settings">Opciones</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_back">Atras</string>
+    <string name="title_activity_detalle_producto">DetalleProducto</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_comunidad">Comunidad</string>
+
+</resources>
