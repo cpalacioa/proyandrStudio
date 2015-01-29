@@ -1,0 +1,36 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView android:id="@+id/LblMensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/selecciona_una_opcion" />
+
+    <Spinner android:id="@+id/CmbOpciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:id="@+id/LstOpciones"
+        android:fastScrollEnabled="false"
+        android:fastScrollAlwaysVisible="false" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="257dp"
+        android:id="@+id/listContactos" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalle"
+        android:id="@+id/btnDetalle"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

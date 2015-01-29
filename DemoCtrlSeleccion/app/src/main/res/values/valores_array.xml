@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="valores_array">
+        <item>Enero1</item>
+        <item>Febrero2</item>
+        <item>Marzo3</item>
+        <item>Abril4</item>
+        <item>Mayo5</item>
+    </string-array>
+</resources>

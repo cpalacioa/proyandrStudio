@@ -1,0 +1,29 @@
+<resources>
+    <color name="theme_primary">#48C2F9</color>
+    <color name="theme_dark">#000000</color>
+    <color name="theme_accent">#FFFFFF</color>
+    <color name="theme_components">#65A6AA</color>
+    <color name="theme_wbackgound">#F5F5F5</color>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@color/theme_dark</item>
+        <item name="colorPrimaryDark">@color/theme_dark</item>
+        <item name="colorPrimary">@color/theme_dark</item>
+        <item name="colorControlActivated">@color/theme_components</item>
+        <item name="colorControlNormal">@color/theme_wbackgound</item>
+        <item name="colorControlHighlight">@color/theme_accent</item>
+        <item name="colorButtonNormal">@color/theme_accent</item>
+
+    </style>
+    <style name="EstiloTexto"
+        parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    <style name="EstiloTexto.grande">
+
+        <item name="android:textSize">18pt</item>
+    </style>
+
+</resources>
