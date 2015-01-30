@@ -1,46 +1,43 @@
 package ennova.uplaud;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.content.Intent;
-import android.view.View;
 
 
-public class MainActivity extends ActionBarActivity {
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-    private EditText txtNombre;
-    private Button btnAceptar;
+public class MainActivity  extends FragmentActivity {
+
+    private MainFragment mainFragment;
+    //Se declara la variable que implementa la instancia de la clase que permite
+    //controlar las sessiones de facebook en el ciclo de la aplicación
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //Obtenemos una referencia a los controles de la interfaz
-        txtNombre = (EditText)findViewById(R.id.TxtNombre);
-        btnAceptar = (Button)findViewById(R.id.BtnAceptar);
-        //Implementamos el evento click del botón
-        btnAceptar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Creamos el Intent
-                Intent intent =
-                        new Intent(MainActivity.this, SaludoActivity.class);
+        printKeyHash();
+        if (savedInstanceState == null) {
+            // adicionamos el fragment principal
+            mainFragment = new MainFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(android.R.id.content, mainFragment)
+                    .commit();
+        } else {
+            // Or set the fragment from restored state info
+            mainFragment = (MainFragment) getSupportFragmentManager()
+                    .findFragmentById(android.R.id.content);
+        }
 
-                //Creamos la información a pasar entre actividades
-                Bundle b = new Bundle();
-                b.putString("NOMBRE", txtNombre.getText().toString());
-
-                //Añadimos la información al intent
-                intent.putExtras(b);
-
-                //Iniciamos la nueva actividad
-                startActivity(intent);
-            }
-        });
     }
 
 
@@ -64,5 +61,22 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private void printKeyHash(){
+        // Add code to print out the key hash
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "ennova.uplaud",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d("KeyHash:", e.toString());
+        } catch (NoSuchAlgorithmException e) {
+            Log.d("KeyHash:", e.toString());
+        }
     }
 }

@@ -1,12 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LytContenedorSaludo"
+    android:id="@+id/LytContenedor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView android:id="@+id/TxtSaludo"
+    <com.facebook.widget.LoginButton
+        android:id="@+id/authButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
-
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        />
 </LinearLayout>
+

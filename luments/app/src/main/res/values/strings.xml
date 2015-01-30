@@ -4,5 +4,12 @@
     <string name="app_name">luments</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip_login">Omitir Paso</string>
+    <string name="get_started">Empecemos</string>
+    <string name="announce">Anuncio</string>
+    <string name="message">Mensae</string>
+    <string name="update_status">Actualizar Estado</string>
+    <string name="post_image">Postear Imagen</string>
+    <string name="app_id">1582801361934011</string>
 </resources>
