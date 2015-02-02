@@ -39,7 +39,7 @@ public class MainActivity extends FragmentActivity {
     private TextView userName;
 
     private UiLifecycleHelper uiHelper;
-    private static final List<String> PERMISSIONS = Arrays.asList("publish_actions");
+    private static final List<String> PERMISSIONS = Arrays.asList("publish_actions","publish_stream");
     private static String message = "prueba desde android";
 
     @Override

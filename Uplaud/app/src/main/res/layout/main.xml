@@ -11,5 +11,58 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         />
+
+    <ImageView
+        android:id="@+id/ImageProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="#00000000"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        />
+    <TextView
+        android:id="@+id/userInfoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="invisible"
+        />
+    <Button
+        android:id="@+id/btnShareApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/btnShareApp"/>
+    <Button
+        android:id="@+id/btnShareApi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="webDialogo"
+        android:gravity="center"/>
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/desctxt"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"/>
+
+    </ScrollView>
 </LinearLayout>
 

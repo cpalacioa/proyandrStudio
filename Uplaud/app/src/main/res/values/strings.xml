@@ -9,5 +9,6 @@
     <string name="title_activity_saludo">Saludo</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_id">1582801361934011</string>
+    <string name="btnShareApp">share Dialog</string>
 
 </resources>
