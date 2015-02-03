@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Consola de mensajes";
+}
+
+<div class="row">
+    <div class="col-sm-11 col-sm-offset-1">
+        <h2>Envio de Mensajes</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <form class="form-horizontal">
+
+            <div class="form-group">
+                <label for="inputAplicacion" class="col-xs-1 control-label">Aplicacion</label>
+                <div class="col-xs-11">
+                    <select class="form-control input-lg" name="selAplicacion" id="selAPlicacion">
+                        
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputTitulo" class="col-sm-1 control-label">Titulo</label>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control input-lg" id="inputTitulo" placeholder="Titulo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputMensaje" class="col-sm-1 control-label">Mensaje</label>
+                <div class="col-sm-11">
+                    <textarea rows="6" class="form-control input-lg" name="inputMensaje" id="inputMensaje" cols="30" placeholder="Mensaje a enviar a dispositivos"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" id="btnEnviar" class="btn btn-primary">Enviar Notificacion</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var valida ;
+    var aplicaciones;
+
+    function ObtenerAplicaciones()
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Home/ObtenerAplicaciones")',
+            data: {},
+            async:false,
+            success: function (msg) {
+                if(msg.length>0)
+                {
+                    for(var combo=0;combo<msg.length;combo++)
+                    {
+                        $("#selAPlicacion").append("<option value='" + msg[combo].Id + "'>"+msg[combo].Descripcion+"</option>");
+                    }
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(textStatus);
+            }
+
+        });
+    }
+
+
+    function EnviarMEnsaje(titulo,mensaje,aplicacion)
+    {
+        var app = parseInt(aplicacion);
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Content("~/Home/EnviarMensajes")',
+            data:{idAplicacion:app,titulo:titulo,mensaje:mensaje},
+            success: function (msg) {
+                alert(msg);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(textStatus);
+            }
+        });
+    }
+
+    function ValidarEnvio(titulo,mensaje) {
+        if (titulo.length < 10 && mensaje.length < 10) {
+            alert("EL titulo y el mensaje son requeridos");
+            return false;
+        }
+        else
+            return true;
+    }
+    $(document).on("click", "#btnEnviar", function () {
+        var titulo = $("#inputTitulo").val();
+        var mensaje = $("#inputMensaje").val();
+        var app = $("#selAPlicacion").val();
+
+        valida = ValidarEnvio(titulo,mensaje);
+        if (valida == true)
+            EnviarMEnsaje(titulo, mensaje,app);
+
+    })
+    $(document).ready(function () {
+        ObtenerAplicaciones();
+    });
+</script>
