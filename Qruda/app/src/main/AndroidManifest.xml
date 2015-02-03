@@ -7,14 +7,16 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
-    <permission android:name="android.qruda.com.qruda.permission.C2D_MESSAGE"
+    <permission
+        android:name="android.qruda.com.qruda.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="android.qruda.com.qruda.permission.C2D_MESSAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:theme="@style/Theme.Qruda"
-        >
+        android:theme="@style/Theme.Qruda" >
         <activity
             android:name=".MainActivity"
             android:icon="@drawable/ic_launcher"
@@ -40,18 +42,23 @@
             android:name=".Comunidad"
             android:label="@string/title_activity_comunidad" >
         </activity>
+
         <receiver
             android:name=".GCMBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="android.qruda.com.qruda" />
             </intent-filter>
         </receiver>
 
         <service android:name=".GCMIntentService" />
 
-
+        <activity
+            android:name=".DetalleArticulo"
+            android:label="@string/title_activity_detalle_articulo" >
+        </activity>
     </application>
 
 </manifest>

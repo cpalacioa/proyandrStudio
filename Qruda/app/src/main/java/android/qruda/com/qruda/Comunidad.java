@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
@@ -28,6 +29,7 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -112,10 +114,14 @@ public class Comunidad extends ActionBarActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             try {
-                Log.d("lsitar",articulos.toString());
                 Articulo articulo = (Articulo) articulos.get(position);
-                Intent intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(articulo.Link));
+                //Intent intent = new Intent(Intent.ACTION_VIEW,
+                  //      Uri.parse(articulo.Link));
+                Intent intent=new Intent(Comunidad.this.getApplicationContext(),DetalleArticulo.class);
+                intent.putExtra("Id",articulo.id);
+                intent.putExtra("UrlImagen",articulo.Imagen);
+                intent.putExtra("Nombre",articulo.Nombre);
+                intent.putExtra("Fecha",articulo.Fecha);
                 startActivity(intent);
             }
             catch (Exception ex)
@@ -218,10 +224,17 @@ public class Comunidad extends ActionBarActivity {
                 {
                     gcm = GoogleCloudMessaging.getInstance(context);
                 }
+
                 //Nos registramos en los servidores de GCM
                 regid = gcm.register(SENDER_ID);
                 Log.d(TAG, "Registrado en GCM: registration_id=" + regid);
+                //Registrar en el servidor
+                boolean registrado = RegistrarServidor(regid);
+                if(registrado)
+                {
                     setRegistrationId(context, regid);
+                }
+
             }
             catch (IOException ex)
             {
@@ -246,6 +259,42 @@ public class Comunidad extends ActionBarActivity {
 
         editor.commit();
     }
+
+    private Boolean RegistrarServidor(String _serial)
+    {
+        boolean resul = false;
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost post = new HttpPost("http://www.mauropalacio.co/api/Dispositivos/dispositivo/");
+        post.setHeader("content-type", "application/json");
+
+        try
+        {
+            //Construimos el objeto cliente en formato JSON
+            JSONObject dato = new JSONObject();
+
+            //dato.put("Id", Integer.parseInt(txtId.getText().toString()));
+            dato.put("Serial", _serial);
+            dato.put("IdAplication", getResources().getInteger(R.integer.IdAPlicacion));
+            dato.put("IdUsuario",getResources().getString(R.string.UserDefault));
+
+            StringEntity entity = new StringEntity(dato.toString());
+            post.setEntity(entity);
+
+            HttpResponse resp = httpClient.execute(post);
+            String respStr = EntityUtils.toString(resp.getEntity());
+
+            if(!respStr.equals("true"))
+                resul = true;
+        }
+        catch(Exception ex)
+        {
+            Log.e("ServicioRest", "Error!", ex);
+            resul = false;
+        }
+
+        return resul;
+    }
+
 
 
     @Override

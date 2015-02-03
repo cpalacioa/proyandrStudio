@@ -1,0 +1,9 @@
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.Core\bin\Debug\Ennovva.GCM.Core.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.Core\bin\Debug\Ennovva.GCM.Core.pdb
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.Core\bin\Debug\EntityFramework.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.Core\bin\Debug\EntityFramework.xml
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.Core\obj\Debug\Ennovva.GCM.Core.csprojResolveAssemblyReference.cache
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.Core\obj\Debug\Ennovva.GCM.Core.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.Core\obj\Debug\Ennovva.GCM.Core.pdb
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.Core\bin\Debug\Ennovva.GCM.DAO.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.Core\bin\Debug\Ennovva.GCM.DAO.pdb
