@@ -154,5 +154,12 @@
     </style>
 
     <style name="ButtonBarButton" />
+    <style name="Theme.Qruda.Boton" parent="android:Widget">
+        <item name="android:textColor">#fff</item>
+<!--        <item name="android:shadowColor">#A8A8A8</item>
+        <item name="android:shadowDx">3</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">4</item>-->
+    </style>
 
 </resources>

@@ -59,6 +59,10 @@
             android:name=".DetalleArticulo"
             android:label="@string/title_activity_detalle_articulo" >
         </activity>
+        <activity
+            android:name=".PerfilAutor"
+            android:label="@string/title_activity_perfil_autor" >
+        </activity>
     </application>
 
 </manifest>

@@ -16,5 +16,6 @@
     <integer name="IdAPlicacion">1</integer>
 
     <string name="title_activity_detalle_articulo">DetalleArticulo</string>
+    <string name="title_activity_perfil_autor">PerfilAutor</string>
 
 </resources>

@@ -122,6 +122,7 @@ public class Comunidad extends ActionBarActivity {
                 intent.putExtra("UrlImagen",articulo.Imagen);
                 intent.putExtra("Nombre",articulo.Nombre);
                 intent.putExtra("Fecha",articulo.Fecha);
+                intent.putExtra("Url",articulo.Link);
                 startActivity(intent);
             }
             catch (Exception ex)

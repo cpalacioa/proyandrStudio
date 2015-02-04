@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <ImageButton
+        android:id="@+id/btn_atras_articulo"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:paddingRight="10dp"
+        android:src="@drawable/ic_action_navigation_arrow_back"
+        android:paddingTop="4dp"/>
+
+    <ImageButton
+        android:id="@+id/logo"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_launcher"
+        android:paddingRight="30dp"
+        android:paddingTop="0dp"
+        android:layout_toRightOf="@id/btn_atras_articulo"/>
+
+    <TextView
+        android:id="@+id/tituloComunidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:textSize="18dp"
+        android:gravity="center_vertical"
+        android:paddingTop="10dp"
+        android:text="@string/title_activity_comunidad"
+        android:layout_toRightOf="@id/logo" />
+
+
+
+</RelativeLayout>
