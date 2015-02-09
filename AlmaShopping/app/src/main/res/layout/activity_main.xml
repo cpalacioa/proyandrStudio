@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:background="#000000"
+    android:layout_height="fill_parent" android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:id="@+id/ImageIntro"
+        android:src="@drawable/ic_logo_almashopping"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
+
+   <com.facebook.widget.LoginButton
+        android:id="@+id/fb_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        facebook:confirm_logout="false"
+        facebook:fetch_user_info="true"
+        android:layout_marginTop="73dp"
+       android:layout_gravity="center"
+       android:gravity="center"
+       android:layout_below="@+id/ImageIntro"
+       android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

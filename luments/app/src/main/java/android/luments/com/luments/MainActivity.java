@@ -1,5 +1,6 @@
 package android.luments.com.luments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -31,7 +32,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends Activity {
     private LoginButton loginBtn;
     private Button postImageBtn;
     private Button updateStatusBtn;

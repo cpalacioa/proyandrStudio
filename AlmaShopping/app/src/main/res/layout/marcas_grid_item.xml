@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="1dp" >
+    <TextView
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtInicialMarca"
+        android:text="A"
+        android:background="@color/dark"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textColor="#FFFFFF"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNombreMarca"
+        android:text="ADIDAS"
+        android:textStyle="bold"
+        android:textColor="@color/greenDark"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/txtInicialMarca"
+        android:layout_toEndOf="@+id/txtInicialMarca" />
+
+
+    <ImageButton
+        android:id="@+id/btnProductosMarcas"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@color/dark"
+        android:paddingRight="10dp"
+        android:src="@drawable/ic_action_basket"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/btnInfoMarca"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingRight="10dp"
+        android:background="@color/dark"
+        android:src="@drawable/ic_action_expand"
+        android:layout_toLeftOf="@id/btnProductosMarcas"
+        android:layout_alignParentTop="true" />
+
+
+</RelativeLayout>

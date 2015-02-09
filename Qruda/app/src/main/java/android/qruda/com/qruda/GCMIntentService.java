@@ -61,7 +61,6 @@ public class GCMIntentService extends IntentService{
                 this, 0, notIntent, 0);
 
         mBuilder.setContentIntent(contIntent);
-
         mNotificationManager.notify(NOTIF_ALERTA_ID, mBuilder.build());
     }
 

@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Filtrar Por:"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/greenDark"
+        android:layout_marginTop="20dp"
+        android:id="@+id/textView" />
+
+    <Spinner android:id="@+id/CmbOpciones"
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <ListView
+        android:id="@+id/listaMarcasGrid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/list_divider"
+        android:dividerHeight="1dp"
+        android:layout_below="@+id/CmbOpciones"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
