@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item android:id="@+id/menu_vista"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:visible="true"
+        android:title="Vista"/>
+
+    <item android:id="@+id/menu_mover"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom|withText"
+        android:title="Mover"/>
+
+    <item android:id="@+id/menu_animar"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom|withText"
+        android:title="Animar"/>
+
+    <item android:id="@+id/menu_3d"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom|withText"
+        android:title="Mover 3D"/>
+
+    <item android:id="@+id/menu_posicion"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom|withText"
+        android:title="Posición"/>
+
+</menu>

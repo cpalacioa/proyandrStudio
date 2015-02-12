@@ -22,7 +22,7 @@
         android:id="@+id/txtNombreMarca"
         android:text="ADIDAS"
         android:textStyle="bold"
-        android:textColor="@color/greenDark"
+        android:textColor="@color/dark"
         android:gravity="center"
         android:textAlignment="center"
         android:textSize="18dp"
@@ -36,9 +36,9 @@
         android:id="@+id/btnProductosMarcas"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:background="@color/dark"
+        android:background="@null"
         android:paddingRight="10dp"
-        android:src="@drawable/ic_action_basket"
+        android:src="@drawable/ic_image_slideshow"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -48,8 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:paddingRight="10dp"
-        android:background="@color/dark"
-        android:src="@drawable/ic_action_expand"
+        android:background="@null"
+        android:src="@drawable/ic_action_store"
         android:layout_toLeftOf="@id/btnProductosMarcas"
         android:layout_alignParentTop="true" />
 

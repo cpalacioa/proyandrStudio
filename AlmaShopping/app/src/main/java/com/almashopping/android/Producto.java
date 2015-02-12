@@ -7,16 +7,19 @@ public class Producto {
     public String titulo;
     public String img_url;
     public String valor;
-    public String disenador;
+    public String marca;
     public String link;
+    public String descripcion;
 
-    public Producto(int p_id,String p_titulo, String p_img_url,String p_valor,String p_marca) {
+    public Producto(int p_id,String p_titulo, String p_img_url,String p_valor,String p_marca,String p_descripcion) {
         id=p_id;
         titulo=p_titulo;
         img_url = p_img_url;
         valor=p_valor;
-        disenador=p_marca;
+        marca=p_marca;
+        descripcion=p_descripcion;
     }
+
     public int GetId(){
         return  id;
     }

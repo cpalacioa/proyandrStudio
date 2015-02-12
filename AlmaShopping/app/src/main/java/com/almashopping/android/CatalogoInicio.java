@@ -1,6 +1,7 @@
 package com.almashopping.android;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.GridView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.apache.http.HttpResponse;
@@ -33,15 +34,10 @@ public class CatalogoInicio extends Fragment implements  AbsListView.OnScrollLis
 
     private boolean lvBusy = false;
 
-    public CatalogoInicio() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_catalogo_inicio, container, false);
 
     }
@@ -52,7 +48,21 @@ public class CatalogoInicio extends Fragment implements  AbsListView.OnScrollLis
 
         TareaWSListar tarea=new TareaWSListar();
         tarea.execute();
+        gvCategorias.setOnItemClickListener(seleccionCategoria);
     }
+
+    AdapterView.OnItemClickListener seleccionCategoria=new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+           Categoria categoria=(Categoria)Categorias.get(position);
+           Intent intent=new Intent(CatalogoInicio.this.getActivity().getApplicationContext(),productosporCategoria.class);
+           intent.putExtra("Id",categoria.Id);
+           intent.putExtra("Descripcion",categoria.Descripcion);
+           intent.putExtra("Nombre",categoria.Nombre);
+           intent.putExtra("Foto",categoria.Foto);
+           startActivity(intent);
+        }
+    };
 
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
     }
@@ -77,7 +87,6 @@ public class CatalogoInicio extends Fragment implements  AbsListView.OnScrollLis
         return lvBusy;
     }
 
-    //Tarea Asíncrona para llamar al WS de listado en segundo plano
     private class TareaWSListar extends AsyncTask<String,Integer,Boolean> {
 
 

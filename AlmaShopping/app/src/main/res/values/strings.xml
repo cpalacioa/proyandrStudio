@@ -8,7 +8,14 @@
     <string name="title_activity_inicio">Inicio</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_iniciov2">iniciov2</string>
+
     <integer name="IdAPlicacion">2</integer>
+
     <string name="UserDefault">Alma</string>
+    <string name="title_activity_productospor_categoria">Lista de Productos</string>
+    <string name="title_activity_productos_por_marca">Productos Por Marca</string>
+    <string name="title_activity_detalle_producto">detalleProducto</string>
+    <string name="title_activity_detalle_marca">detalleMarca</string>
+    <string name="title_activity_flipcard">flipcard</string>
 
 </resources>

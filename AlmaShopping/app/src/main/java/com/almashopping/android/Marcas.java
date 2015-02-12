@@ -1,6 +1,7 @@
 package com.almashopping.android;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -23,6 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -36,15 +40,12 @@ public class Marcas extends Fragment implements  AbsListView.OnScrollListener
     private ListView lvMarcas=null;
     List<Marca> marcas;
     AdaptadorMarcas adaptadorMarcas;
+    String seleccionado;
+    ImageButton btnVerProductos;
 
     final String[]  datos =
             new String[]{"A-B-C","D-E-F","G-H-I","J-K-L","M-N-O","P-Q-R","S-T-U","V-W-X","Y-Z"};
 
-
-
-    public Marcas() {
-        // Required empty public constructor
-    }
 
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
@@ -54,21 +55,48 @@ public class Marcas extends Fragment implements  AbsListView.OnScrollListener
                         R.layout.spinner_marcas, datos);
         cmbOpciones.setAdapter(adaptador);
         lvMarcas = (ListView) getView().findViewById(R.id.listaMarcasGrid);
+
+
         TareaWSListar tarea = new TareaWSListar();
         tarea.execute();
+        lvMarcas.setOnItemClickListener(verProductos);
         cmbOpciones.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     public void onItemSelected(AdapterView<?> parent,
                                                android.view.View v, int position, long id) {
-                        Log.d("Seleccionado",datos[position]);
+                        seleccionado = datos[position].toString();
+                        CargarListaFiltrada(seleccionado);
                     }
 
                     public void onNothingSelected(AdapterView<?> parent) {
-                        Log.d("Seleccionado","ninguno");
+                        Log.d("Seleccionado", "ninguno");
                     }
                 });
 
     }
+
+   AdapterView.OnItemClickListener verProductos =new AdapterView.OnItemClickListener() {
+       @Override
+       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+           Log.d("gridmarcas","seleccione "+position+"");
+           Marca marc=marcas.get(position);
+           Intent intent=new Intent(Marcas.this.getActivity().getApplicationContext(),ProductosPorMarca.class);
+           intent.putExtra("id",marc.Id);
+           intent.putExtra("cover",marc.Cover);
+           intent.putExtra("nombre",marc.Nombre);
+           intent.putExtra("descripcion",marc.Descripcion);
+           startActivity(intent);
+       }
+   };
+
+    View.OnClickListener vermarca=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final int position = lvMarcas.getPositionForView((View) v.getParent());
+            Log.d("Title clicked, row %d", Integer.toString(position));
+        }
+    };
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,6 +119,31 @@ public class Marcas extends Fragment implements  AbsListView.OnScrollListener
         }
     }
 
+    public void CargarListaFiltrada(String opcion)
+    {
+        if(marcas!=null) {
+            //Log.d("lista", marcas.toString());
+           List<Marca>marcastmp=new ArrayList();
+            String[] cadena= opcion.split("-");
+            for(int control=0;control<marcas.size();control++)
+            {
+                Marca mar=marcas.get(control);
+                if(cadena.length==3) {
+                    if (mar.Nombre.startsWith(cadena[0]) || mar.Nombre.startsWith(cadena[1]) || mar.Nombre.startsWith(cadena[2])) {
+                        marcastmp.add(mar);
+                    }
+                    else
+                    if (mar.Nombre.startsWith(cadena[0]) || mar.Nombre.startsWith(cadena[1])) {
+                        marcastmp.add(mar);
+                    }
+
+                }
+            }
+            lvMarcas.setAdapter(new AdaptadorMarcas(Marcas.this, marcastmp,lvMarcas));
+            lvMarcas.setOnItemClickListener(verProductos);
+
+        }
+    }
     private class TareaWSListar extends AsyncTask<String,Integer,Boolean> {
 
 
@@ -134,7 +187,15 @@ public class Marcas extends Fragment implements  AbsListView.OnScrollListener
             if (result)
             {
                 //llenar adapter
-                lvMarcas.setAdapter(new AdaptadorMarcas(Marcas.this,marcas));
+                Collections.sort(marcas,new Comparator<Marca>() {
+                    @Override
+                    public int compare(Marca lhs, Marca rhs) {
+                        return lhs.Nombre.compareToIgnoreCase(rhs.Nombre);
+                    }
+                });
+                 Log.d("seleccionado", seleccionado);
+                 CargarListaFiltrada(seleccionado);
+                //lvMarcas.setAdapter(new AdaptadorMarcas(Marcas.this,marcas));
             }
         }
     }
