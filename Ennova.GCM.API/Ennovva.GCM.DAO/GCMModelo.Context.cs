@@ -27,5 +27,7 @@ namespace Ennovva.GCM.DAO
     
         public virtual DbSet<Aplicacion> Aplicacion { get; set; }
         public virtual DbSet<Dispositivos> Dispositivos { get; set; }
+        public virtual DbSet<Categoria_Lugar> Categoria_Lugar { get; set; }
+        public virtual DbSet<Lugar> Lugar { get; set; }
     }
 }

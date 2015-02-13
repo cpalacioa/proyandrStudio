@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="gcmModelo.Aplicacion" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="gcmModelo.Dispositivos" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="gcmModelo.FK_Dispositivos_Aplicacion" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="gcmModelo.Categoria_Lugar" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="gcmModelo.Lugar" Width="1.5" PointX="3" PointY="4" />
+        <AssociationConnector Association="gcmModelo.FK_Lugar_Categoria_Lugar" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

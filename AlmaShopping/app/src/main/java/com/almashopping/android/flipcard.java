@@ -45,7 +45,6 @@ public class flipcard extends ActionBarActivity {
         setContentView(R.layout.activity_flipcard);
         Bundle bundle = this.getIntent().getExtras();
         Id=bundle.getInt("id");
-        Log.d("xxx",Integer.toString(Id));
 
         mCardContainer = (CardContainer) findViewById(R.id.layoutview);
         TareaWSListar listar=new TareaWSListar();
@@ -80,11 +79,8 @@ public class flipcard extends ActionBarActivity {
   private void FlipCardDraw(List<Producto> productos)
   {
       adapter=new SimpleCardStackAdapter(flipcard.this.getApplicationContext());
-        Log.d("adapters",productos.toString());
                 for(int contProd=0;contProd<productos.size();contProd++) {
                     Producto prod=(Producto)productos.get(contProd);
-                    Log.d("adapters",prod.img_url);
-
                     adapter.add(new CardModel(prod.titulo, prod.descripcion, prod.img_url));
 
                 }
@@ -137,10 +133,8 @@ public class flipcard extends ActionBarActivity {
 
         protected void onPostExecute(Boolean result) {
 
-            Log.d("adaptersxx",Boolean.toString(result));
             if(result) {
                 FlipCardDraw(productos);
-                Log.d("adaptersxx", Integer.toString(productos.size()));
 
             }
 

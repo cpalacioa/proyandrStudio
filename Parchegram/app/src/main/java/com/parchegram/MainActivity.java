@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.location.Location;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -33,6 +34,14 @@ import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -40,15 +49,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class MainActivity extends ActionBarActivity {
     private GoogleMap mapa;
     private int vista = 0;
     List<LatLng> listalatitudes;
+    List<Ubicacion>ubicaciones;
     Double milatitud;
     Double miLongitud;
-
+    LatLng ubicacion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -155,49 +166,103 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    private void mostrarMarcador(double lat, double lng,Location location)
+    private void mostrarMarcador(LatLng location,List<Ubicacion>ubicaciones)
     {
 
+       Log.d("debug",ubicaciones.toString());
+        Log.d("debug",location.toString());
 
-       listalatitudes=new ArrayList();
+
+      /* listalatitudes=new ArrayList();
        listalatitudes.add(new LatLng(4.62542565,-74.0661001));
-       listalatitudes.add(new LatLng(4.702687,-74.028999));
+       listalatitudes.add(new LatLng(4.702687,-74.028999));*/
 
-        for(int locations=0;locations<listalatitudes.size();locations++) {
-           LatLng coordenadas=(LatLng)listalatitudes.get(locations);
-            Double distancia=ObtDistancia(location.getLatitude(),location.getLongitude(),coordenadas.latitude,coordenadas.longitude);
+        for(int locations=0;locations<ubicaciones.size();locations++) {
+
+            Ubicacion ubicacion=ubicaciones.get(locations);
+            LatLng coordenadas=new LatLng(ubicacion.latitud,ubicacion.longitud);
+            Log.d("coordenadas",ubicacion.rutaCategoria);
+            Double distancia=ObtDistancia(location.latitude,location.longitude,ubicacion.latitud,ubicacion.longitud);
             String txtDistancia="a "+Double.toString(distancia)+" kms";
             BitmapDescriptor image=null;
 
             try {
 
                 try {
-                    Bitmap img = getBitmapFromURL("http://www.midwesternmac.com/sites/midwesternmac.com/files/location-marker.png");
+                    Bitmap img = getBitmapFromURL(ubicacion.rutaCategoria);
                     image=BitmapDescriptorFactory.fromBitmap(img);
 
 
                 } catch (Exception e) {
                     image=BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
                     e.printStackTrace();
-                    Log.d("error",e.toString());
+                    Log.d("error1",e.toString());
                 }
+                mapa.addMarker(new MarkerOptions()
+                        .icon(image)
+                        .position(coordenadas)
+                        .title(ubicacion.Nombre));
 
             } catch (Exception e) {
                 image=BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
                 e.printStackTrace();
-                Log.d("error",e.toString());
+                Log.d("error2",e.toString());
 
             }
             //.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
 
-            mapa.addMarker(new MarkerOptions()
-                    .position(coordenadas)
-                    .icon(image)
-                    .position(coordenadas)
-                    .title(txtDistancia));
-
         }
     }
+
+
+    //Tarea Asíncrona para llamar al WS de listado en segundo plano
+    private class TareaWSListar extends AsyncTask<LatLng,Integer,Boolean> {
+
+
+        protected Boolean doInBackground(LatLng... params) {
+            boolean resul = true;
+            HttpClient httpClient = new DefaultHttpClient();
+            Double distancia=1.0;
+            ubicacion=params[0];
+
+           ubicaciones=new ArrayList();
+
+            HttpGet del =new HttpGet("http://mauropalacio.co/Api/ubicaciones/UbicacionesPorUbicacion/?latitud="+ubicacion.latitude+"&longitud="+ubicacion.longitude+"&distancia="+distancia+"");
+            del.setHeader("content-type", "application/json");
+            try
+            {
+                HttpResponse resp = httpClient.execute(del);
+                String respStr = EntityUtils.toString(resp.getEntity());
+                JSONArray respJSON = new JSONArray(respStr);
+
+                for(int i=0; i<respJSON.length(); i++) {
+
+                    JSONObject obj = respJSON.getJSONObject(i);
+                    JSONObject lugar=new JSONObject(obj.getString("lugar"));
+                    JSONObject categoria=new JSONObject((obj.getString("categoria")));
+                    ubicaciones.add(new Ubicacion(lugar.getInt("Id"),lugar.getString("Nombre"),lugar.getDouble("latitud"),lugar.getDouble("longitud"),lugar.getString("Descripcion"),categoria.getString("Descripcion"),categoria.getString("Icono")));
+                }
+
+            }
+            catch(Exception ex)
+            {
+                resul = false;
+            }
+
+            return resul;
+        }
+
+        protected void onPostExecute(Boolean result) {
+
+            if (result)
+            {
+//                Log.d("debug",ubicaciones.toString());
+                mostrarMarcador(ubicacion,ubicaciones);
+
+            }
+        }
+    }
+
 
     GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
         @Override
@@ -207,9 +272,12 @@ public class MainActivity extends ActionBarActivity {
                 mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
                 Marker mMarker = mapa.addMarker(new MarkerOptions().position(loc));
                 mMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
-                mostrarMarcador(location.getLatitude(), location.getLongitude(),location);
+               // mostrarMarcador(location.getLatitude(), location.getLongitude(),location);
                 milatitud=location.getLatitude();
                 miLongitud=location.getLongitude();
+                TareaWSListar tarea=new TareaWSListar();
+                tarea.execute(loc);
+
             }
             else
             {
@@ -224,9 +292,12 @@ public class MainActivity extends ActionBarActivity {
                     mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
                     Marker mMarker = mapa.addMarker(new MarkerOptions().position(loc));
                     mMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
-                    mostrarMarcador(location.getLatitude(),location.getLongitude(),location);
+                    //mostrarMarcador(location.getLatitude(),location.getLongitude(),location);
                     milatitud=location.getLatitude();
                     miLongitud=location.getLongitude();
+                    TareaWSListar tarea=new TareaWSListar();
+                    tarea.execute(loc);
+
                 }
 
             }

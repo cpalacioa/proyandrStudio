@@ -80,28 +80,22 @@ android:padding="10dp" >
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:layout_marginRight="10dp"
-    android:src="@drawable/ic_action_like" />
+    android:src="@drawable/ic_action_thumb_up" />
 
 <ImageView
     android:id="@+id/dislike"
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:layout_marginLeft="10dp"
-    android:src="@drawable/ic_action_like" />
+    android:src="@drawable/ic_action_thumb_down" />
 
     <ImageView
         android:id="@+id/image_2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
-        android:src="@drawable/ic_action_store" />
+        android:src="@drawable/ic_action_business" />
 
-    <ImageView
-        android:id="@+id/image_1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/ic_action_eye_open" />
 
 </LinearLayout>
 

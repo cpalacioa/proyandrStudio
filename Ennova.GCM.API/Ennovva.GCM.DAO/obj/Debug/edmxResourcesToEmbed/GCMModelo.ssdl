@@ -8,6 +8,14 @@
     <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="activa" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="Categoria_Lugar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Icono" Type="varchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="Dispositivos">
     <Key>
       <PropertyRef Name="Id" />
@@ -16,6 +24,17 @@
     <Property Name="Serial" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="IdAplication" Type="int" Nullable="false" />
     <Property Name="IdUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lugar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Descripcion" Type="text" Nullable="false" />
+    <Property Name="latitud" Type="float" Nullable="false" />
+    <Property Name="longitud" Type="float" Nullable="false" />
+    <Property Name="IdCategoria" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Dispositivos_Aplicacion">
     <End Role="Aplicacion" Type="Self.Aplicacion" Multiplicity="1" />
@@ -29,12 +48,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Lugar_Categoria_Lugar">
+    <End Role="Categoria_Lugar" Type="Self.Categoria_Lugar" Multiplicity="1" />
+    <End Role="Lugar" Type="Self.Lugar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria_Lugar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lugar">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="gcmModeloStoreContainer">
     <EntitySet Name="Aplicacion" EntityType="Self.Aplicacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categoria_Lugar" EntityType="Self.Categoria_Lugar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Dispositivos" EntityType="Self.Dispositivos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lugar" EntityType="Self.Lugar" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Dispositivos_Aplicacion" Association="Self.FK_Dispositivos_Aplicacion">
       <End Role="Aplicacion" EntitySet="Aplicacion" />
       <End Role="Dispositivos" EntitySet="Dispositivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lugar_Categoria_Lugar" Association="Self.FK_Lugar_Categoria_Lugar">
+      <End Role="Categoria_Lugar" EntitySet="Categoria_Lugar" />
+      <End Role="Lugar" EntitySet="Lugar" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

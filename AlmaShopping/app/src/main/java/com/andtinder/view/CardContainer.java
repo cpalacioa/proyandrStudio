@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
@@ -23,6 +24,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import com.almashopping.android.R;
 import com.andtinder.Model.CardModel;
@@ -426,7 +428,7 @@ public class CardContainer extends AdapterView<ListAdapter> {
 		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 			Log.d("Fling", "Fling with " + velocityX + ", " + velocityY);
-			final View topCard = mTopCard;
+    		final View topCard = mTopCard;
 			float dx = e2.getX() - e1.getX();
 			if (Math.abs(dx) > mTouchSlop &&
 					Math.abs(velocityX) > Math.abs(velocityY) &&
@@ -451,6 +453,13 @@ public class CardContainer extends AdapterView<ListAdapter> {
 				if(mTopCard != null)
 					mTopCard.setLayerType(LAYER_TYPE_HARDWARE, null);
 
+                else
+                {
+                    Toast.makeText(getContext(),"No Hay Mas Productos",Toast.LENGTH_SHORT);
+                   // ((Activity)topCard.getContext()).finish();
+                    ((Activity)getContext()).finish();
+
+                }
                 if (cardModel.getOnCardDimissedListener() != null) {
                     if ( targetX > 0 ) {
                         cardModel.getOnCardDimissedListener().onDislike();
@@ -458,6 +467,8 @@ public class CardContainer extends AdapterView<ListAdapter> {
                         cardModel.getOnCardDimissedListener().onLike();
                     }
                 }
+                else
+
 
 				topCard.animate()
 						.setDuration(duration)

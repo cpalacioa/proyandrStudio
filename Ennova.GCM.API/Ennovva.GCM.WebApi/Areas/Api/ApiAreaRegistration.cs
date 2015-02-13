@@ -33,6 +33,18 @@ namespace Ennovva.GCM.WebApi.Areas.Api
             new { controller = "Dispositivos", action = "Dispositivo", id = UrlParameter.Optional }
             );
 
+            //Obtener lista de ubicaciones
+            context.MapRoute(
+                "lugares",
+                "Api/Ubicaciones",
+                new { controller = "Ubicaciones", action = "Ubicaciones" }
+            );
+
+            context.MapRoute(
+               "lugaresubicacion",
+               "Api/Ubicaciones/UbicacionesPorUbicacion/{id}",
+            new { controller = "Ubicaciones", action = "UbicacionesPorUbicacion", id = UrlParameter.Optional });
+
 
         }
     }

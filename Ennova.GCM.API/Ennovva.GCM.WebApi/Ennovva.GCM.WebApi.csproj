@@ -120,11 +120,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\DispositivosController.cs" />
+    <Compile Include="Areas\Api\Controllers\UbicacionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\EnviarNotificacionesAndroid.cs" />
+    <Compile Include="Models\UbicacionesMaps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +173,7 @@
     <Folder Include="Areas\Api\Models\" />
     <Folder Include="Areas\Api\Views\Dispositivos\" />
     <Folder Include="Areas\Api\Views\Shared\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Api\Views\Ubicaciones\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

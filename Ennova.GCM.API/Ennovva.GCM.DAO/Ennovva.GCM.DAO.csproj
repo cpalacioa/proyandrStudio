@@ -52,6 +52,10 @@
       <DependentUpon>GCMModelo.tt</DependentUpon>
     </Compile>
     <Compile Include="AplicacionesDAO.cs" />
+    <Compile Include="CategoriaLugarDAO.cs" />
+    <Compile Include="Categoria_Lugar.cs">
+      <DependentUpon>GCMModelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="DispositivosDAO.cs" />
     <Compile Include="Dispositivos.cs">
       <DependentUpon>GCMModelo.tt</DependentUpon>
@@ -71,6 +75,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GCMModelo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Lugar.cs">
+      <DependentUpon>GCMModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LugaresDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

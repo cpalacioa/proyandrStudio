@@ -20,5 +20,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Categoria_Lugar">
+      <EntityTypeMapping TypeName="gcmModelo.Categoria_Lugar">
+        <MappingFragment StoreEntitySet="Categoria_Lugar">
+          <ScalarProperty Name="Icono" ColumnName="Icono" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lugar">
+      <EntityTypeMapping TypeName="gcmModelo.Lugar">
+        <MappingFragment StoreEntitySet="Lugar">
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="latitud" ColumnName="latitud" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
