@@ -17,5 +17,7 @@ namespace Ennovva.GCM.DAO
             contexto.Dispose();
             return aplicaciones;
         }
+
+        
     }
 }

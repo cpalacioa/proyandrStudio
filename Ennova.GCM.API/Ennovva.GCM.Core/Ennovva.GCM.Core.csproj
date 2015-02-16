@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AplicacionesCore.cs" />
+    <Compile Include="CatalogoCore.cs" />
     <Compile Include="DispositivosCore.cs" />
     <Compile Include="GeolocalizacionCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,8 +13,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="Icono" Type="varchar" MaxLength="100" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Icono" Type="varchar" MaxLength="120" Nullable="false" />
   </EntityType>
   <EntityType Name="Dispositivos">
     <Key>
@@ -24,6 +24,16 @@
     <Property Name="Serial" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="IdAplication" Type="int" Nullable="false" />
     <Property Name="IdUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LikesUsuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdAplicacion" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="usrLike" Type="bit" />
+    <Property Name="idUsuario" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Lugar">
     <Key>
@@ -36,6 +46,23 @@
     <Property Name="longitud" Type="float" Nullable="false" />
     <Property Name="IdCategoria" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="ProveedorIdentidad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdAplicacion" Type="int" Nullable="false" />
+    <Property Name="NombreUsuario" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IdUsuario" Type="varchar" MaxLength="150" />
+    <Property Name="IdProveedorIdentidad" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Dispositivos_Aplicacion">
     <End Role="Aplicacion" Type="Self.Aplicacion" Multiplicity="1" />
     <End Role="Dispositivos" Type="Self.Dispositivos" Multiplicity="*" />
@@ -45,6 +72,30 @@
       </Principal>
       <Dependent Role="Dispositivos">
         <PropertyRef Name="IdAplication" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LikesUsuario_Aplicacion">
+    <End Role="Aplicacion" Type="Self.Aplicacion" Multiplicity="1" />
+    <End Role="LikesUsuario" Type="Self.LikesUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aplicacion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LikesUsuario">
+        <PropertyRef Name="IdAplicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LikesUsuario_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="LikesUsuario" Type="Self.LikesUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LikesUsuario">
+        <PropertyRef Name="idUsuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -60,18 +111,61 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Usuarios_Aplicacion">
+    <End Role="Aplicacion" Type="Self.Aplicacion" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aplicacion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="IdAplicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_ProveedorIdentidad">
+    <End Role="ProveedorIdentidad" Type="Self.ProveedorIdentidad" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProveedorIdentidad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="IdProveedorIdentidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="gcmModeloStoreContainer">
     <EntitySet Name="Aplicacion" EntityType="Self.Aplicacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categoria_Lugar" EntityType="Self.Categoria_Lugar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Dispositivos" EntityType="Self.Dispositivos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LikesUsuario" EntityType="Self.LikesUsuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Lugar" EntityType="Self.Lugar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProveedorIdentidad" EntityType="Self.ProveedorIdentidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Dispositivos_Aplicacion" Association="Self.FK_Dispositivos_Aplicacion">
       <End Role="Aplicacion" EntitySet="Aplicacion" />
       <End Role="Dispositivos" EntitySet="Dispositivos" />
     </AssociationSet>
+    <AssociationSet Name="FK_LikesUsuario_Aplicacion" Association="Self.FK_LikesUsuario_Aplicacion">
+      <End Role="Aplicacion" EntitySet="Aplicacion" />
+      <End Role="LikesUsuario" EntitySet="LikesUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LikesUsuario_Usuarios" Association="Self.FK_LikesUsuario_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="LikesUsuario" EntitySet="LikesUsuario" />
+    </AssociationSet>
     <AssociationSet Name="FK_Lugar_Categoria_Lugar" Association="Self.FK_Lugar_Categoria_Lugar">
       <End Role="Categoria_Lugar" EntitySet="Categoria_Lugar" />
       <End Role="Lugar" EntitySet="Lugar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Aplicacion" Association="Self.FK_Usuarios_Aplicacion">
+      <End Role="Aplicacion" EntitySet="Aplicacion" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_ProveedorIdentidad" Association="Self.FK_Usuarios_ProveedorIdentidad">
+      <End Role="ProveedorIdentidad" EntitySet="ProveedorIdentidad" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

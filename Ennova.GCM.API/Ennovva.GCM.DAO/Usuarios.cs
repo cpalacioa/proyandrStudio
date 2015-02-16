@@ -12,21 +12,21 @@ namespace Ennovva.GCM.DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class Aplicacion
+    public partial class Usuarios
     {
-        public Aplicacion()
+        public Usuarios()
         {
-            this.Dispositivos = new HashSet<Dispositivos>();
             this.LikesUsuario = new HashSet<LikesUsuario>();
-            this.Usuarios = new HashSet<Usuarios>();
         }
     
         public int Id { get; set; }
-        public string Descripcion { get; set; }
-        public bool activa { get; set; }
+        public int IdAplicacion { get; set; }
+        public string NombreUsuario { get; set; }
+        public string IdUsuario { get; set; }
+        public int IdProveedorIdentidad { get; set; }
     
-        public virtual ICollection<Dispositivos> Dispositivos { get; set; }
+        public virtual Aplicacion Aplicacion { get; set; }
         public virtual ICollection<LikesUsuario> LikesUsuario { get; set; }
-        public virtual ICollection<Usuarios> Usuarios { get; set; }
+        public virtual ProveedorIdentidad ProveedorIdentidad { get; set; }
     }
 }

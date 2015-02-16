@@ -5,12 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="68c99534803a4ea6a8687c7b287864e7" Name="Diagram1">
-        <EntityTypeShape EntityType="gcmModelo.Aplicacion" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="gcmModelo.Dispositivos" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gcmModelo.Aplicacion" Width="1.5" PointX="7.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gcmModelo.Dispositivos" Width="1.5" PointX="4.25" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="gcmModelo.FK_Dispositivos_Aplicacion" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="gcmModelo.Categoria_Lugar" Width="1.5" PointX="0.75" PointY="4.25" />
-        <EntityTypeShape EntityType="gcmModelo.Lugar" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="gcmModelo.Categoria_Lugar" Width="1.5" PointX="2.625" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gcmModelo.Lugar" Width="1.5" PointX="0.625" PointY="4" />
         <AssociationConnector Association="gcmModelo.FK_Lugar_Categoria_Lugar" />
+        <EntityTypeShape EntityType="gcmModelo.LikesUsuario" Width="1.5" PointX="2.25" PointY="1.125" />
+        <EntityTypeShape EntityType="gcmModelo.ProveedorIdentidad" Width="1.5" PointX="5.125" PointY="3.25" />
+        <EntityTypeShape EntityType="gcmModelo.Usuarios" Width="1.5" PointX="7.25" PointY="3.25" />
+        <AssociationConnector Association="gcmModelo.FK_LikesUsuario_Aplicacion" />
+        <AssociationConnector Association="gcmModelo.FK_Usuarios_Aplicacion" />
+        <AssociationConnector Association="gcmModelo.FK_LikesUsuario_Usuarios" />
+        <AssociationConnector Association="gcmModelo.FK_Usuarios_ProveedorIdentidad" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

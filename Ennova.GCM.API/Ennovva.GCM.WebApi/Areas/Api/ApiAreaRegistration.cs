@@ -46,6 +46,19 @@ namespace Ennovva.GCM.WebApi.Areas.Api
             new { controller = "Ubicaciones", action = "UbicacionesPorUbicacion", id = UrlParameter.Optional });
 
 
+            //Obtener tendencia de prodtos por aplicacion
+            context.MapRoute(
+            "tendenciaApp",
+            "Api/Catalogo/ObtTendenciaApp/{id}",
+            new { controller = "Catalogo", action = "obtTendenciaApp", id = UrlParameter.Optional });
+
+
+            //Obtener tendencia de prodtos por aplicacion
+            context.MapRoute(
+            "tendencia",
+            "Api/Catalogo/Tendencia/{id}",
+            new { controller = "Catalogo", action = "Tendencia", id = UrlParameter.Optional });
+
         }
     }
 }

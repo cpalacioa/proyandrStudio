@@ -75,11 +75,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GCMModelo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="LikesUsuario.cs">
+      <DependentUpon>GCMModelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Lugar.cs">
       <DependentUpon>GCMModelo.tt</DependentUpon>
     </Compile>
     <Compile Include="LugaresDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveedorIdentidad.cs">
+      <DependentUpon>GCMModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrendingDAO.cs" />
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>GCMModelo.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="GCMModelo.edmx">

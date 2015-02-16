@@ -119,6 +119,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\CatalogoController.cs" />
     <Compile Include="Areas\Api\Controllers\DispositivosController.cs" />
     <Compile Include="Areas\Api\Controllers\UbicacionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -126,6 +127,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\EnviarNotificacionesAndroid.cs" />
+    <Compile Include="Models\Tendencia.cs" />
     <Compile Include="Models\UbicacionesMaps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -171,6 +173,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Api\Models\" />
+    <Folder Include="Areas\Api\Views\Catalogo\" />
     <Folder Include="Areas\Api\Views\Dispositivos\" />
     <Folder Include="Areas\Api\Views\Shared\" />
     <Folder Include="Areas\Api\Views\Ubicaciones\" />

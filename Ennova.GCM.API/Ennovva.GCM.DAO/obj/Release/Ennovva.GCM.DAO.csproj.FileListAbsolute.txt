@@ -7,3 +7,4 @@ C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.DAO\bin\Release\EntityFrame
 C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.DAO\bin\Release\EntityFramework.SqlServer.xml
 C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.DAO\obj\Release\Ennovva.GCM.DAO.dll
 C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.DAO\obj\Release\Ennovva.GCM.DAO.pdb
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.DAO\obj\Release\Ennovva.GCM.DAO.csprojResolveAssemblyReference.cache

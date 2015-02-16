@@ -8,6 +8,8 @@
     <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="activa" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Dispositivos" Relationship="Self.FK_Dispositivos_Aplicacion" FromRole="Aplicacion" ToRole="Dispositivos" />
+    <NavigationProperty Name="LikesUsuario" Relationship="gcmModelo.FK_LikesUsuario_Aplicacion" FromRole="Aplicacion" ToRole="LikesUsuario" />
+    <NavigationProperty Name="Usuarios" Relationship="gcmModelo.FK_Usuarios_Aplicacion" FromRole="Aplicacion" ToRole="Usuarios" />
   </EntityType>
   <EntityType Name="Dispositivos">
     <Key>
@@ -44,14 +46,33 @@
       <End Role="Categoria_Lugar" EntitySet="Categoria_Lugar" />
       <End Role="Lugar" EntitySet="Lugar" />
     </AssociationSet>
+    <EntitySet Name="LikesUsuario" EntityType="gcmModelo.LikesUsuario" />
+    <EntitySet Name="ProveedorIdentidad" EntityType="gcmModelo.ProveedorIdentidad" />
+    <EntitySet Name="Usuarios" EntityType="gcmModelo.Usuarios" />
+    <AssociationSet Name="FK_LikesUsuario_Aplicacion" Association="gcmModelo.FK_LikesUsuario_Aplicacion">
+      <End Role="Aplicacion" EntitySet="Aplicacion" />
+      <End Role="LikesUsuario" EntitySet="LikesUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Aplicacion" Association="gcmModelo.FK_Usuarios_Aplicacion">
+      <End Role="Aplicacion" EntitySet="Aplicacion" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LikesUsuario_Usuarios" Association="gcmModelo.FK_LikesUsuario_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="LikesUsuario" EntitySet="LikesUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_ProveedorIdentidad" Association="gcmModelo.FK_Usuarios_ProveedorIdentidad">
+      <End Role="ProveedorIdentidad" EntitySet="ProveedorIdentidad" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Categoria_Lugar">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Icono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Icono" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Lugar" Relationship="gcmModelo.FK_Lugar_Categoria_Lugar" FromRole="Categoria_Lugar" ToRole="Lugar" />
   </EntityType>
   <EntityType Name="Lugar">
@@ -75,6 +96,87 @@
       </Principal>
       <Dependent Role="Lugar">
         <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LikesUsuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAplicacion" Type="Int32" Nullable="false" />
+    <Property Name="IdProducto" Type="Int32" Nullable="false" />
+    <Property Name="usrLike" Type="Boolean" />
+    <Property Name="idUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Aplicacion" Relationship="gcmModelo.FK_LikesUsuario_Aplicacion" FromRole="LikesUsuario" ToRole="Aplicacion" />
+    <NavigationProperty Name="Usuarios" Relationship="gcmModelo.FK_LikesUsuario_Usuarios" FromRole="LikesUsuario" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="ProveedorIdentidad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Usuarios" Relationship="gcmModelo.FK_Usuarios_ProveedorIdentidad" FromRole="ProveedorIdentidad" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAplicacion" Type="Int32" Nullable="false" />
+    <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IdUsuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IdProveedorIdentidad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Aplicacion" Relationship="gcmModelo.FK_Usuarios_Aplicacion" FromRole="Usuarios" ToRole="Aplicacion" />
+    <NavigationProperty Name="LikesUsuario" Relationship="gcmModelo.FK_LikesUsuario_Usuarios" FromRole="Usuarios" ToRole="LikesUsuario" />
+    <NavigationProperty Name="ProveedorIdentidad" Relationship="gcmModelo.FK_Usuarios_ProveedorIdentidad" FromRole="Usuarios" ToRole="ProveedorIdentidad" />
+  </EntityType>
+  <Association Name="FK_LikesUsuario_Aplicacion">
+    <End Type="gcmModelo.Aplicacion" Role="Aplicacion" Multiplicity="1" />
+    <End Type="gcmModelo.LikesUsuario" Role="LikesUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aplicacion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LikesUsuario">
+        <PropertyRef Name="IdAplicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Aplicacion">
+    <End Type="gcmModelo.Aplicacion" Role="Aplicacion" Multiplicity="1" />
+    <End Type="gcmModelo.Usuarios" Role="Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aplicacion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="IdAplicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LikesUsuario_Usuarios">
+    <End Type="gcmModelo.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="gcmModelo.LikesUsuario" Role="LikesUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LikesUsuario">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_ProveedorIdentidad">
+    <End Type="gcmModelo.ProveedorIdentidad" Role="ProveedorIdentidad" Multiplicity="1" />
+    <End Type="gcmModelo.Usuarios" Role="Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProveedorIdentidad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="IdProveedorIdentidad" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
