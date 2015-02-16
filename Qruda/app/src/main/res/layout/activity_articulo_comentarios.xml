@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context="android.qruda.com.qruda.ArticuloComentarios">
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="9">
+
+        </ListView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+
+        android:layout_height="2dp"
+        android:layout_weight="1"
+        android:background="#000000">
+
+        <Button
+            android:layout_width="0.0dp" android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:text="Articulo"
+            android:id="@+id/btnArticuloComentarios"
+            android:background="@drawable/boton_inferior"
+            android:drawableTop="@drawable/ic_action_book"
+            style="@style/Theme.Qruda.Boton"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            />
+
+        <Button
+            android:layout_width="0.0dp" android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Autor"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:id="@+id/btnPerfilComentarios"
+            android:drawableTop="@drawable/ic_action_user"
+            android:background="@drawable/boton_inferior"
+
+            style="@style/Theme.Qruda.Boton" />
+
+        <Button
+            android:layout_width="0.0dp" android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:text="Comentarios"
+            android:id="@+id/btnComentariosComentarios"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:drawableTop="@drawable/ic_action_dialog"
+            android:background="@drawable/boton_inferior_activo"
+            style="@style/Theme.Qruda.Boton"/>
+    </LinearLayout>
+
+</LinearLayout>
+

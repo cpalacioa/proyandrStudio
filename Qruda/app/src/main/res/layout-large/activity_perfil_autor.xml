@@ -3,12 +3,12 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    tools:context="android.qruda.com.qruda.DetalleArticulo">
-
+    android:background="#ffffff"
+    tools:context="android.qruda.com.qruda.PerfilAutor">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:id="@+id/tituloArticulo"
+        android:id="@+id/NombreAutor"
         android:background="#EDEDED"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -16,30 +16,54 @@
         android:gravity="center"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-    />
-
-    <!--<ImageView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:id="@+id/DetalleImagenArticulo"
-        android:contentDescription="icon"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:background="#00000000"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_weight="1"
-        />-->
-    <WebView
-        android:id="@+id/webViewArticulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_weight="8"
         />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:id="@+id/ImagenPerfil"
+        android:layout_weight="3"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_action_user"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/datosAutor"
+        android:background="#FFFFFF"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="7pt"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:text=""
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#ffffff">
+        <Button
+            android:layout_width="200dp" android:layout_height="fill_parent"
+            android:text="Seguir"
+            android:layout_weight="1"
+            android:id="@+id/buttonSeguir"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="15dp"
+            android:textAlignment="center"
+            />
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -50,11 +74,11 @@
         android:background="#000000">
 
         <Button
-            android:layout_width="wrap_content" android:layout_height="fill_parent"
+            android:layout_width="0.0dp" android:layout_height="fill_parent"
             android:layout_weight="1.0"
             android:text="Articulo"
-            android:id="@+id/btnArticuloDetalle"
-            android:background="@drawable/boton_inferior_activo"
+            android:id="@+id/btnArticuloAutor"
+            android:background="@drawable/boton_inferior"
             android:drawableTop="@drawable/ic_action_book"
             style="@style/Theme.Qruda.Boton"
             android:layout_gravity="center"
@@ -63,7 +87,7 @@
             />
 
         <Button
-            android:layout_width="wrap_content" android:layout_height="fill_parent"
+            android:layout_width="0.0dp" android:layout_height="fill_parent"
             android:layout_weight="1.0"
             android:text="Autor"
             android:layout_gravity="center"
@@ -71,15 +95,15 @@
             android:textAlignment="center"
             android:id="@+id/btnPerfilAutor"
             android:drawableTop="@drawable/ic_action_user"
-            android:background="@drawable/boton_inferior"
+            android:background="@drawable/boton_inferior_activo"
 
             style="@style/Theme.Qruda.Boton" />
 
         <Button
-            android:layout_width="wrap_content" android:layout_height="fill_parent"
+            android:layout_width="0.0dp" android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="Comentarios"
-            android:id="@+id/btnComentariosDetalle"
+            android:id="@+id/btnComentariosAutor"
             android:layout_gravity="center"
             android:gravity="center"
             android:textAlignment="center"

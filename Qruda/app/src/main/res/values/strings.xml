@@ -17,5 +17,6 @@
 
     <string name="title_activity_detalle_articulo">DetalleArticulo</string>
     <string name="title_activity_perfil_autor">PerfilAutor</string>
+    <string name="title_activity_articulo_comentarios">ArticuloComentarios</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package android.qruda.com.qruda;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
@@ -32,10 +33,19 @@ public class DetalleArticulo extends ActionBarActivity {
     private WebView contenido;
     private ImageView imagen;
     private ProgressDialog mProgressDialog;
-    private String url;
     private ImageButton btnAtras;
     private TextView titulo;
     private Button btnPerfilAutor;
+    private Button btnComentarios;
+
+
+    //Datos del articulo
+    int IdArticulo;
+    String UrlImagen;
+    String Nombre;
+    String Fecha;
+    String Url;
+
 
 
     @Override
@@ -52,14 +62,19 @@ public class DetalleArticulo extends ActionBarActivity {
         imagen=(ImageView)this.findViewById(R.id.DetalleImagen);
         btnAtras=(ImageButton)this.findViewById(R.id.btn_atras_articulo);
         btnPerfilAutor=(Button)this.findViewById(R.id.btnPerfilAutor);
+        btnComentarios=(Button)this.findViewById(R.id.btnComentariosDetalle);
 
         titulo=(TextView)this.findViewById(R.id.tituloArticulo);
         //imagen=(ImageView)findViewById(R.id.DetalleImagenArticulo);
 
         Bundle bundle = this.getIntent().getExtras();
-        Log.d("link",bundle.getString("UrlImagen"));
-        url=bundle.getString("Url");
-        titulo.setText(bundle.getString("Nombre"));
+        Url=bundle.getString("Url");
+        IdArticulo=bundle.getInt("Id");
+        UrlImagen=bundle.getString("UrlImagen");
+        Nombre=bundle.getString("Nombre");
+        Fecha=bundle.getString("Fecha");
+
+        titulo.setText(Nombre.toUpperCase());
         /*Picasso.with(this)
                 .load(bundle.getString("UrlImagen"))
                 .placeholder(R.drawable.spinner) // optional
@@ -67,22 +82,43 @@ public class DetalleArticulo extends ActionBarActivity {
                 .into(imagen);*/
         new Description().execute();
         btnAtras.setOnClickListener(listenerAtras);
-        btnPerfilAutor.setOnClickListener((listenerPerfilAutor));
+        btnPerfilAutor.setOnClickListener(listenerPerfilAutor);
+        btnComentarios.setOnClickListener(listenerComentarios);
 
     }
 
     View.OnClickListener listenerPerfilAutor=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i =new Intent(DetalleArticulo.this,PerfilAutor.class);
-            startActivity(i);
+            Intent intent=new Intent(DetalleArticulo.this,PerfilAutor.class);
+            intent.putExtra("Id",IdArticulo);
+            intent.putExtra("UrlImagen",UrlImagen);
+            intent.putExtra("Nombre",Nombre);
+            intent.putExtra("Fecha",Fecha);
+            intent.putExtra("Url",Url);
+            startActivity(intent);
+        }
+    };
+
+    View.OnClickListener listenerComentarios=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          Intent intent=new Intent(DetalleArticulo.this,ArticuloComentarios.class);
+            intent.putExtra("Id",IdArticulo);
+            intent.putExtra("UrlImagen",UrlImagen);
+            intent.putExtra("Nombre",Nombre);
+            intent.putExtra("Fecha",Fecha);
+            intent.putExtra("Url",Url);
+            startActivity(intent);
+
         }
     };
 
     View.OnClickListener listenerAtras=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            finish();
+            Intent intent=new Intent(DetalleArticulo.this,Comunidad.class);
+            startActivity(intent);
         }
     };
 
@@ -127,8 +163,8 @@ public class DetalleArticulo extends ActionBarActivity {
         protected Void doInBackground(Void... params) {
             try {
                 // Connect to the web site
-                Log.d("Link",url);
-                Document document = Jsoup.connect(url).get();
+                Log.d("Link",Url);
+                Document document = Jsoup.connect(Url).get();
                 // Using Elements to get the Meta data
                 Elements description = document
                         .getElementsByClass("content-article");

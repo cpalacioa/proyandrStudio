@@ -37,7 +37,11 @@
 
         <activity
             android:name=".Inicio"
-            android:label="@string/title_activity_inicio" >
+            android:label="@string/title_activity_inicio"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <meta-data
+                android:name="android.support.UI_OPTIONS"
+                android:value="splitActionBarWhenNarrow" />
         </activity>
         <activity
             android:name=".iniciov2"
@@ -66,8 +70,8 @@
         </activity>
         <activity
             android:name=".detalleProducto"
-            android:theme="@android:style/Theme.Dialog"
-            android:label="@string/title_activity_detalle_producto" >
+            android:label="@string/title_activity_detalle_producto"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name=".detalleMarca"
@@ -76,6 +80,10 @@
         <activity
             android:name=".flipcard"
             android:label="@string/title_activity_flipcard" >
+        </activity>
+     <activity
+            android:name=".Tendencia"
+            android:label="@string/title_activity_tendencia" >
         </activity>
     </application>
 

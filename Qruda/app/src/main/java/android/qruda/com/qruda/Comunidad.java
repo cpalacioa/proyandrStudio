@@ -131,6 +131,7 @@ public class Comunidad extends ActionBarActivity {
             }
         }
     };
+
     OnClickListener listenerCatalogo=new OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -295,8 +296,6 @@ public class Comunidad extends ActionBarActivity {
 
         return resul;
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

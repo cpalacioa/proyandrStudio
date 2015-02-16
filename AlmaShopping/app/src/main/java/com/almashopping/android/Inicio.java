@@ -164,8 +164,8 @@ public class Inicio extends ActionBarActivity {
 
         tab = mActionbar.newTab()
                 //.setText("Comunidad")
-                .setIcon(R.drawable.ic_action_users)
-                .setContentDescription("Comunidad")
+                .setIcon(R.drawable.ic_action_star_10)
+                .setContentDescription("Tendencia")
                 .setTabListener(tabListener);
         mActionbar.addTab(tab);
 
@@ -176,6 +176,13 @@ public class Inicio extends ActionBarActivity {
                 .setContentDescription("Marcas")
                 .setTabListener(tabListener);
         mActionbar.addTab(tab);
+
+        tab=mActionbar.newTab()
+                .setIcon(R.drawable.ic_action_user)
+                .setContentDescription("Perfil")
+                .setTabListener(tabListener);
+        mActionbar.addTab(tab);
+
 
         mActionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 

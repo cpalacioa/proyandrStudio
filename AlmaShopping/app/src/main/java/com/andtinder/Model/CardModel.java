@@ -11,7 +11,7 @@ public class CardModel {
     private String cardImageDrawable;
     private String cardLikeImageDrawable;
     private String cardDislikeImageDrawable;
-
+    private Integer Id;
     private OnCardDimissedListener mOnCardDimissedListener = null;
 
     private OnClickListener mOnClickListener = null;
@@ -26,10 +26,11 @@ public class CardModel {
     }
 
     public CardModel() {
-        this(null, null, null);
+        this(1,null, null, null);
     }
 
-    public CardModel(String title, String description, String cardImage) {
+    public CardModel(Integer Id,String title, String description, String cardImage) {
+        this.Id=Id;
         this.title = title;
         this.description = description;
         this.cardImageDrawable = cardImage;
@@ -38,6 +39,9 @@ public class CardModel {
 
     public String getTitle() {
         return title;
+    }
+    public Integer GetId(){
+        return  Id;
     }
 
     public void setTitle(String title) {

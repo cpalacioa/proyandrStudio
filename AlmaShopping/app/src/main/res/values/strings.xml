@@ -17,5 +17,6 @@
     <string name="title_activity_detalle_producto">detalleProducto</string>
     <string name="title_activity_detalle_marca">detalleMarca</string>
     <string name="title_activity_flipcard">flipcard</string>
+    <string name="title_activity_tendencia">Tendencia</string>
 
 </resources>

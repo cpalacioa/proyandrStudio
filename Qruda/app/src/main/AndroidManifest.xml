@@ -63,6 +63,10 @@
             android:name=".PerfilAutor"
             android:label="@string/title_activity_perfil_autor" >
         </activity>
+        <activity
+            android:name=".ArticuloComentarios"
+            android:label="@string/title_activity_articulo_comentarios" >
+        </activity>
     </application>
 
 </manifest>

@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class AdapterFragmentsPage extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 3;
+    final int PAGE_COUNT = 4;
 
     public AdapterFragmentsPage(FragmentManager fm) {
         super(fm);
@@ -25,13 +25,16 @@ public class AdapterFragmentsPage extends FragmentPagerAdapter {
                 return fragmento1;
 
             case 1:
-                Comunidad fragmento2= new Comunidad();
+                Tendencia fragmento2= new Tendencia();
                 return fragmento2;
 
             case 2:
                 Marcas fragmento3 = new Marcas();
                 return fragmento3;
 
+            case 3:
+                PerfilUsuario fragmento4= new PerfilUsuario();
+                return  fragmento4;
 
         }
 

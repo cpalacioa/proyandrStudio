@@ -50,30 +50,6 @@ public class flipcard extends ActionBarActivity {
         TareaWSListar listar=new TareaWSListar();
         listar.execute();
 
-       /* CardModel cardModel = new CardModel("Title1", "Description goes here", "http://cdn2.androidhive.info/wp-content/plugins/wordpress-23-related-posts-plugin/static/thumbs/7.jpg?f8d261");
-
-        cardModel.setOnClickListener(new CardModel.OnClickListener() {
-            @Override
-            public void OnClickListener() {
-                Log.i("Swipeable Cards", "estoy presionando una imagen");
-            }
-        });*/
-
-        /*cardModel.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
-            @Override
-            public void onLike() {
-                Log.i("Swipeable Cards","I like the card");
-            }
-
-            @Override
-            public void onDislike() {
-                Log.i("Swipeable Cards","I dislike the card");
-            }
-        });*/
-
-        //adapter.add(cardModel);
-
-
     }
 
   private void FlipCardDraw(List<Producto> productos)
@@ -81,7 +57,7 @@ public class flipcard extends ActionBarActivity {
       adapter=new SimpleCardStackAdapter(flipcard.this.getApplicationContext());
                 for(int contProd=0;contProd<productos.size();contProd++) {
                     Producto prod=(Producto)productos.get(contProd);
-                    adapter.add(new CardModel(prod.titulo, prod.descripcion, prod.img_url));
+                    adapter.add(new CardModel(prod.id,prod.titulo, prod.descripcion, prod.img_url));
 
                 }
       mCardContainer.setAdapter(adapter);
@@ -138,13 +114,6 @@ public class flipcard extends ActionBarActivity {
 
             }
 
-/*                for(int contProd=0;contProd<productos.size();contProd++) {
-                    Producto prod=productos.get(contProd);
-
-                    adapter.add(new CardModel(prod.marca, prod.titulo, prod.img_url));
-                }
-                mCardContainer.setAdapter(adapter);
-*/
         }
     }
 

@@ -1,9 +1,66 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.almashopping.android.PerfilUsuario">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/LytContenedor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="Perfil de Usuario" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ImageProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:src="@drawable/ic_action_user"
+            android:background="#00000000"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            />
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre y Apellido"
+            android:id="@+id/NombreUsuario"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false"
+            android:layout_toEndOf="@id/ImageProfile"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Correo Electrónico"
+            android:id="@+id/textEmail"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@id/NombreUsuario"
+            android:layout_toEndOf="@id/ImageProfile" />
+
+    </RelativeLayout>
+
+    <com.facebook.widget.LoginButton
+        android:id="@+id/fb_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        facebook:confirm_logout="false"
+        facebook:fetch_user_info="true"
+        android:layout_marginTop="61dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_below="@+id/ImageProfile"
+        android:layout_centerHorizontal="true" />
+
+
+</LinearLayout>
