@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    android:orientation="vertical"
+    style="@style/Theme.Alma.ContenedorProducto"
+    >
+
+    <TextView
+        android:id="@+id/autor"
+        android:text="Marca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="icon"
+        android:gravity="left"
+        android:layout_gravity="left"
+        android:background="#00000000"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_action_camera"
+        />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:text="Titulo del Producto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Theme.Alma.tituloProductos"
+        />
+
+
+    <TextView
+        android:id="@+id/valor"
+        android:text="$0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Theme.Alma.precio"
+        />
+
+
+</LinearLayout>

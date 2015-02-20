@@ -4,9 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
     <permission
         android:name="com.almashopping.android.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
@@ -36,12 +37,12 @@
             android:value="@string/app_idfacebook" />
 
         <activity
+            android:uiOptions="splitActionBarWhenNarrow"
             android:name=".Inicio"
-            android:label="@string/title_activity_inicio"
-            android:uiOptions="splitActionBarWhenNarrow">
-            <meta-data
-                android:name="android.support.UI_OPTIONS"
+            android:label="@string/title_activity_inicio">
+            <meta-data android:name="android.support.UI_OPTIONS"
                 android:value="splitActionBarWhenNarrow" />
+
         </activity>
         <activity
             android:name=".iniciov2"

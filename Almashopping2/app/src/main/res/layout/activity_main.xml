@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:background="#000000"
+    android:layout_height="fill_parent" android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:id="@+id/ImageIntro"
+        android:src="@drawable/logo_almashopping"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/seleccion_pais"
+        android:id="@+id/textView"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/ImageIntro"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Spinner
+        android:layout_marginTop="25dp"
+        android:id="@+id/spinner_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:layout_gravity="center"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <com.facebook.widget.LoginButton
+        android:id="@+id/fb_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        facebook:confirm_logout="false"
+        facebook:fetch_user_info="true"
+        android:layout_gravity="center"
+        facebook:login_text="@string/loginFacebookButton"
+        facebook:logout_text=""
+        android:gravity="center"
+        android:layout_below="@+id/spinner_show"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_marginTop="10dp"
+        android:text="Ingresar con Google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fb_login_button"
+        android:layout_alignStart="@+id/fb_login_button"
+        android:layout_alignEnd="@+id/fb_login_button" />
+
+</RelativeLayout>

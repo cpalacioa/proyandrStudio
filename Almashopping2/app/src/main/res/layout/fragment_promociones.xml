@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Theme.Alma.EncabezadoSecciones"
+        android:text="PROMOCIONES"/>
+
+    <GridView
+        android:id="@+id/Grid_productosMarca"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        style="@style/Theme.Alma.ContenedorProductos"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:columnWidth="100dp"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        />
+
+    <!-- android:layout_marginLeft="10dp"
+     android:layout_marginRight="10dp"-->
+
+
+</LinearLayout>

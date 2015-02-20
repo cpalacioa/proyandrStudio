@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -24,7 +25,9 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.google.android.gms.plus.Plus;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -63,6 +66,7 @@ public class Inicio extends ActionBarActivity {
     public static final long EXPIRATION_TIME_MS = 1000 * 3600 * 24 * 7;
 
     private String SENDER_ID = "383216941805";
+    private GoogleApiClient mGoogleApiClient;
 
 
 
@@ -442,17 +446,52 @@ public class Inicio extends ActionBarActivity {
         return true;
     }
 
+    private void CloseSession()
+    {
+        Session sessionfb=Session.getActiveSession();
+        if(sessionfb.isOpened()) {
+            sessionfb.closeAndClearTokenInformation();
+            Intent intent = new Intent(Inicio.this.getApplicationContext(), com.almashopping.android.MainActivity.class);
+            startActivity(intent);
+        }
+
+        if (mGoogleApiClient.isConnected()) {
+            Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+            mGoogleApiClient.disconnect();
+            mGoogleApiClient.connect();
+        }
+    }
+
+    private void InfoGeneral(String url)
+    {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.btnLogout) {
+            CloseSession();
             return true;
         }
+        if(id==R.id.btnInfoAlma) {
+           InfoGeneral("http://www.almashopping.com.co/es/site/quienessomos");
+           return true;
+        }
+
+        if(id==R.id.btnContacto){
+            InfoGeneral("http://www.almashopping.com/es/site/contacto");
+            return  true;
+        }
+
+        if(id==R.id.btnTerminos){
+            InfoGeneral("http://www.almashopping.com.co/es/site/terminos");
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

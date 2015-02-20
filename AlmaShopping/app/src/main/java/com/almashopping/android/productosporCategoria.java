@@ -27,6 +27,8 @@ public class productosporCategoria extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productospor_categoria);
+        TareaWSListar listar=new TareaWSListar();
+        listar.execute();
     }
 
 
@@ -52,7 +54,7 @@ public class productosporCategoria extends ActionBarActivity {
         protected Boolean doInBackground(String... params) {
             boolean resul = true;
             HttpClient httpClient = new DefaultHttpClient();
-            HttpGet del =new HttpGet("http://www.almashopping.com/es/site/getcategories?key=4e3ec11f9cd0ed11090dbd0b1c8ff9ee&id=1");
+            HttpGet del =new HttpGet("http://www.almashopping.com/es/site/getcategories?key=43d5117d50ba57da751ff98af9bbac20&id=1");
             del.setHeader("content-type", "application/json");
             try
             {

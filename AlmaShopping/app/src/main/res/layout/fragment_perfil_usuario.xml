@@ -8,11 +8,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
         <ImageView
             android:id="@+id/ImageProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
             android:gravity="center"
             android:src="@drawable/ic_action_user"
             android:background="#00000000"
@@ -26,8 +29,7 @@
             android:text="Nombre y Apellido"
             android:id="@+id/NombreUsuario"
             android:textColor="#000000"
-            android:textStyle="bold"
-            android:textSize="25dp"
+            android:textSize="18dp"
             android:layout_alignParentEnd="false"
             android:layout_alignParentStart="false"
             android:layout_toEndOf="@id/ImageProfile"
@@ -39,7 +41,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"
-            android:textStyle="bold"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:text="Correo Electrónico"
@@ -60,7 +61,9 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_below="@+id/ImageProfile"
-        android:layout_centerHorizontal="true" />
+        facebook:logout_text=""
+        android:layout_centerHorizontal="true"
+        style="@style/FacebookLoginButton"/>
 
 
 </LinearLayout>
