@@ -20,7 +20,7 @@
         <item>Home</item>
         <item>Marcas</item>
         <item>Categorias</item>
-        <item>Promociones</item>
+        <item>Suscripciones</item>
         <item>Cerrar Sesión</item>
     </string-array>
 
@@ -38,5 +38,6 @@
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_google">google</string>
+    <string name="title_activity_detalle_producto">DetalleProducto</string>
 
 </resources>

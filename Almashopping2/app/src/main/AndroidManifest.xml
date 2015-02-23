@@ -40,6 +40,10 @@
             android:name=".google"
             android:label="@string/title_activity_google" >
         </activity>
+        <activity
+            android:name=".DetalleProducto"
+            android:label="@string/title_activity_detalle_producto" >
+        </activity>
     </application>
 
 </manifest>

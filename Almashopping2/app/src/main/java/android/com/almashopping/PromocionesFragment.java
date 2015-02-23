@@ -3,6 +3,7 @@ package android.com.almashopping;
 
 import android.com.almashopping.adapter.AdaptadorProductos;
 import android.com.almashopping.model.Producto;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 
@@ -46,8 +48,22 @@ public class PromocionesFragment extends Fragment implements  AbsListView.OnScro
         Id=1;
         TareaWSListar listar=new TareaWSListar();
         listar.execute();
+        gvProductos.setOnItemClickListener(listenerGridProductos);
 
     }
+
+    AdapterView.OnItemClickListener listenerGridProductos=new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Producto producto=(Producto)productos.get(position);
+            Intent i=new Intent(PromocionesFragment.this.getActivity().getApplicationContext(),DetalleProducto.class);
+            i.putExtra("Id",producto.id);
+            i.putExtra("UrlImagen",producto.img_url);
+            i.putExtra("Titulo",producto.titulo);
+            startActivity(i);
+        }
+    };
+
 
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
     }
@@ -81,7 +97,7 @@ public class PromocionesFragment extends Fragment implements  AbsListView.OnScro
             boolean resul = true;
             HttpClient httpClient = new DefaultHttpClient();
 
-            HttpGet del =new HttpGet("http://www.almashopping.com/es/site/getproductsbybrand/?key=4e3ec11f9cd0ed11090dbd0b1c8ff9ee&id="+Id+"");
+            HttpGet del =new HttpGet("http://www.almashopping.com/es/site/getproductsbycategory/?key=43d5117d50ba57da751ff98af9bbac20&id=211");
             del.setHeader("content-type", "application/json");
             try
             {

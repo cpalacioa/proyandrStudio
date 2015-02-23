@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<TextView android:text="MARCA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Theme.Alma.EncabezadoDetalleProducto"
+    />
+
+    <LinearLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/producto"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TITULO DEL PRODUCTO"
+                android:layout_gravity="left"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$COSTO"
+                android:layout_gravity="left"
+                android:elegantTextHeight="false" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:text="Adicionar"/>
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+
+                    android:text="0"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/greendark"
+                    android:src="@drawable/ic_action_add"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/greendark"
+                    android:src="@drawable/ic_action_minus"/>
+
+            </LinearLayout>
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+              <ImageButton
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:background="@color/greendark"
+                  android:src="@drawable/ic_action_heart"/>
+
+              <ImageButton
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:background="@color/greendark"
+                  android:src="@drawable/ic_action_share"/>
+
+          </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

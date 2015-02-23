@@ -70,7 +70,8 @@ public class AdaptadorProductos extends ArrayAdapter<Producto> {
 
             Picasso.with(contexto)
                     .load(p.img_url)
-                    .placeholder(R.drawable.ic_action_alarm)
+                    .placeholder(R.drawable.ic_launcher)
+                    .error(R.drawable.ic_launcher)
                     .into(img);
         }
 
@@ -82,7 +83,8 @@ public class AdaptadorProductos extends ArrayAdapter<Producto> {
             if (!isBusy){
                 Picasso.with(contexto)
                         .load(p.img_url)
-                        .placeholder(R.drawable.ic_action_alarm)
+                        .placeholder(R.drawable.ic_launcher)
+                        .error(R.drawable.ic_launcher)
                         .into(img);
             }
             else{

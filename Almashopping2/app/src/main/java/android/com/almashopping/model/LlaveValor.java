@@ -1,8 +1,5 @@
 package android.com.almashopping.model;
 
-/**
- * Created by ASUS K550 on 20/02/2015.
- */
 
 public class LlaveValor {
   public int Id;

@@ -4,11 +4,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/lsMarcas">
 
-    <TextView
-        android:id="@+id/TxtDetalle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Marcas" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Theme.Alma.EncabezadoSecciones"
+            android:text="MARCAS"/>
 
+        <ExpandableListView
+            android:id="@+id/lvMarcas"
+            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/lnProductosMarca"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Theme.Alma.EncabezadoSecciones"
+            android:text="MARCAS"
+            android:id="@+id/txtMarcaNombre"/>
+
+        <GridView
+            android:id="@+id/Grid_productos_marca"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2"
+            style="@style/Theme.Alma.ContenedorProductos"
+            android:stretchMode="columnWidth"
+            android:gravity="center"
+            android:columnWidth="100dp"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="10dp"
+            />
+
+
+    </LinearLayout>
 </LinearLayout>

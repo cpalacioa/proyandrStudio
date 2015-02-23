@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/gray">
+    android:orientation="vertical" >
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBuscado"
+        style="@style/Theme.Alma.EncabezadoSecciones"
+        android:text="Resultados de Busqueda" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Theme.Alma.EncabezadoSecciones"
-        android:text="SUSCRIPCIONES"/>
+        android:id="@+id/txtResultado"/>
+
 
     <GridView
-        android:id="@+id/Grid_productosMarca"
+        android:id="@+id/Grid_resultados_busqueda"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="2"
@@ -24,9 +30,5 @@
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         />
-
-    <!-- android:layout_marginLeft="10dp"
-     android:layout_marginRight="10dp"-->
-
 
 </LinearLayout>

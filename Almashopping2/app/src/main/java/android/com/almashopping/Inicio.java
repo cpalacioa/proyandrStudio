@@ -183,7 +183,7 @@ public class Inicio extends ActionBarActivity implements
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
-            displayView(0);
+            displayView(0,null);
         }
 
 
@@ -201,8 +201,10 @@ public class Inicio extends ActionBarActivity implements
     @Override
     public boolean onQueryTextSubmit(String text) {
 
-        Toast.makeText(this, "Searching for " + text, Toast.LENGTH_LONG).show();
-
+        Toast.makeText(this, "Buscando " + text, Toast.LENGTH_LONG).show();
+        Bundle bundle = new Bundle();
+        bundle.putString("txtBuscar", text);
+        displayView(6,bundle);
         return false;
     }
 
@@ -216,11 +218,11 @@ public class Inicio extends ActionBarActivity implements
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
             // display view for selected nav drawer item
-            displayView(position);
+            displayView(position,null);
         }
     }
 
-    private void displayView(int position) {
+    private void displayView(int position,Bundle bundle) {
         // update the main content by replacing fragments
         Fragment fragment = null;
         switch (position) {
@@ -243,6 +245,10 @@ public class Inicio extends ActionBarActivity implements
                 CloseSession();
                 break;
 
+            case 6:
+                fragment=new ResultadosBusqueda();
+                break;
+
 
             default:
                 fragment=new HomeFragment();
@@ -251,6 +257,7 @@ public class Inicio extends ActionBarActivity implements
 
         if (fragment != null) {
             FragmentManager fragmentManager =getSupportFragmentManager();
+
             fragmentManager.beginTransaction()
                     .replace(R.id.frame_container, fragment).commit();
 

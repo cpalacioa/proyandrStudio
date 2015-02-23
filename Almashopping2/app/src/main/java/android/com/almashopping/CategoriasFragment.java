@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -33,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class CategoriasFragment extends Fragment {
+public class CategoriasFragment extends Fragment implements  AbsListView.OnScrollListener{
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
@@ -57,18 +58,9 @@ public class CategoriasFragment extends Fragment {
 
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
-
-
             expListView = (ExpandableListView) getView().findViewById(R.id.lvCategorias);
-
-            // preparing list data
-//        prepareListData();
-
             TareaWSListar listar = new TareaWSListar();
             listar.execute();
-
-
-            // Listview on child click listener
             expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
                 @Override
@@ -93,7 +85,6 @@ public class CategoriasFragment extends Fragment {
                         gvProductos=(GridView)getView().findViewById(R.id.Grid_productos_categoria);
                         TareaWSListarProductos tarea=new TareaWSListarProductos();
                         tarea.execute(Integer.toString(llvlr.Id));
-
 
                     }
 
@@ -125,6 +116,29 @@ public class CategoriasFragment extends Fragment {
         });*/
 
     }
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+    }
+
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+        switch (scrollState) {
+            case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
+                lvBusy = false;
+                adaptadorProductos.notifyDataSetChanged();
+                break;
+            case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+                lvBusy = true;
+                break;
+            case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
+                lvBusy = true;
+                break;
+        }
+    }
+
+
+    public boolean isLvBusy(){
+        return lvBusy;
+    }
+
 
     private class TareaWSListar extends AsyncTask<String,Integer,Boolean> {
 
@@ -189,7 +203,7 @@ public class CategoriasFragment extends Fragment {
         listDataChild = new HashMap<String, List<LlaveValor>>();
 
         List<Categoria>listaPadres=new ArrayList();
-        List<Categoria>listahijos=new ArrayList();
+
 
 
         Categoria categoria=new Categoria();
@@ -198,7 +212,6 @@ public class CategoriasFragment extends Fragment {
         {
             listDataHeader.add(categoriatmp.Nombre);
             categoriatmp.hijas=categoria.obtenerHijas(listacategorias,categoriatmp.Id);
-
             listDataChild.put(categoriatmp.Nombre,categoriatmp.hijas);
 
         }
