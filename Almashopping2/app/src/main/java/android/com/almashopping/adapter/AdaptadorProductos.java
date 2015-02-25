@@ -66,25 +66,25 @@ public class AdaptadorProductos extends ArrayAdapter<Producto> {
         void populate(Producto p) {
             title.setText(p.titulo.toUpperCase());
             price.setText("$"+ p.valor.toString().toUpperCase()+"");
-            autor.setText("BY " + p.marca.toUpperCase());
+            autor.setText(p.marca.toUpperCase());
 
             Picasso.with(contexto)
                     .load(p.img_url)
-                    .placeholder(R.drawable.ic_launcher)
-                    .error(R.drawable.ic_launcher)
+                    .placeholder(R.drawable.spinner)
+                    .error(R.drawable.nodisponible)
                     .into(img);
         }
 
         void populate(Producto p, boolean isBusy) {
             title.setText(p.titulo.toUpperCase());
             price.setText("$"+ p.valor.toString().toUpperCase()+"");
-            autor.setText("BY " + p.marca.toUpperCase());
+            autor.setText(p.marca.toUpperCase());
 
             if (!isBusy){
                 Picasso.with(contexto)
                         .load(p.img_url)
-                        .placeholder(R.drawable.ic_launcher)
-                        .error(R.drawable.ic_launcher)
+                        .placeholder(R.drawable.spinner)
+                        .error(R.drawable.nodisponible)
                         .into(img);
             }
             else{

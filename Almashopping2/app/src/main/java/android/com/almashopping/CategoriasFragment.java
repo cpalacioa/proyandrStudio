@@ -1,6 +1,7 @@
 package android.com.almashopping;
 
 
+import android.app.ProgressDialog;
 import android.com.almashopping.adapter.AdaptadorProductos;
 import android.com.almashopping.adapter.ExpandableListAdapter;
 import android.com.almashopping.model.Categoria;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -49,6 +51,10 @@ public class CategoriasFragment extends Fragment implements  AbsListView.OnScrol
     Boolean lvBusy;
     AdaptadorProductos adaptadorProductos;
 
+    ProgressDialog connectionProgressDialog;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,7 +64,12 @@ public class CategoriasFragment extends Fragment implements  AbsListView.OnScrol
 
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
-            expListView = (ExpandableListView) getView().findViewById(R.id.lvCategorias);
+        connectionProgressDialog = new ProgressDialog(CategoriasFragment.this.getActivity());
+        connectionProgressDialog.setProgressStyle(R.style.Theme_Alma_ProgressDialog);
+        connectionProgressDialog.show();
+        connectionProgressDialog.setContentView(R.layout.loading);
+
+        expListView = (ExpandableListView) getView().findViewById(R.id.lvCategorias);
             TareaWSListar listar = new TareaWSListar();
             listar.execute();
             expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -66,15 +77,10 @@ public class CategoriasFragment extends Fragment implements  AbsListView.OnScrol
                 @Override
                 public boolean onChildClick(ExpandableListView parent, View v,
                                             int groupPosition, int childPosition, long id) {
+                    connectionProgressDialog.show();
                     Categoria categoriasel;
-
                     LlaveValor llvlr = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition);
-
                     if (llvlr != null) {
-                        Toast.makeText(CategoriasFragment.this.getActivity()
-                                        .getApplicationContext(),
-                                Integer.toString(llvlr.Id), Toast.LENGTH_SHORT)
-                                .show();
                         LinearLayout lineal1=(LinearLayout)getView().findViewById(R.id.lnCategias);
                         lineal1.setVisibility(View.GONE);
                         LinearLayout lineal2=(LinearLayout)getView().findViewById(R.id.lnProductosCategoria);
@@ -185,7 +191,7 @@ public class CategoriasFragment extends Fragment implements  AbsListView.OnScrol
         }
 
         protected void onPostExecute(Boolean result) {
-            Log.d("lista",Boolean.toString(result));
+            connectionProgressDialog.dismiss();
 
             if (result)
             {
@@ -270,14 +276,24 @@ public class CategoriasFragment extends Fragment implements  AbsListView.OnScrol
 
         protected void onPostExecute(Boolean result) {
 
+            connectionProgressDialog.dismiss();
             if (result)
             {
                 gvProductos.setAdapter(new AdaptadorProductos(CategoriasFragment.this.getActivity(),productos));
-
+                gvProductos.setOnItemClickListener(listenerGridProductos);
             }
         }
     }
 
+    AdapterView.OnItemClickListener listenerGridProductos=new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Producto producto=(Producto)productos.get(position);
+            Intent i=new Intent(CategoriasFragment.this.getActivity().getApplicationContext(),DetalleProducto.class);
+            i.putExtra("Id",producto.id);
+            startActivity(i);
+        }
+    };
 
 
 }

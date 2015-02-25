@@ -5,15 +5,18 @@
     android:layout_height="match_parent">
 
     <!-- Framelayout to display Fragments -->
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        />
+        android:layout_height="match_parent">
 
 
-        <ListView
+    </FrameLayout>
+</RelativeLayout>
+    <ListView
             android:layout_gravity="start"
             android:id="@+id/list_slidermenu"
             android:layout_width="240dp"
@@ -23,5 +26,42 @@
             android:dividerHeight="1dp"
             android:listSelector="@drawable/list_selector"
             android:background="@color/list_background"/>
+    <RelativeLayout
+        android:id="@+id/drawer_shop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@color/white">
+            <TextView
+                android:id="@+id/txtcartshop"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textColor="@color/gray"
+                android:text="MI CARRITO"
+                android:layout_alignParentTop="true"/>
+    <ListView
+        android:id="@+id/drawer_shop2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:choiceMode="multipleChoice"
+        android:divider="@color/list_divider"
+        android:dividerHeight="1dp"
+        android:layout_below="@+id/txtcartshop"
+        android:layout_above="@+id/bnpay"
+        android:listSelector="@drawable/list_selector">
+       </ListView>
+        <Button
+            android:id="@+id/bnpay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/greendark"
+            android:textColor="@color/white"
+            android:text="PAGAR"/>
+</RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>
+
+
+

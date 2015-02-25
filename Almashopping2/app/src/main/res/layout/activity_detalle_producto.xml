@@ -5,90 +5,115 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<TextView android:text="MARCA"
+<TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Theme.Alma.EncabezadoDetalleProducto"
+        android:id="@+id/brandTitle"
     />
 
     <LinearLayout
-     android:layout_width="wrap_content"
+     android:layout_width="match_parent"
      android:layout_height="wrap_content"
-     android:orientation="horizontal">
+     android:orientation="horizontal"
+     android:layout_marginLeft="20dp"
+     android:padding="10dp"
+        >
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/producto"
+            android:layout_width="100dp"
+            android:layout_height="130dp"
+            android:id="@+id/imageProduct"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_weight="1"/>
+            android:layout_gravity="top"
+            android:cropToPadding="true"
+            android:layout_weight="1.50" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="1"
-            >
+            android:layout_marginLeft="20dp"
+            android:padding="10dp"
+
+            android:layout_gravity="bottom">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TITULO DEL PRODUCTO"
-                android:layout_gravity="left"
-                />
+                android:textColor="@color/greendark"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:id="@+id/titleProduct"
+                android:layout_gravity="center_horizontal" />
             <TextView
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="$COSTO"
-                android:layout_gravity="left"
-                android:elegantTextHeight="false" />
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:id="@+id/price"
+                android:elegantTextHeight="false"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
 
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent"
-                   android:text="Adicionar"/>
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-
-                    android:text="0"/>
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@color/greendark"
-                    android:src="@drawable/ic_action_add"/>
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@color/greendark"
-                    android:src="@drawable/ic_action_minus"/>
-
             </LinearLayout>
           <LinearLayout
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="horizontal">
-              <ImageButton
-                  android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
-                  android:background="@color/greendark"
-                  android:src="@drawable/ic_action_heart"/>
+              android:orientation="horizontal"
+              android:layout_marginTop="20dp"
+              >
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:id="@+id/cantidadAdd"
+                android:text="0"
+                android:background="@color/white"/>
 
               <ImageButton
                   android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
+                  android:layout_height="wrap_content"
                   android:background="@color/greendark"
-                  android:src="@drawable/ic_action_share"/>
+                  android:textColor="@color/white"
+                  android:layout_marginLeft="10dp"
+                  android:id="@+id/btnShopAdd"
+                  android:src="@drawable/ic_action_add"/>
+
+              <ImageButton
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@color/greendark"
+                  android:textColor="@color/white"
+                  android:layout_marginLeft="10dp"
+                  android:id="@+id/btnShopRemove"
+                  android:src="@drawable/ic_action_minus"/>
 
           </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:background="@color/greendark"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnAgregarCart"
+        android:text="AGREGAR"/>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/descriptionProduct"
+    />
+</ScrollView>
 
 
 </LinearLayout>

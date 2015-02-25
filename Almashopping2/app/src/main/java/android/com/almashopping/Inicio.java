@@ -1,8 +1,16 @@
 package android.com.almashopping;
 
+import android.app.AlertDialog;
+import android.com.almashopping.adapter.BasketAdapter;
+import android.com.almashopping.helpers.ShoppingSQLHelper;
+import android.com.almashopping.model.Producto;
+import android.com.almashopping.model.basket;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
@@ -15,6 +23,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,7 +44,9 @@ import com.facebook.model.GraphUser;
 
 import com.squareup.picasso.Picasso;
 
+import java.sql.SQLData;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -43,8 +54,6 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
@@ -63,6 +72,7 @@ public class Inicio extends ActionBarActivity implements
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+    private RelativeLayout mDrawerShop;
     private ActionBarDrawerToggle mDrawerToggle;
 	// nav drawer title
     private SearchView mSearchView;
@@ -78,9 +88,13 @@ public class Inicio extends ActionBarActivity implements
 
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
+    private List<basket> productos;
+    private BasketAdapter adapterbasket;
     private ImageView imagenPerfil;
     private TextView nombreUsuario;
     private Session sessionfb;
+    ListView mDrawerListShop;
+    int optionSelectedMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,12 +136,17 @@ public class Inicio extends ActionBarActivity implements
         // nav drawer icons from resources
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons);
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+
         LayoutInflater inflater = getLayoutInflater();
 
-        ViewGroup header_news = (ViewGroup)inflater.inflate(R.layout.header_menu, mDrawerList, false);
+        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+         ViewGroup header_news = (ViewGroup)inflater.inflate(R.layout.header_menu, mDrawerList, false);
         mDrawerList.addHeaderView(header_news, null, false);
+
+        mDrawerShop=(RelativeLayout)findViewById(R.id.drawer_shop);
+        mDrawerListShop = (ListView)findViewById(R.id.drawer_shop2);
 
         navDrawerItems = new ArrayList<NavDrawerItem>();
         // adding nav drawer items to array
@@ -138,10 +157,12 @@ public class Inicio extends ActionBarActivity implements
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
         navMenuIcons.recycle();
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
+
+
+        LoadCartShop();
 
         // enabling action bar app icon and behaving it as toggle button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -218,12 +239,12 @@ public class Inicio extends ActionBarActivity implements
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
             // display view for selected nav drawer item
+            optionSelectedMenu=position;
             displayView(position,null);
         }
     }
 
     private void displayView(int position,Bundle bundle) {
-        // update the main content by replacing fragments
         Fragment fragment = null;
         switch (position) {
             case 1:
@@ -311,11 +332,6 @@ public class Inicio extends ActionBarActivity implements
         }
 
     }
-
-
-    /**
-     * Method to resolve any signin errors
-     * */
     private void resolveSignInError() {
         if (mConnectionResult.hasResolution()) {
             try {
@@ -432,8 +448,6 @@ public class Inicio extends ActionBarActivity implements
         nombreUsuario.setText(username);
     }
 
-
-
     private void ObtenerInfoFacebook()
     {
 
@@ -464,10 +478,16 @@ public class Inicio extends ActionBarActivity implements
             mSearchView.setQueryHint("Buscar...");
             mSearchView.setOnQueryTextListener(this);
         }
-
         return true;
     }
 
+    View.OnClickListener carroCompra=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            mDrawerLayout.openDrawer(mDrawerShop);
+        }
+    };
     private void InfoGeneral(String url)
     {
         Intent i = new Intent(Intent.ACTION_VIEW);
@@ -485,6 +505,17 @@ public class Inicio extends ActionBarActivity implements
 
         if(id==R.id.btnInfoAlma) {
             InfoGeneral("http://www.almashopping.com.co/es/site/quienessomos");
+            return true;
+        }
+
+        if(id==R.id.btnCartshop)
+        {
+            if(mDrawerLayout.isDrawerOpen(mDrawerShop))
+                mDrawerLayout.closeDrawer(mDrawerShop);
+            else {
+                LoadCartShop();
+                mDrawerLayout.openDrawer(mDrawerShop);
+            }
             return true;
         }
 
@@ -521,7 +552,6 @@ public class Inicio extends ActionBarActivity implements
     @Override
     public void onResume() {
         super.onResume();
-
           //  ObtenerInfoGoogle();
         }
 
@@ -533,10 +563,64 @@ public class Inicio extends ActionBarActivity implements
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    @Override public void onBackPressed()
+    public void LoadCartShop()
     {
-        this.finish();
-        super.onBackPressed();
+        //SQL LITE
+        productos=new ArrayList();
+        ShoppingSQLHelper dbconnect=new ShoppingSQLHelper(Inicio.this.getApplicationContext(),"DBAlma",null,1);
+        SQLiteDatabase db=dbconnect.getWritableDatabase();
+        if(db!=null)
+        {
+            Log.d("db","abrio conexion");
+            String[] campos = new String[] {"IdProducto","Titulo","Descripcion","valor","imagen","Cantidad","marca"};
+            Cursor registro = db.query("cartshop", campos, null, null, null, null, null);
+            //Nos aseguramos de que existe al menos un registro
+            if (registro.moveToFirst()) {
+                //Recorremos el cursor hasta que no haya más registros
+                do {
+                    String valor=Integer.toString(registro.getInt(3));
+                    Producto producto=new Producto(registro.getInt(0),registro.getString(1),registro.getString(4),valor,registro.getString(6),registro.getString(2));
+                    basket productCart=new basket(registro.getInt(5),producto);
+                    productos.add(productCart);
+
+                } while(registro.moveToNext());
+            }
+            db.close();
+            adapterbasket=new BasketAdapter(Inicio.this,productos);
+            mDrawerListShop.setAdapter(adapterbasket);
+
+        }
+
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+/*            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Salir de "+Integer.toString(optionSelectedMenu))
+                    .setMessage("Estás seguro?")
+                    .setNegativeButton(android.R.string.cancel, null)//sin listener
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {//un listener que al pulsar, cierre la aplicacion
+                        @Override
+                        public void onClick(DialogInterface dialog, int which){
+                            //Salir
+                            Inicio.this.finish();
+                        }
+                    })
+                    .show();
+
+
+            return true;*/
+            if(Integer.toString(optionSelectedMenu).length()>0)
+            displayView(optionSelectedMenu,null);
+            return true;
+        }
+//para las demas cosas, se reenvia el evento al listener habitual
+        return  onKeyDown(keyCode,event);
     }
 
 }

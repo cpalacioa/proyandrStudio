@@ -58,8 +58,6 @@ public class PromocionesFragment extends Fragment implements  AbsListView.OnScro
             Producto producto=(Producto)productos.get(position);
             Intent i=new Intent(PromocionesFragment.this.getActivity().getApplicationContext(),DetalleProducto.class);
             i.putExtra("Id",producto.id);
-            i.putExtra("UrlImagen",producto.img_url);
-            i.putExtra("Titulo",producto.titulo);
             startActivity(i);
         }
     };
@@ -88,7 +86,6 @@ public class PromocionesFragment extends Fragment implements  AbsListView.OnScro
         return lvBusy;
     }
 
-    //Llamados Ajax
     private class TareaWSListar extends AsyncTask<String,Integer,Boolean> {
 
 
@@ -97,7 +94,7 @@ public class PromocionesFragment extends Fragment implements  AbsListView.OnScro
             boolean resul = true;
             HttpClient httpClient = new DefaultHttpClient();
 
-            HttpGet del =new HttpGet("http://www.almashopping.com/es/site/getproductsbycategory/?key=43d5117d50ba57da751ff98af9bbac20&id=211");
+            HttpGet del =new HttpGet("http://www.almashopping.com/es/site/getproductsbycategory/?key=43d5117d50ba57da751ff98af9bbac20&id=215");
             del.setHeader("content-type", "application/json");
             try
             {

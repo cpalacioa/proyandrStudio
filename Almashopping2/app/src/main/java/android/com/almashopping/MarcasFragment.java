@@ -1,12 +1,14 @@
 package android.com.almashopping;
 
 
+import android.app.ProgressDialog;
 import android.com.almashopping.adapter.AdaptadorProductos;
 import android.com.almashopping.adapter.ExpandableListAdapter;
 import android.com.almashopping.model.Categoria;
 import android.com.almashopping.model.LlaveValor;
 import android.com.almashopping.model.Marca;
 import android.com.almashopping.model.Producto;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,11 +16,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -41,7 +43,6 @@ public class MarcasFragment extends Fragment {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    List<String> listDataChilds;
     HashMap<String, List<LlaveValor>> listDataChild;
     List<Marca>marcas;
 
@@ -49,9 +50,16 @@ public class MarcasFragment extends Fragment {
     GridView gvProductos;
     Boolean lvBusy;
     AdaptadorProductos adaptadorProductos;
+    ProgressDialog connectionProgressDialog;
+
 
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
+        connectionProgressDialog = new ProgressDialog(MarcasFragment.this.getActivity());
+        connectionProgressDialog.setProgressStyle(R.style.Theme_Alma_ProgressDialog);
+        connectionProgressDialog.show();
+        connectionProgressDialog.setContentView(R.layout.loading);
+
         expListView = (ExpandableListView) getView().findViewById(R.id.lvMarcas);
         TareaWSListarMarcas tarealistar=new TareaWSListarMarcas();
         tarealistar.execute();
@@ -61,14 +69,10 @@ public class MarcasFragment extends Fragment {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
                 Categoria categoriasel;
-
+                connectionProgressDialog.show();
                 LlaveValor llvlr = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition);
 
                 if (llvlr != null) {
-                    Toast.makeText(MarcasFragment.this.getActivity()
-                                    .getApplicationContext(),
-                            Integer.toString(llvlr.Id), Toast.LENGTH_SHORT)
-                            .show();
                     LinearLayout lineal1=(LinearLayout)getView().findViewById(R.id.lsMarcas);
                     lineal1.setVisibility(View.GONE);
                     LinearLayout lineal2=(LinearLayout)getView().findViewById(R.id.lnProductosMarca);
@@ -123,6 +127,7 @@ public class MarcasFragment extends Fragment {
 
         listAdapter = new ExpandableListAdapter(MarcasFragment.this.getActivity().getApplicationContext(), listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
+
     }
 
     @Override
@@ -131,6 +136,7 @@ public class MarcasFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_marcas, container, false);
     }
+
 
     private class TareaWSListarMarcas extends AsyncTask<String,Integer,Boolean> {
 
@@ -171,6 +177,7 @@ public class MarcasFragment extends Fragment {
         }
 
         protected void onPostExecute(Boolean result) {
+            connectionProgressDialog.dismiss();
 
             if (result)
             {
@@ -233,13 +240,23 @@ public class MarcasFragment extends Fragment {
         }
 
         protected void onPostExecute(Boolean result) {
-
+            connectionProgressDialog.dismiss();
             if (result)
             {
                 gvProductos.setAdapter(new AdaptadorProductos(MarcasFragment.this.getActivity(),productos));
-
+                gvProductos.setOnItemClickListener(listenerGridProductos);
             }
         }
     }
+
+    AdapterView.OnItemClickListener listenerGridProductos=new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Producto producto=(Producto)productos.get(position);
+            Intent i=new Intent(MarcasFragment.this.getActivity().getApplicationContext(),DetalleProducto.class);
+            i.putExtra("Id",producto.id);
+            startActivity(i);
+        }
+    };
 
 }
