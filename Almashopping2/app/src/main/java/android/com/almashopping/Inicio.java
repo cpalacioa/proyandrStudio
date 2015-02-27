@@ -1,17 +1,22 @@
 package android.com.almashopping;
 
-import android.app.AlertDialog;
 import android.com.almashopping.adapter.BasketAdapter;
+import android.com.almashopping.helpers.Ennovva.Core;
 import android.com.almashopping.helpers.ShoppingSQLHelper;
 import android.com.almashopping.model.Producto;
+import android.com.almashopping.model.Usuario;
 import android.com.almashopping.model.basket;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.com.almashopping.adapter.NavDrawerListAdapter;
@@ -42,11 +47,16 @@ import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphUser;
 
+import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.sql.SQLData;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -96,6 +106,20 @@ public class Inicio extends ActionBarActivity implements
     ListView mDrawerListShop;
     int optionSelectedMenu;
 
+    /* variables para registro en google cloud message*/
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    private GoogleCloudMessaging gcm;
+    private String regid;
+    public static final String EXTRA_MESSAGE = "message";
+    private static final String PROPERTY_REG_ID = "registration_id";
+    private static final String PROPERTY_APP_VERSION = "appVersion";
+    private static final String PROPERTY_EXPIRATION_TIME = "onServerExpirationTimeMs";
+    private static final String PROPERTY_USER = "user";
+    public static final long EXPIRATION_TIME_MS = 1000 * 3600 * 24 * 7;
+    private String SENDER_ID = "1031648470286";
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,8 +130,8 @@ public class Inicio extends ActionBarActivity implements
         sessionfb =Session.getActiveSession();
         if(sessionfb!=null) {
             if (sessionfb.isOpened()) {
-                Log.d("sesion", "facebook");
                 ObtenerInfoFacebook();
+
             }
 
 
@@ -369,11 +393,16 @@ public class Inicio extends ActionBarActivity implements
                 String personGooglePlusProfile = currentPerson.getUrl();
                 String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
 
-                Log.e(TAG, "Name: " + personName + ", plusProfile: "
-                        + personGooglePlusProfile + ", email: " + email
-                        + ", Image: " + personPhotoUrl);
 
                 PintarInfoPerfil(personPhotoUrl,personName);
+                Core core=new Core();
+                core.RegistrarUsuario(personName,email,2,Inicio.this);
+                Usuario usuario=core.ObtUsuarioRegistrado(email,getResources().getInteger(R.integer.IdAPlicacion),2,Inicio.this);
+                if(usuario!=null)
+                {
+                    RegistrarGCM(usuario.Id, 2);
+                }
+
 
             } else {
                 Toast.makeText(getApplicationContext(),
@@ -419,14 +448,24 @@ public class Inicio extends ActionBarActivity implements
     private void CloseSession()
     {
         sessionfb =Session.getActiveSession();
+         if(sessionfb!=null) {
+             if (sessionfb.isOpened()) {
+                 sessionfb.closeAndClearTokenInformation();
+             }
+             if (!sessionfb.isOpened()) {
+                 if(mGoogleApiClient!=null) {
+                  if(mGoogleApiClient.isConnected())
+                     signOutFromGplus();
+                 }
+             }
+         }
 
-        if(sessionfb.isOpened()) {
-            sessionfb.closeAndClearTokenInformation();
-        }
-        if(!sessionfb.isOpened())
+        if(mGoogleApiClient!=null)
         {
-            signOutFromGplus();
+            if(mGoogleApiClient.isConnecting())
+                signOutFromGplus();
         }
+
 
         Intent intent = new Intent(Inicio.this.getApplicationContext(), MainActivity.class);
         startActivity(intent);
@@ -447,7 +486,149 @@ public class Inicio extends ActionBarActivity implements
 
         nombreUsuario.setText(username);
     }
+    private boolean checkPlayServices()
+    {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS)
+        {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode))
+            {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            }
+            else
+            {
+                finish();
+            }
+            return false;
+        }
+        return true;
+    }
 
+    private static int getAppVersion(Context context)
+    {
+        try
+        {
+            PackageInfo packageInfo = context.getPackageManager()
+                    .getPackageInfo(context.getPackageName(), 0);
+            return packageInfo.versionCode;
+        }
+        catch (PackageManager.NameNotFoundException e)
+        {
+            throw new RuntimeException("Error al obtener versión: " + e);
+        }
+    }
+    private String getRegistrationId(Context context)
+    {
+        SharedPreferences prefs = getSharedPreferences(
+                Inicio.class.getSimpleName(),
+                Context.MODE_PRIVATE);
+
+        String registrationId = prefs.getString(PROPERTY_REG_ID, "");
+        //verifica si en las preferencias de usuario esta el reg id
+        if (registrationId.length() == 0)
+        {
+            return "";
+        }
+        // en caso de encontrarse buscamos las demas propiedades
+        int registeredVersion =
+                prefs.getInt(PROPERTY_APP_VERSION, Integer.MIN_VALUE);
+
+        long expirationTime =
+                prefs.getLong(PROPERTY_EXPIRATION_TIME, -1);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+        String expirationDate = sdf.format(new Date(expirationTime));
+
+        // verificamos la versión
+        int currentVersion = getAppVersion(context);
+        if (registeredVersion != currentVersion)
+        {
+            return "";
+        }
+        // verificamos si ya expiro el registro
+        else if (System.currentTimeMillis() > expirationTime)
+        {
+            return "";
+        }
+
+        return registrationId;
+    }
+
+
+
+    private class TareaRegistroGCM extends AsyncTask<Integer,Integer,String>
+    {
+        Core core=new Core();
+
+        @Override
+        protected String doInBackground(Integer... params)
+        {
+            String msg = "";
+            try
+            {
+                if (gcm == null)
+                {
+                    gcm = GoogleCloudMessaging.getInstance(Inicio.this);
+                }
+
+                //Nos registramos en los servidores de GCM
+                regid = gcm.register(SENDER_ID);
+                //Registrar en el servidor
+                Log.d(TAG,Integer.toString(params[0]));
+                boolean registrado= core.RegistrarDispositivo(Inicio.this, regid, params[0]);
+                if(registrado)
+                {
+                    setRegistrationId(Inicio.this, regid);
+                }
+
+            }
+
+            catch (IOException ex)
+            {
+                Log.d(TAG, "Error registro en GCM:" + ex.getMessage());
+            }
+
+            return msg;
+        }
+    }
+
+    private void setRegistrationId(Context context, String regId)
+    {
+        SharedPreferences prefs = getSharedPreferences(
+                Inicio.class.getSimpleName(),
+                Context.MODE_PRIVATE);
+
+        int appVersion = getAppVersion(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(PROPERTY_REG_ID, regId);
+        editor.putInt(PROPERTY_APP_VERSION, appVersion);
+        editor.putLong(PROPERTY_EXPIRATION_TIME,
+                System.currentTimeMillis() + EXPIRATION_TIME_MS);
+
+        editor.commit();
+    }
+
+    private void RegistrarGCM(int IdUsuario,int provider)
+    {
+        if (checkPlayServices()) {
+            gcm = GoogleCloudMessaging.getInstance(Inicio.this);
+
+            //Obtenemos el Registration ID guardado
+            regid = getRegistrationId(Inicio.this.getApplicationContext());
+
+            //Si no disponemos de Registration ID comenzamos el registro
+            if (regid.equals("")) {
+                TareaRegistroGCM tarea = new TareaRegistroGCM();
+                tarea.execute(IdUsuario);
+
+            }
+        } else {
+            //Reemplazar por un toad
+            Log.i(TAG, "No se ha encontrado Google Play Services.");
+        }
+
+    }
     private void ObtenerInfoFacebook()
     {
 
@@ -459,7 +640,13 @@ public class Inicio extends ActionBarActivity implements
                         try {
                             String email = user.getProperty("email").toString();
                             PintarInfoPerfil("https://graph.facebook.com/" + user.getId() + "/picture?type=large",user.getName());
-
+                            Core core=new Core();
+                            core.RegistrarUsuario(user.getName(),email,1,Inicio.this);
+                            Usuario usuario=core.ObtUsuarioRegistrado(email,getResources().getInteger(R.integer.IdAPlicacion),1,Inicio.this);
+                            if(usuario!=null)
+                            {
+                                RegistrarGCM(usuario.Id, 1);
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -571,7 +758,6 @@ public class Inicio extends ActionBarActivity implements
         SQLiteDatabase db=dbconnect.getWritableDatabase();
         if(db!=null)
         {
-            Log.d("db","abrio conexion");
             String[] campos = new String[] {"IdProducto","Titulo","Descripcion","valor","imagen","Cantidad","marca"};
             Cursor registro = db.query("cartshop", campos, null, null, null, null, null);
             //Nos aseguramos de que existe al menos un registro
@@ -598,29 +784,13 @@ public class Inicio extends ActionBarActivity implements
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-/*            new AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Salir de "+Integer.toString(optionSelectedMenu))
-                    .setMessage("Estás seguro?")
-                    .setNegativeButton(android.R.string.cancel, null)//sin listener
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {//un listener que al pulsar, cierre la aplicacion
-                        @Override
-                        public void onClick(DialogInterface dialog, int which){
-                            //Salir
-                            Inicio.this.finish();
-                        }
-                    })
-                    .show();
-
-
-            return true;*/
             if(Integer.toString(optionSelectedMenu).length()>0)
             displayView(optionSelectedMenu,null);
             return true;
         }
-//para las demas cosas, se reenvia el evento al listener habitual
         return  onKeyDown(keyCode,event);
     }
+
+
 
 }

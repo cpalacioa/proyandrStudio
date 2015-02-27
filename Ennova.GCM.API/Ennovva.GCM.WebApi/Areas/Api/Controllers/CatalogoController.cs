@@ -37,6 +37,7 @@ namespace Ennovva.GCM.WebApi.Areas.Api.Controllers
             return Json(tendencias.OrderBy(s => s.CantidadLikes), JsonRequestBehavior.AllowGet);
         }
 
+
         public JsonResult Tendencia(LikesUsuario like)
         {
             CatalogoCore core = new CatalogoCore();

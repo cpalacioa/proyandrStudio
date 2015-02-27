@@ -3,7 +3,11 @@ package android.com.almashopping;
 import android.app.ProgressDialog;
 import android.com.almashopping.helpers.ShoppingSQLHelper;
 import android.com.almashopping.model.Producto;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.LabeledIntent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -30,6 +34,8 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DetalleProducto extends ActionBarActivity {
@@ -105,6 +111,58 @@ public class DetalleProducto extends ActionBarActivity {
         return true;
     }
 
+    public void SharedProduct(Producto producto)
+    {
+        Intent emailIntent = new Intent();
+        emailIntent.setAction(Intent.ACTION_SEND);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("<a href='http://google.com'><b>"+producto.titulo+"</b>"));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Almashopping te invita");
+        emailIntent.setType("message/rfc822");
+
+        PackageManager pm = getPackageManager();
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+
+
+        Intent openInChooser = Intent.createChooser(emailIntent,"texto de prueba");
+
+        List<ResolveInfo> resInfo = pm.queryIntentActivities(sendIntent, 0);
+        List<LabeledIntent> intentList = new ArrayList<LabeledIntent>();
+        for (int i = 0; i < resInfo.size(); i++) {
+            ResolveInfo ri = resInfo.get(i);
+            String packageName = ri.activityInfo.packageName;
+            if(packageName.contains("android.email")) {
+                emailIntent.setPackage(packageName);
+            } else if(packageName.contains("twitter")  || packageName.contains("mms") || packageName.contains("android.gm")) {
+                Intent intent = new Intent();
+                intent.setComponent(new ComponentName(packageName, ri.activityInfo.name));
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                if(packageName.contains("twitter")) {
+                    intent.putExtra(Intent.EXTRA_TEXT,"texto twitter");
+                } //else if(packageName.contains("facebook")) {
+                //usar sdk de facebook en caso de que el usuario este logeado facebook
+                //intent.putExtra(Intent.EXTRA_TEXT,"Texto Facebook");
+                //}
+                else if(packageName.contains("mms")) {
+                    intent.putExtra(Intent.EXTRA_TEXT, "Texto sms");
+                } else if(packageName.contains("android.gm")) {
+                    intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("Texto Gmail"));
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"Asunto");
+                    intent.setType("message/rfc822");
+                }
+
+                intentList.add(new LabeledIntent(intent, packageName, ri.loadLabel(pm), ri.icon));
+            }
+        }
+
+        // convert intentList to array
+        LabeledIntent[] extraIntents = intentList.toArray( new LabeledIntent[ intentList.size() ]);
+
+        openInChooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, extraIntents);
+        startActivity(openInChooser);
+
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -132,7 +190,12 @@ public class DetalleProducto extends ActionBarActivity {
             return  true;
         }
 
+        if(id==R.id.btnShare) {
+           SharedProduct(producto);
+        }
+
         return super.onOptionsItemSelected(item);
+
     }
 
     View.OnClickListener AdicionarCantidad=new View.OnClickListener() {
