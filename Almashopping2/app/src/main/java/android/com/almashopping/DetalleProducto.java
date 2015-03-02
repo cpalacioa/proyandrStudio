@@ -115,8 +115,8 @@ public class DetalleProducto extends ActionBarActivity {
     {
         Intent emailIntent = new Intent();
         emailIntent.setAction(Intent.ACTION_SEND);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("<a href='http://google.com'><b>"+producto.titulo+"</b>"));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Almashopping te invita");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("Echa un vistazo a este producto :<b>"+producto.titulo+"</b> entra a <a hef='http://almashopping.com'>Almashopping.com</a>"));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Recomendación de producto");
         emailIntent.setType("message/rfc822");
 
         PackageManager pm = getPackageManager();
@@ -124,7 +124,7 @@ public class DetalleProducto extends ActionBarActivity {
         sendIntent.setType("text/plain");
 
 
-        Intent openInChooser = Intent.createChooser(emailIntent,"texto de prueba");
+        Intent openInChooser = Intent.createChooser(emailIntent,"Te recomiendo este producto "+producto.titulo+" que encontre en www.almashopping.com");
 
         List<ResolveInfo> resInfo = pm.queryIntentActivities(sendIntent, 0);
         List<LabeledIntent> intentList = new ArrayList<LabeledIntent>();
@@ -139,16 +139,16 @@ public class DetalleProducto extends ActionBarActivity {
                 intent.setAction(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 if(packageName.contains("twitter")) {
-                    intent.putExtra(Intent.EXTRA_TEXT,"texto twitter");
+                    intent.putExtra(Intent.EXTRA_TEXT,"Echa un vistazo a "+producto.titulo+"que encontré en http://www.almashopping.com");
                 } //else if(packageName.contains("facebook")) {
                 //usar sdk de facebook en caso de que el usuario este logeado facebook
                 //intent.putExtra(Intent.EXTRA_TEXT,"Texto Facebook");
                 //}
                 else if(packageName.contains("mms")) {
-                    intent.putExtra(Intent.EXTRA_TEXT, "Texto sms");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Echa un vistazo a "+producto.titulo+" en http://www.almashopping.com");
                 } else if(packageName.contains("android.gm")) {
-                    intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("Texto Gmail"));
-                    intent.putExtra(Intent.EXTRA_SUBJECT,"Asunto");
+                    intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("Echa un vistazo a "+producto.titulo+" en http://www.almashopping.com"));
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"Recomendación de producto");
                     intent.setType("message/rfc822");
                 }
 

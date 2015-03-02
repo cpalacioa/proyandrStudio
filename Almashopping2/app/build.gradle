@@ -1,21 +1,35 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'almashopping'
+            keyPassword 'Ennovva2015'
+            storeFile file('C:/Users/ASUS K550/.keystorage/almashopping.jks')
+            storePassword 'Ennovva2015'
+        }
+    }
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
-
+    buildToolsVersion '21.1.2'
     defaultConfig {
         applicationId "android.com.almashopping"
-        minSdkVersion 18
+        minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
     }
 }
 

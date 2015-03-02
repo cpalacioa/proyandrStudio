@@ -71,7 +71,7 @@ public class Core extends Activity{
            String urlresource =urlBase+"device/register";
            HttpClient client = new DefaultHttpClient();
            HttpPost post = new HttpPost(urlresource);
-           List<NameValuePair> nameValuePairs = new ArrayList<>(4);
+           List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
            nameValuePairs.add(new BasicNameValuePair("serial", serial));
            nameValuePairs.add(new BasicNameValuePair("aplication",Integer.toString(activity.getResources().getInteger(R.integer.IdAPlicacion))));
            nameValuePairs.add(new BasicNameValuePair("user",Integer.toString(userid)));
@@ -105,7 +105,7 @@ public class Core extends Activity{
             Log.d("respRegistrar",urlresource);
             HttpClient client = new DefaultHttpClient();
             HttpPost post = new HttpPost(urlresource);
-            List<NameValuePair> nameValuePairs = new ArrayList<>(4);
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
             nameValuePairs.add(new BasicNameValuePair("username", username));
             nameValuePairs.add(new BasicNameValuePair("email", email));
             nameValuePairs.add(new BasicNameValuePair("aplication",Integer.toString(activity.getResources().getInteger(R.integer.IdAPlicacion))));

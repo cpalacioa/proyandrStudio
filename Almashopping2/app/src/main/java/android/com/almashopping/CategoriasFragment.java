@@ -216,10 +216,11 @@ public class CategoriasFragment extends Fragment implements  AbsListView.OnScrol
         listaPadres=categoria.FiltrarPorPadres(listacategorias,null);
         for(Categoria categoriatmp:listaPadres)
         {
-            listDataHeader.add(categoriatmp.Nombre);
             categoriatmp.hijas=categoria.obtenerHijas(listacategorias,categoriatmp.Id);
-            listDataChild.put(categoriatmp.Nombre,categoriatmp.hijas);
-
+            if(categoriatmp.hijas.size()>0) {
+                listDataHeader.add(categoriatmp.Nombre);
+                listDataChild.put(categoriatmp.Nombre, categoriatmp.hijas);
+            }
         }
 
         listAdapter = new ExpandableListAdapter(CategoriasFragment.this.getActivity().getApplicationContext(), listDataHeader, listDataChild);

@@ -51,12 +51,17 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
-        android:layout_marginTop="10dp"
         android:text="Ingresar con Google"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_below="@+id/fb_login_button"
+        android:layout_alignLeft="@+id/fb_login_button"
         android:layout_alignStart="@+id/fb_login_button"
+        android:layout_alignRight="@+id/fb_login_button"
         android:layout_alignEnd="@+id/fb_login_button" />
+    <!--
+        android:layout_alignStart="@+id/fb_login_button"
+        android:layout_alignEnd="@+id/fb_login_button" />!-->
 
 </RelativeLayout>

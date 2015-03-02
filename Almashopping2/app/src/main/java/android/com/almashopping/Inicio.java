@@ -102,6 +102,7 @@ public class Inicio extends ActionBarActivity implements
     private BasketAdapter adapterbasket;
     private ImageView imagenPerfil;
     private TextView nombreUsuario;
+    private TextView userLastName;
     private Session sessionfb;
     ListView mDrawerListShop;
     int optionSelectedMenu;
@@ -126,6 +127,7 @@ public class Inicio extends ActionBarActivity implements
         setContentView(R.layout.activity_inicio);
         imagenPerfil=(ImageView)findViewById(R.id.imgProfilHeader);
         nombreUsuario=(TextView)findViewById(R.id.userNameHeader);
+        userLastName=(TextView)findViewById(R.id.userLastName);
 
         sessionfb =Session.getActiveSession();
         if(sessionfb!=null) {
@@ -394,7 +396,7 @@ public class Inicio extends ActionBarActivity implements
                 String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
 
 
-                PintarInfoPerfil(personPhotoUrl,personName);
+                PintarInfoPerfil(personPhotoUrl,personName,currentPerson.getCurrentLocation());
                 Core core=new Core();
                 core.RegistrarUsuario(personName,email,2,Inicio.this);
                 Usuario usuario=core.ObtUsuarioRegistrado(email,getResources().getInteger(R.integer.IdAPlicacion),2,Inicio.this);
@@ -473,10 +475,11 @@ public class Inicio extends ActionBarActivity implements
 
     }
 
-    private void PintarInfoPerfil(String urlImagenProfile,String username)
+    private void PintarInfoPerfil(String urlImagenProfile,String username,String lastname)
     {
         imagenPerfil=(ImageView)findViewById(R.id.imgProfilHeader);
         nombreUsuario=(TextView)findViewById(R.id.userNameHeader);
+        userLastName=(TextView)findViewById(R.id.userLastName);
 
         Picasso.with(Inicio.this.getApplicationContext())
                 .load(urlImagenProfile)
@@ -485,6 +488,7 @@ public class Inicio extends ActionBarActivity implements
                 .into(imagenPerfil);
 
         nombreUsuario.setText(username);
+        userLastName.setText(lastname);
     }
     private boolean checkPlayServices()
     {
@@ -639,7 +643,7 @@ public class Inicio extends ActionBarActivity implements
                     if (user != null) {
                         try {
                             String email = user.getProperty("email").toString();
-                            PintarInfoPerfil("https://graph.facebook.com/" + user.getId() + "/picture?type=large",user.getName());
+                            PintarInfoPerfil("https://graph.facebook.com/" + user.getId() + "/picture?type=large",user.getFirstName(),user.getLastName());
                             Core core=new Core();
                             core.RegistrarUsuario(user.getName(),email,1,Inicio.this);
                             Usuario usuario=core.ObtUsuarioRegistrado(email,getResources().getInteger(R.integer.IdAPlicacion),1,Inicio.this);
@@ -758,15 +762,15 @@ public class Inicio extends ActionBarActivity implements
         SQLiteDatabase db=dbconnect.getWritableDatabase();
         if(db!=null)
         {
-            String[] campos = new String[] {"IdProducto","Titulo","Descripcion","valor","imagen","Cantidad","marca"};
+            String[] campos = new String[] {"Id,IdProducto","Titulo","Descripcion","valor","imagen","Cantidad","marca"};
             Cursor registro = db.query("cartshop", campos, null, null, null, null, null);
             //Nos aseguramos de que existe al menos un registro
             if (registro.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
                 do {
-                    String valor=Integer.toString(registro.getInt(3));
-                    Producto producto=new Producto(registro.getInt(0),registro.getString(1),registro.getString(4),valor,registro.getString(6),registro.getString(2));
-                    basket productCart=new basket(registro.getInt(5),producto);
+                    String valor=Integer.toString(registro.getInt(4));
+                    Producto producto=new Producto(registro.getInt(1),registro.getString(2),registro.getString(5),valor,registro.getString(7),registro.getString(3));
+                    basket productCart=new basket(registro.getInt(0),registro.getInt(6),producto);
                     productos.add(productCart);
 
                 } while(registro.moveToNext());

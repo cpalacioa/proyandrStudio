@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="android.com.almashopping.DetalleProducto">
 
-    <item android:id="@+id/btnBookmark" android:title="Agregar a Favoritos"
+<!--    <item android:id="@+id/btnBookmark" android:title="Agregar a Favoritos"
         android:icon="@drawable/ic_action_like"
-        app:showAsAction="always" />
+        app:showAsAction="always" />-->
 
     <item android:id="@+id/btnShare" android:title="Compartir"
         android:icon="@drawable/ic_action_share"

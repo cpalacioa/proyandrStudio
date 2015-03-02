@@ -9,6 +9,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,12 +62,14 @@ public class MainActivity extends Activity implements View.OnClickListener, Conn
      @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
+
          requestWindowFeature(Window.FEATURE_NO_TITLE);
         uiHelper = new UiLifecycleHelper(this, statusCallback);
         uiHelper.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
          btnSignIn = (SignInButton) findViewById(R.id.sign_in_button);
+         setGooglePlusButtonText(btnSignIn,"Ingresar con Google");
          btnSignIn.setOnClickListener(this);
 
 
@@ -281,12 +284,16 @@ public class MainActivity extends Activity implements View.OnClickListener, Conn
      @Override
     protected void onStart() {
         super.onStart();
-        mGoogleApiClient.connect();
+         if(mGoogleApiClient!=null) {
+             mGoogleApiClient.connect();
+         }
     }
      protected void onStop() {
          super.onStop();
-         if (mGoogleApiClient.isConnected()) {
-             mGoogleApiClient.disconnect();
+         if(mGoogleApiClient!=null) {
+             if (mGoogleApiClient.isConnected()) {
+                 mGoogleApiClient.disconnect();
+             }
          }
      }
 
@@ -337,14 +344,19 @@ public class MainActivity extends Activity implements View.OnClickListener, Conn
         // Add code to print out the key hash
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                    "ennova.uplaud",
+                    "android.com.almashopping",
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+
             }
         } catch (PackageManager.NameNotFoundException e) {
+            Log.d("keyhash",e.toString());
         } catch (NoSuchAlgorithmException e) {
+            Log.d("keyhash",e.toString());
+
         }
     }
 

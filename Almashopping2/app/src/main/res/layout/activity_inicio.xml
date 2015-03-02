@@ -36,8 +36,12 @@
                 android:id="@+id/txtcartshop"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/gray"
                 android:text="MI CARRITO"
+                android:textStyle="bold"
+                android:textSize="15dp"
                 android:layout_alignParentTop="true"/>
     <ListView
         android:id="@+id/drawer_shop2"

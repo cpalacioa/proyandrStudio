@@ -2,12 +2,12 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="80dp"
     android:background="@color/white">
 
     <ImageView
         android:id="@+id/iconbasket"
-        android:layout_width="25dp"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="12dp"
@@ -19,6 +19,7 @@
      android:layout_width="wrap_content"
      android:layout_height="match_parent"
      android:orientation="vertical"
+     android:gravity="center_vertical"
      android:layout_marginLeft="5dp"
      android:layout_toRightOf="@+id/iconbasket">
      <TextView
@@ -27,7 +28,7 @@
          android:layout_height="wrap_content"
          android:textStyle="bold"
          android:textColor="@color/greendark"
-         android:textSize="9dp"
+         android:textSize="13dp"
          android:gravity="center_vertical"
          android:paddingRight="40dp"/>
      <TextView
@@ -35,7 +36,7 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textColor="@color/black"
-         android:textSize="8dp"
+         android:textSize="10dp"
          android:gravity="center_vertical"
          android:paddingRight="40dp"/>
 
@@ -46,7 +47,7 @@
          android:textColor="@color/black"
          android:text="0"
          android:textStyle="bold"
-         android:textSize="12dp"
+         android:textSize="14dp"
          android:gravity="center_vertical"
          android:paddingRight="40dp"/>
 
@@ -58,6 +59,7 @@
         android:background="@color/black"
         android:layout_toLeftOf="@+id/btnEliminarbasket"
         android:layout_centerVertical="true"
+        android:gravity="center"
         android:layout_marginRight="8dp"
         android:textColor="@color/white"/>
     <ImageButton
@@ -66,7 +68,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
-        android:background="@color/black"
+        android:background="@color/red"
         android:id="@+id/btnEliminarbasket"
         android:src="@drawable/ic_action_minus"/>
 
