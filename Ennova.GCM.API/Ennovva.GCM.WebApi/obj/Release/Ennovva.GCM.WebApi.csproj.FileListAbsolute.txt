@@ -32,3 +32,14 @@ C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\obj\Release\Ennovva.
 C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\obj\Release\Ennovva.GCM.WebApi.pdb
 C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\EntityFramework.SqlServer.dll
 C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\EntityFramework.SqlServer.xml
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.Owin.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.Owin.Security.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Owin.dll
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.Owin.xml
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\android\proyandrStudio\Ennova.GCM.API\Ennovva.GCM.WebApi\bin\Microsoft.Owin.Security.xml

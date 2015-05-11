@@ -267,7 +267,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Conn
      public void onConnected(Bundle arg0) {
 
          mSignInClicked = false;
-         Toast.makeText(this, "Usuario logeado!", Toast.LENGTH_LONG).show();
+         Toast.makeText(this, "Usuario logueado!", Toast.LENGTH_LONG).show();
 
          // Get user's information
          getProfileInformation();

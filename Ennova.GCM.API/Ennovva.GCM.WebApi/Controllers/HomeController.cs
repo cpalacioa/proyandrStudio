@@ -72,5 +72,11 @@ namespace Ennovva.GCM.WebApi.Controllers
 
             return View();
         }
+
+        public ActionResult Chat()
+        {
+
+            return View();
+        }
     }
 }

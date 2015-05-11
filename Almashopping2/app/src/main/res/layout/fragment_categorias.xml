@@ -18,8 +18,11 @@
 
     <ExpandableListView
         android:id="@+id/lvCategorias"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#CCCCCC"
         android:layout_width="match_parent"
+        android:layout_gravity="fill_vertical"
+
         />
 
 </LinearLayout>

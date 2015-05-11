@@ -3,6 +3,7 @@ package android.com.almashopping;
 
 import android.com.almashopping.adapter.AdaptadorProductos;
 import android.com.almashopping.model.Producto;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -119,6 +121,7 @@ public class ResultadosBusqueda extends Fragment {
                     if(productos.size()>0) {
                         txtResultado.setText("Se encontraron "+Integer.toString(productos.size())+" productos");
                         gvProductos.setAdapter(new AdaptadorProductos(ResultadosBusqueda.this.getActivity(), productos));
+                        gvProductos.setOnItemClickListener(listenerGridProductos);
                     }
                     else
                     {
@@ -130,6 +133,16 @@ public class ResultadosBusqueda extends Fragment {
 
             }
         }
+
+    AdapterView.OnItemClickListener listenerGridProductos=new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Producto producto=(Producto)productos.get(position);
+            Intent i=new Intent(ResultadosBusqueda.this.getActivity().getApplicationContext(),DetalleProducto.class);
+            i.putExtra("Id",producto.id);
+            startActivity(i);
+        }
+    };
 
 }
 

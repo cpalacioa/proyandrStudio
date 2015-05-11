@@ -378,7 +378,7 @@ public class Comunidad extends ActionBarActivity {
             {
                //llenar adapter
                 //lvArticulos = (ListView) findViewById( R.id.list_articulos);
-                lvArticulos.setAdapter(new ArticleListAdapter(Comunidad.this, articulos) );
+                lvArticulos.setAdapter(new ArticleListAdapter(Comunidad.this, articulos));
 
             }
         }

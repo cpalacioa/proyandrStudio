@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ShoppingSQLHelper extends SQLiteOpenHelper {
 
     //Sentencia SQL para crear la tabla de carrito de compras
-    String sqlCreate = "CREATE TABLE cartshop (Id INTEGER PRIMARY KEY, IdProducto INTEGER,Titulo TEXT,descripcion TEXT,marca TEXT,valor REAL,imagen TEXT,cantidad INTEGER)";
+    String sqlCreate = "CREATE TABLE cartshop (Id INTEGER PRIMARY KEY, IdProducto INTEGER,Titulo TEXT,descripcion TEXT,valor REAL,imagen TEXT,cantidad INTEGER)";
 
     public ShoppingSQLHelper(Context contexto, String nombre,
                                 SQLiteDatabase.CursorFactory factory, int version) {

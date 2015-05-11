@@ -38,7 +38,7 @@ namespace Ennovva.GCM.WebApi.Helpers
             req.ContentLength = msg.Length;
             req.ContentType = "application/x-www-form-urlencoded";
 
-            string apiKey = "AIzaSyDZfrn8wLmX_J3-T2JyvyG8zUGkplayC4E";
+            string apiKey = "AIzaSyCnULoUMl5BXgeqcEjO6Gr_9q45dPhTXiU";
             req.Headers.Add("Authorization:key=" + apiKey);
 
             using (StreamWriter oWriter = new StreamWriter(req.GetRequestStream()))

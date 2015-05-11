@@ -318,9 +318,6 @@ public class MainActivity extends ActionBarActivity {
         return dist; // output distance, KM
     }
 
-
-
-
     @Override
     protected void onResume() {
         super.onResume();

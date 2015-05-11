@@ -20,6 +20,9 @@
             android:id="@+id/lvMarcas"
             android:layout_height="fill_parent"
             android:layout_width="match_parent"
+            android:fadingEdge="horizontal"
+            android:background="#CCCCCC"
+            android:transitionGroup="true"
             />
 
     </LinearLayout>

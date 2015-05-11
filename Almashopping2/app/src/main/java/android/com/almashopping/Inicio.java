@@ -208,7 +208,7 @@ public class Inicio extends ActionBarActivity implements
         getSupportActionBar().setCustomView(relative);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_action_list, //nav menu toggle icon
+                R.drawable.ic_action_reorder, //nav menu toggle icon
                 R.string.app_name, // nav drawer open - description for accessibility
                 R.string.app_name // nav drawer close - description for accessibility
         ) {
@@ -240,15 +240,15 @@ public class Inicio extends ActionBarActivity implements
     @Override
     public boolean onQueryTextChange(String newText) {
 
-        if(newText.length()>3)
-        Toast.makeText(this, newText, Toast.LENGTH_SHORT).show();
+        //if(newText.length()>3)
+        //Toast.makeText(this, newText, Toast.LENGTH_SHORT).show();
 
         return false;
     }
     @Override
     public boolean onQueryTextSubmit(String text) {
 
-        Toast.makeText(this, "Buscando " + text, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Buscando " + text, Toast.LENGTH_LONG).show();
         Bundle bundle = new Bundle();
         bundle.putString("txtBuscar", text);
         displayView(6,bundle);
@@ -296,6 +296,17 @@ public class Inicio extends ActionBarActivity implements
                 fragment=new ResultadosBusqueda();
                 break;
 
+            case 7:
+                fragment=new Contacto();
+                 break;
+
+            case 8:
+                fragment=new terminos();
+                break;
+
+            case 9:
+                fragment=new infogeneral();
+                break;
 
             default:
                 fragment=new HomeFragment();
@@ -695,7 +706,8 @@ public class Inicio extends ActionBarActivity implements
         int id = item.getItemId();
 
         if(id==R.id.btnInfoAlma) {
-            InfoGeneral("http://www.almashopping.com.co/es/site/quienessomos");
+            //InfoGeneral("http://www.almashopping.com.co/es/site/quienessomos");
+            displayView(9,null);
             return true;
         }
 
@@ -711,12 +723,13 @@ public class Inicio extends ActionBarActivity implements
         }
 
         if(id==R.id.btnContacto){
-            InfoGeneral("http://www.almashopping.com/es/site/contacto");
+          //  InfoGeneral("http://www.almashopping.com/es/site/contacto");
+            displayView(7,null);
             return  true;
         }
 
         if(id==R.id.btnTerminos){
-            InfoGeneral("http://www.almashopping.com.co/es/site/terminos");
+            displayView(8,null);
             return  true;
         }
 

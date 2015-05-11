@@ -11,13 +11,4 @@
         android:icon="@drawable/ic_action_share"
         app:showAsAction="always" />
 
-    <item android:id="@+id/btnInfoAlma" android:title="Información General"
-        android:orderInCategory="100" app:showAsAction="never" />
-
-    <item android:id="@+id/btnTerminos" android:title="Terminos y Condiciones"
-        android:orderInCategory="100" app:showAsAction="never" />
-
-    <item android:id="@+id/btnContacto" android:title="Contacto"
-        android:orderInCategory="100" app:showAsAction="never" />
-
 </menu>

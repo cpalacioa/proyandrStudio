@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/signalr-client-sdk/signalr-client-sdk.iml" filepath="$PROJECT_DIR$/signalr-client-sdk/signalr-client-sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/signalr-client-sdk-android/signalr-client-sdk-android.iml" filepath="$PROJECT_DIR$/signalr-client-sdk-android/signalr-client-sdk-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/signalr-client-test-integration-android/signalr-client-test-integration-android.iml" filepath="$PROJECT_DIR$/signalr-client-test-integration-android/signalr-client-test-integration-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/signalr-client-test-integration-base/signalr-client-test-integration-base.iml" filepath="$PROJECT_DIR$/signalr-client-test-integration-base/signalr-client-test-integration-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/signalr-client-test-integration-java/signalr-client-test-integration-java.iml" filepath="$PROJECT_DIR$/signalr-client-test-integration-java/signalr-client-test-integration-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/signalr-client-tests/signalr-client-tests.iml" filepath="$PROJECT_DIR$/signalr-client-tests/signalr-client-tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simplechat.iml" filepath="$PROJECT_DIR$/simplechat.iml" />
+    </modules>
+  </component>
+</project>
+

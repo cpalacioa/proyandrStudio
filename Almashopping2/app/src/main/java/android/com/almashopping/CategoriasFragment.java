@@ -226,8 +226,8 @@ public class CategoriasFragment extends Fragment implements  AbsListView.OnScrol
         listAdapter = new ExpandableListAdapter(CategoriasFragment.this.getActivity().getApplicationContext(), listDataHeader, listDataChild);
         // setting list adapter
         expListView.setAdapter(listAdapter);
-        for(int i=0; i < listAdapter.getGroupCount(); i++)
-            expListView.expandGroup(i);
+        /*for(int i=0; i < listAdapter.getGroupCount(); i++)
+            expListView.expandGroup(i);*/
     }
 
     //Llamados Ajax

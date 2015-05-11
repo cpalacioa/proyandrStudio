@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        valefiel {
+            keyAlias 'valefiel'
+            keyPassword 'V@l3m@s2015'
+            storeFile file('C:/keystorage/valefiel')
+            storePassword 'V@l3m@s2015'
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "com.parchegram"
         minSdkVersion 19

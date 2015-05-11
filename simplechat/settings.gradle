@@ -1,0 +1,1 @@
+include ':app', ':signalr-client-tests', ':signalr-client-test-integration-android', ':signalr-client-test-integration-base', ':signalr-client-test-integration-java', ':signalr-client-sdk', ':signalr-client-sdk-android'

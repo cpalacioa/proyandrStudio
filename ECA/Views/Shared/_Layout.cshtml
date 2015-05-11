@@ -1,0 +1,34 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>Ennova Code Academy - Inicio</title>
+    <link href="@Url.Content("~/Content/css/materialize.css")" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="@Url.Content("~/Content/css/style.css")" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+<body>
+
+    <nav class="blue-grey darken-4  blue-grey darken-3" role="navigation">
+        @Html.Partial("_Menu")
+    </nav>
+    <main>
+        <div class="section">
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="page-footer blue-grey darken-4  blue-grey darken-3">
+        @Html.Partial("_Footer")
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="@Url.Content("~/Content/scripts/materialize.js")"></script>
+    <script src="@Url.Content("~/Content/scripts/init.js")"></script>
+
+</body>
+</html>
+

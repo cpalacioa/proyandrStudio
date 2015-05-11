@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="seleccion_pais">Selecciona Tu País</string>
-    <string name="loginFacebookButton">Ingresar Con Facebook</string>
+    <string name="loginFacebookButton">Ingresar con Facebook</string>
     <string name="logoutFacebookButton">Cerrar Sesión</string>
     <string name="loginGoogle">Ingresar con Google</string>
     <string name="logoutGoogle">Cerrar Sesión</string>
@@ -16,7 +16,268 @@
     <string name="username">Nombre de Usuario</string>
     <integer name="IdAPlicacion">1</integer>
     <string name="urlRestCore">http://mauropalacio.co/ostiamovil/v1/index.php/</string>
+    <string name="contacto_html">
+    <![CDATA[
+        <p>Tu sugerencia, queja o comentario positivo son nuestra oportunidad para mejorar y ofrecer un excelente servicio.</p>
+        <p>Escríbenos a <b>alma@almashopping.com</b> y te responderemos en la brevedad.</p>
+        <p>En AlmaShopping nos interesa saber lo que tienes para decirnos!</p>
+    ]]>
+    </string>
+    <string name="info_html">
+    <![CDATA[
 
+    <p>AlmaShopping &nbsp;es una empresa del grupo Alma Cosmetics, y nace como un proyecto innovador en Latinoamerica con el objetivo de ayudar a la mujer a tomar mejores decisiones de compra de sus productos de Belleza.</p>
+
+    <p>A través de nuestra plataforma encontrarás una gran variedad de información, podrás también suscribirte a nuestras cajitas de Belleza y comprar en el surtido más amplio de belleza de la región.</p>
+
+    <p>Somos un grupo de emprendedores con mucha experiencia en diferentes áreas del mundo de la cosmética e internet, y ante todo ponemos el alma y la pasión para cumplir tus deseos y hacer que te veas y te sientas cada día más bella.</p>
+    ]]>
+    </string>
+    <string name="terminos_html">
+
+    <![CDATA[
+<p>Este documento describe los términos y condiciones generales (los "Términos y Condiciones Generales") y las políticas de privacidad (las "Políticas de Privacidad") aplicables al acceso y uso de los servicios y productos ofrecidos por Alma Cosmetics S.A. ("los Servicios") dentro del sitio www.almashopping.com y/u otros dominios (urls) relacionados (en adelante “almashopping.com” o el "sitio") en donde éstos Términos y Condiciones se encuentren. Cualquier persona que desee acceder y/o suscribirse y/o usar el sitio o los servicios podrá hacerlo sujetándose a los Términos y Condiciones Generales, junto con todas las demás políticas y principios que rigen Almashopping.com y que son incorporados al presente directamente o por referencia o que son explicados y/o detallados en otras secciones del sitio. En consecuencia, todas las visitas y todos los contratos y transacciones que se realicen en este sitio, como asimismo sus efectos jurídicos, quedarán regidos por estas reglas y sometidos a la legislación aplicable en la República Argentina.</p>
+
+<p>Los términos y condiciones contenidos en este instrumento se aplicarán y se entenderán como formando parte de todos los actos y contratos que se ejecuten o celebren mediante los sistemas de oferta y comercialización comprendidos en este sitio entre los usuarios de este sitio y Alma Cosmetics S.A. (en adelante “Alma Cosmetics S.A., “Alma Cosmetics”, “Almashopping” o “la Empresa”, indistintamente), y por cualquiera de las otras sociedades o empresas que sean filiales o coligadas con ella, y que hagan uso de este sitio, a las cuales se las denominará en adelante también en forma indistinta como "las empresas", o bien "la empresa oferente", el "proveedor" o la "empresa proveedora", según convenga al sentido del texto.</p>
+
+<p>En caso que las empresas hubieran fijado sus propios términos y condiciones para los actos y contratos que realicen en este sitio, ellas aparecerán en esta página señalada con un link o indicada como parte de la promoción de sus ofertas y promociones y prevalecerán sobre éstas.</p>
+
+<p><strong>CUALQUIER PERSONA QUE NO ACEPTE ESTOS TÉRMINOS Y CONDICIONES GENERALES, LOS CUALES TIENEN UN CARÁCTER OBLIGATORIO Y VINCULANTE, DEBERÁ ABSTENERSE DE UTILIZAR EL SITIO Y/O LOS SERVICIOS. </strong></p>
+
+<p>El Usuario debe leer, entender y aceptar todas las condiciones establecidas en los Términos y Condiciones Generales y en las Políticas de Privacidad de Alma Cosmetics S.A. así como en los demás documentos incorporados a los mismos por referencia, previo a su registración como Usuario de Almashopping.com y/o a la adquisición de productos y/o entrega de cualquier dato con cualquier fin.</p>
+
+<p>Si el usuario hiciera uso del Sitio de Almashopping, ello implicará la aceptación plena de las condiciones establecidas en los Términos y Condiciones Generales y en las Políticas de Alma Cosmetics S.A. Por dicha utilización del sitio y/o sus servicios, el usuario se obligará a cumplir expresamente con las mismas, no pudiendo alegar el desconocimiento de tales Términos y Condiciones Generales y Política de Privacidad.</p>
+
+<p><strong>01 - Capacidad Legal</strong></p>
+
+<p>Los Servicios sólo están disponibles para personas que tengan capacidad legal para contratar. No podrán utilizar los servicios las personas que no tengan esa capacidad y los menores de edad. Los actos que éstos realicen en este sitio serán responsabilidad de sus padres, tutores, encargados o curadores, y por tanto se considerarán realizados por éstos en ejercicio de la representación legal con la que cuentan. Quien registre un Usuario como empresa, deberá tener capacidad para contratar a nombre de tal entidad y de obligar a la misma en los términos de este Acuerdo.</p>
+
+<p><strong>02 - Registración y Uso del Sitio</strong></p>
+
+<p>Es obligatorio completar el formulario de registración en todos sus campos con datos válidos para convertirse en usuario de Almashopping, acceder a las promociones y para la adquisición de productos y/o servicios ofrecidos en este sitio. El futuro usuario deberá completar el formulario de registración con su información personal de manera exacta, precisa y verdadera ("Datos Personales") y asume el compromiso de actualizar los Datos Personales conforme resulte necesario. Almashopping podrá utilizar diversos medios para identificar a sus usuarios, pero la empresa NO se responsabiliza por la certeza de los Datos Personales provistos por sus Usuarios. Los Usuarios garantizan y responden, en cualquier caso, de la exactitud, veracidad, vigencia y autenticidad de los Datos Personales ingresados. Cada miembro sólo podrá ser titular de 1 (una) cuenta Almashopping, no pudiendo acceder a más de 1 (una) cuenta Almashopping con distintas direcciones de correo electrónico o falseando, modificando y/o alterando sus datos personales de cualquier manera posible. Si se verificara o sospechara un uso fraudulento y/o malintencionado y/o contrario a estos términos y condiciones y/o contrarios a la buena fe, Almashopping tendrá el derecho inapelable de quitar los créditos, dar de baja las cuentas y hasta de perseguir judicialmente a los infractores.</p>
+
+<p>Almashopping se reserva el derecho de solicitar algún comprobante y/o dato adicional a efectos de corroborar los Datos Personales, así como de suspender temporal o definitivamente a aquellos Usuarios cuyos datos no hayan podido ser confirmados. En estos casos de inhabilitación, Almashopping podrá dar de baja la compra efectuada, sin que ello genere derecho alguno a resarcimiento, pago y/o indemnización.</p>
+
+<p>El Miembro, una vez registrado, dispondrá de su dirección de email y una clave (en adelante la “Clave”) que le permitirá el acceso personalizado, confidencial y seguro. En caso de poseer estos datos, el Usuario tendrá la posibilidad de cambiar la clave de acceso, para lo cual deberá sujetarse al procedimiento establecido en el sitio respectivo. El Usuario se obliga a mantener la confidencialidad de su Clave de acceso, asumiendo totalmente la responsabilidad por el mantenimiento de la confidencialidad de su Clave secreta registrada en este sitio web, la cual le permite efectuar compras, solicitar servicios y obtener información. Dicha Clave es de uso personal y su entrega a terceros, no involucra responsabilidad de Alma Cosmetics S.A. o de las empresas en caso de utilización indebida, negligente y/o incorrecta.</p>
+
+<p>El Usuario será responsable por todas las operaciones efectuadas en su Cuenta, pues el acceso a la misma está restringido al ingreso y uso de su Clave Secreta, de conocimiento exclusivo del Usuario. El Usuario se compromete a notificar a Alma Cosmetics S.A. en forma inmediata y por medio idóneo y fehaciente, cualquier uso no autorizado de su Cuenta y/o Clave, así como el ingreso por terceros no autorizados a la misma. Se aclara que está prohibida la venta, cesión, préstamo o transferencia de la Clave y/o Cuenta bajo ningún título.</p>
+
+<p>Alma Cosmetics S.A. se reserva el derecho de rechazar cualquier solicitud de registración o de cancelar una registración previamente aceptada, sin que esté obligado a comunicar o exponer las razones de su decisión y sin que ello genere algún derecho a indemnización o resarcimiento.</p>
+
+<p><strong>03 - Privacidad de la Información </strong></p>
+
+<p>Para utilizar los Servicios ofrecidos por Almashopping y sus sitios relacionados, los Usuarios deberán facilitar determinados datos de carácter personal. Su información personal se procesa manteniendo altos estándares de seguridad y protección tanto física como tecnológica. Para mayor información sobre la privacidad de los Datos Personales y casos en los que será revelada la información personal, se pueden consultar nuestras Políticas de Privacidad.</p>
+
+<p><strong>04 - Modificaciones del Acuerdo</strong></p>
+
+<p>Alma Cosmetics S.A. podrá modificar los Términos y Condiciones Generales en cualquier momento haciendo públicos en el Sitio los términos modificados. Todos los términos modificados entrarán en vigor a los 10 (diez) días de su publicación. Dentro de los 5 (cinco) días siguientes a la publicación de las modificaciones introducidas, el Usuario deberá comunicar por e-mail haciendo clic aquí si no acepta las mismas; en ese caso quedará disuelto el vínculo contractual y será inhabilitado como Miembro. Vencido este plazo, se considerará que el Usuario acepta los nuevos términos y el contrato continuará vinculando a ambas partes.</p>
+
+<p><strong>05 - Procedimiento para hacer uso de este sitio de internet.</strong></p>
+
+<p id="medios-pago">En los contratos ofrecidos por medio de este sitio, la empresa oferente informará, de manera inequívoca y fácilmente accesible, los pasos que deberán seguirse para celebrarlos, e informará, cuando corresponda, si el documento electrónico en que se formalice el contrato será archivado y si éste será accesible al consumidor. El sólo hecho de seguir los pasos que para tales efectos se indiquen en este sitio para efectuar una suscripción o una compra, equivale a aceptar que efectivamente la empresa oferente ha dado cumplimiento a las condiciones contenidas en este apartado. Indicará, además, su dirección de correo postal o electrónico y los medios técnicos a disposición del consumidor para identificar y corregir errores en el envío o en sus datos.</p>
+
+<p><strong>06 - Medios de pago que se podrán utilizar en este sitio.</strong></p>
+
+<p>Los productos y servicios ofrecidos en este sitio, salvo que se señale una forma diferente para casos particulares u ofertas de determinados bienes o servicios, sólo pueden ser pagados con los medios que en cada caso específicamente se indiquen. El uso de tarjetas de crédito se sujetará a lo establecido en estos Términos y Condiciones y en relación con su emisor, y a lo pactado en los respectivos Contratos de Apertura y Reglamento de Uso. En caso de contradicción, predominará lo expresado en ese último instrumento. A mayor abundamiento, tratándose de tarjetas bancarias aceptadas en este sitio, los aspectos relativos a ésta, tales como la fecha de emisión; caducidad, cupo, bloqueos, etc., se regirán por el respectivo Contrato de Apertura y Reglamento de Uso, de tal forma que las empresas no tendrán responsabilidad en cualquiera de los aspectos señalados. El sitio podrá indicar determinadas condiciones de compra según el medio de pago que se utilice por el usuario. Almashopping podrá otorgar descuento en la forma de créditos que los Usuarios podrán descontar en su compra. En cada caso Almashopping determinará unilaterlamente el monto máximo de créditos que el Usuario podrá utilizar en una compra y lo detallará en el sistema, previo a iniciar el proceso de pago. Los créditos utilizados por los Usuarios no serán reintegrados en caso de devolución de los productos, por cualquier causa que esto ocurriera.</p>
+
+<p><strong>07 - Formación del consentimiento en los contratos celebrados a través de este sitio.</strong></p>
+
+<p>A través de este sitio web Almashopping realizará ofertas de bienes y suscripciones, que podrán ser aceptadas a través de la aceptación, por vía electrónica, y utilizando los mecanismos que el mismo sitio ofrece para ello. Toda aceptación de oferta quedará sujeta a la condición suspensiva de que Almashopping valide la transacción. En consecuencia, para toda operación que se efectúe en este sitio, la confirmación y/o validación o verificación por parte de Almashopping, será requisito para la formación del consentimiento. Para validar la transacción Almashopping deberá verificar: a) Que dispone, en el momento de la aceptación de oferta, de las especies de cosméticos en stock. b) Que valida y acepta el medio de pago ofrecido por el usuario. c) Que los datos registrados por el cliente en el sitio coinciden con los proporcionados al efectuar su aceptación de oferta. d) Que el pago es acreditado por el usuario.</p>
+
+<p>Para informar al usuario o consumidor acerca de esta validación, Almashopping enviará una confirmación escrita a la misma dirección electrónica que haya registrado el usuario aceptante de la oferta, o por cualquier medio de comunicación que garantice el debido y oportuno conocimiento del consumidor, o mediante el envío efectivo del producto. El consentimiento se entenderá formado desde el momento en que se envía esta confirmación escrita al usuario y en el lugar en que fue expedida.</p>
+
+<p>La oferta efectuada por el usuario es irrevocable salvo en circunstancias excepcionales, tales como que Almashopping cambie sustancialmente la descripción del artículo después de realizada alguna oferta, o que exista un claro error tipográfico.</p>
+
+<p><strong>08 - Plazo de validez de la oferta y precio.</strong></p>
+
+<p>El plazo de validez de la oferta es aquel que coincide con la fecha de vigencia indicada en la promoción o en virtud del agotamiento de las cantidades de productos disponibles para esa promoción debidamente informados al Consumidor, o mientras la oferta se mantenga disponible, el menor de éstos plazos.</p>
+
+<p>Los precios de los productos y suscripciones disponibles en el sitio, mientras aparezcan en él, solo tendrán vigencia y aplicación en éste y no serán aplicables a otros canales de venta utilizados por Almashopping y/o las empresas fabricantes y/o importadores de los productos cosméticos en cuestión, tales como tiendas físicas, venta telefónica, otros sitios de venta por vía electrónica, catálogos u otros. Almashopping podrá modificar cualquier información contenida en este sitio, incluyendo las relacionadas con mercaderías, servicios, precios, existencias y condiciones, en cualquier momento y sin previo aviso, hasta el momento de recibir una aceptación de compra, la cual obligará a Almashopping, sujeto a las condiciones de validación que se indican en el apartado número 07, es decir, una vez que se haya formado el consentimiento entre las partes de una determinada transacción.</p>
+
+<p>El “abono Almashopping” (en adelante el “abono”) consta de un pago inicial y pagos periódicos. Suscribiendo este abono, el Usuario acepta la realización de un pago periódico obligatorio hasta el término del abono. Alma Cosmetics S.A. se reserva el derecho a poner fin al abono en cualquier momento o a suspender el mismo en caso de que una entrega no pudiera ser efectuada.</p>
+
+<p>Suscribiendo el abono, el Usuario acepta pagar periódicamente el canon indicado en la Web más los gastos que correspondan por la entrega de los productos durante un periodo indeterminado.</p>
+
+<p><strong>09 - Promociones.</strong></p>
+
+<p id="tiempos-costos-envio">Las promociones que se ofrezcan en este sitio web no son necesariamente las mismas que ofrezcan otros canales de venta utilizados por Almashopping y/o por las empresas fabricantes y/o importadores de los productos cosméticos, tales como tiendas físicas, Venta telefónica, catálogos u otros, a menos que se señale expresamente en este sitio o en la publicidad que realicen las empresas para cada promoción. En los casos que el sitio contenga promociones que consistan en la entrega gratuita o rebajada de un producto por la compra de otro, entonces el despacho del bien que se entregue gratuitamente o a precio rebajado, se hará en el mismo lugar en el cual se despacha el producto comprado.</p>
+
+<p><strong>10 - Despacho de los Productos</strong></p>
+
+<p>Los productos adquiridos a través del sitio de Almashopping se sujetarán a las condiciones de despacho y entrega elegidas por el usuario y disponibles en el sitio. La información del lugar de envío es de exclusiva responsabilidad del usuario. Almashopping no será responsable por los errores o perjuicios causados en la entrega cuando la dirección de entrega introducida por el Usuario no se ajuste al lugar de entrega deseado por el mismo.</p>
+
+<p>Almashopping se compromete a entregar el producto en perfecto estado en la dirección indicada por el Usuario y que, en todo caso, deberá estar comprendida dentro del Territorio Nacional. Con el fin de optimizar el proceso de entrega, la dirección que indique el Usuario debe ser una dirección en la cual pueda realizarse la entrega dentro del horario laboral habitual, de 9 a 18 hs durante días hábiles.</p>
+
+<p>Si en el momento de la entrega del producto en la dirección indicada, el Usuario se encuentra ausente y no hay nadie mayor de 18 años que pueda recibir la caja contenedora de los productos el servicio de entrega dejará un aviso indicando cómo proceder para concertar una nueva entrega al día siguiente. Si el cliente no se pone en contacto con el servicio de entregas, éste igualmente intentará realizar la entrega el día inmediato siguiente. Si en esta segunda entrega el Usuario tampoco esta localizado o no se puede dejar el paquete a nadie mayor de 18 años la caja conteniendo los productos volverá a los almacenes centrales. En este caso el Usuario deberá hacerse cargo de los gastos de envío y de retorno, así como de los posibles gastos de gestión asociados.</p>
+
+<p id="devoluciones-cambios">La entrega se considera efectuada a partir del momento en el cual el producto ha sido entregado en el domicilio del Usuario en el lugar de entrega indicado por el Usuario.</p>
+
+<p><strong>11. Cancelacion de pedidos:</strong></p>
+
+<p>Los pedidos podran cancelarse hasta los 3 dias despues de realizada la compra. Pasado ese plazo, Almashopping podrá buscar la mejor solución posible en pos de la satisfacción del consumidor, sin que esto sea obligatorio para ella. El consumidor deberá comunicar fehacientemente dicha revocación a Almashopping. La cancelación de un pedido da derecho a la reintegracion total del monto del pedido.</p>
+
+<p><strong>12 - Derecho de revocación:</strong></p>
+
+<p>El consumidor tiene derecho a revocar la operación comercial (por adquisición de cosas y/o prestación de servicios) durante el plazo de quince (15) días corridos, contados a partir de la fecha en que se entregue la cosa. Esta facultad no puede ser dispensada ni renunciada. El consumidor comunicará fehacientemente dicha revocación a Almashopping y pondrá la cosa a su disposición. Para ejercer el derecho de revocación el consumidor deberá poner la cosa a disposición de Almashopping sin haberla usado y manteniéndola en el mismo estado en que la recibió, debiendo restituir Almashopping los importes recibidos (Res. 906/98). Pasado ese plazo, Almashopping podrá buscar la mejor solución posible en pos de la satisfacción del consumidor, sin que esto sea obligatorio para ella.</p>
+
+<p>Para poder realizar el reembolso o cambio el producto debe:</p>
+
+<p id="privacidad-seguridad">A - Estar en las mismas condiciones en que se entregó y deberá conservar el embalaje original.</p>
+
+<p>B - El envío estará a cargo del cliente, salvo que el producto recibido sea defectuoso o incorrecto, en este último caso Almashopping se hará cargo de los gastos de envío y reembolsará al Usuario no sólo el valor del producto si no el costo del envío.</p>
+
+<p>Almashopping realizará la devolución del dinero, en caso que correspondiere, mediante el mismo medio de pago que fue utilizado por el Usuario para realizar la compra. La aplicación de esta devolución dependerá de la Tarjeta de Crédito y del Banco emisor de la misma.</p>
+
+<p><strong>Almashopping NO acepta devoluciones ni cambios de artículos que hayan sido utilizados o se encuentren abiertos y sin su embalaje original.</strong></p>
+
+<p><strong>13 - Políticas de Privacidad.</strong></p>
+
+<p>Como parte normal de su actividad Almashopping recoge y, en algunos casos, comunica información sobre sus Usuarios y visitantes de su sitio Web. En esta Política de Privacidad se describe la información que Almashopping recoge sobre sus Usuarios y visitantes y lo que puede ocurrir con dicha información. Esta política es muy detallada porque es importante que los Usuarios y visitantes de su sitio Web conozcan las prácticas de Almashopping de la forma más precisa posible. Al registrarse y/o navegar el sitio Web de Almashopping, se presta conformidad para que se utilice su información personal de acuerdo a las políticas que se describen a continuación.</p>
+
+<p>La privacidad de la información de los Usuarios es muy importante para Almashopping. Es por esa razón que se toman las precauciones y recaudos necesarios para mantener resguardada y segura la información, utilizando los mecanismos de seguridad informática de protección de la información más completos y eficaces disponibles en la actualidad.</p>
+
+<p>Este documento es parte integrante de los Términos y Condiciones Generales de Almashopping. Mediante la aceptación de los Términos y Condiciones Generales en el momento de la registración el Usuario acepta las políticas aquí contenidas.</p>
+
+<p><strong>La información que se recaba. </strong></p>
+
+<p>Al utilizar o requerir algunos de los Servicios y/o al adquirir alguno de los productos o servicios que la empresa ofrece Ud. deberá suministrar a Almashopping algunos datos. Los Datos Personales que suministre deben ser completos y exactos. Almashopping podrá confirmar los datos personales suministrados acudiendo a entidades públicas, compañías especializadas o centrales de riesgo, para lo cual Usted autoriza expresamente a Almashopping. La información que Almashopping obtenga de estas entidades será tratada en forma confidencial y de acuerdo a las presentes políticas de privacidad.</p>
+
+<p>Se establece que en cualquier momento el Usuario registrado en Almashopping podrá solicitar la baja de su solicitud y la eliminación de su cuenta e información de la base de datos de Almashopping.</p>
+
+<p>Almashopping recoge y almacena automáticamente cierta información sobre la actividad de los Usuarios y visitantes dentro de su sitio web. Tal información puede incluir la URL de la que provienen (estén o no en su sitio web), a qué URL acceden seguidamente (estén o no en su sitio web), qué navegador están usando, y sus direcciones IP. También las páginas visitadas, las búsquedas realizadas, las publicaciones, compras o ventas, calificaciones y réplicas ingresadas, mensajes, etc.</p>
+
+<p>Si los Usuarios envían correspondencia a Almashopping, sean correos electrónicos o cartas, o si otros Usuarios o terceros le envían correspondencia sobre las actividades o sobre los mensajes de aquellos en nuestro sitio, Almashopping puede recoger y almacenar tal Información Personal.</p>
+
+<p><strong>Uso que hacemos de la información</strong></p>
+
+<p>Para suministrar un excelente servicio y para que los Usuarios puedan realizar operaciones en forma ágil y segura, Almashopping requiere ciertos datos de carácter personal. La recolección de información permite ofrecer a sus Usuarios servicios y funcionalidades que se adecuan mejor a sus necesidades y personalizar los servicios de Almashopping para hacer que sus experiencias con Almashopping sean lo más cómodas posible. Asimismo le permite hacerle llegar a los Usuarios por distintos medios y vías (incluyendo mail, SMS, etc.) ofertas de productos y servicios que se considera que pueden serle de interés. La Información Personal que recaba Almashopping tiene las siguientes finalidades:</p>
+
+<p>-Proceder a la entrega, facturación y cobro del producto y/o servicio solicitado por el Usuario.</p>
+
+<p>-Ponerse en contacto directo con el Usuario cada vez que en Almashopping lo consideren conveniente con el fin de ofrecerle por distintos medios y vías (incluyendo mail, SMS, etc.) productos y/o servicios.</p>
+
+<p>-Contactar al Usuario interesado en utilizar la plataforma brindada por Almashopping.</p>
+
+<p>-Desarrollar estudios internos sobre los intereses, el comportamiento y la demografía de los Usuarios con el objetivo de comprender mejor sus necesidades e intereses y darle un mejor servicio o proveerles información relacionada.</p>
+
+<p>-Mejorar las iniciativas comerciales y promocionales para analizar las páginas más visitadas por el Usuario, las búsquedas realizadas, perfeccionar su oferta de contenidos y artículos, personalizar dichos contenidos, presentación y servicios.</p>
+
+<p>-Enviar información o mensajes sobre nuevos productos y/o servicios, mostrar publicidad o promociones, banners, de interés para sus Usuarios, noticias sobre Almashopping, además de toda otra información que Almashopping considere conveniente. Si el Usuario lo prefiere, puede solicitar que lo excluyan de las listas para el envío de información promocional o publicitaria.</p>
+
+<p>-Los ganadores de las Promociones y/o concursos realizados por Almashopping autorizan expresamente a difundir sus nombres, datos personales e imágenes y los de sus familias, por los medios y en las formas que consideren convenientes, con fines publicitarios y/o promocionales, sin derecho a compensación, retribución, indemnización o resarcimiento alguno.</p>
+
+<p>-Compartir los datos personales con los proveedores de servicios o las empresas de "outsourcing" que contribuyan a mejorar o a facilitar las operaciones a través de Almashopping, como (sin limitarse a) servicios de transporte, medios de pago, seguros o intermediarios en la gestión de pagos, call centers o programas de fidelidad, entre otros. Estas compañías o sitios de Internet generalmente tienen políticas sobre confidencialidad de la información similares a las de Almashopping. Sin embargo, Almashopping velará porque se cumplan ciertos estándares, mediante la firma de acuerdos o convenios cuyo objeto sea la privacidad de los datos personales de nuestros Usuarios. No obstante, Almashopping no se hace responsable por el uso indebido de la información personal del Usuario que hagan estas compañías o sitios de Internet. En algunos casos, estos proveedores de servicios serán quienes recojan información directamente del Usuario (por ejemplo si les solicitamos que realicen encuestas o estudios). En tales casos, recibirá una notificación acerca de la participación de un proveedor de servicios en tales actividades, y quedará a discreción del Usuario toda la información que quiera brindarle y los usos adicionales que los proveedores decidan hacer. En caso de que el Usuario facilite, por propia iniciativa información adicional a dichos prestadores de servicios directamente, tales Prestadores usarán esta información conforme a sus propias políticas de privacidad.</p>
+
+<p>-Suministrar la información personal de los Usuarios a las entidades que intervengan en la resolución de disputas entre los mismos, tales como: Compañías de Seguros, Amigables Componedores o Tribunales de Arbitraje o tribunales competentes para solucionar tales disputas.</p>
+
+<p><strong>Confidencialidad de la información </strong></p>
+
+<p>Una vez registrado en Almashopping los datos de los Usuarios serán suministrados únicamente en las formas establecidas en estas políticas. Almashopping hará todo lo que esté a su alcance para proteger la privacidad de la información. Puede suceder que en virtud de órdenes judiciales, o de regulaciones legales, Almashopping se vea compelida a revelar información a las autoridades o terceras partes bajo ciertas circunstancias, o bien en casos que terceras partes puedan interceptar o acceder a cierta información o transmisiones de datos, en cuyo caso Almashopping no responderá por la información que sea revelada.</p>
+
+<p>–<strong>Menores de Edad</strong></p>
+
+<p>Los servicios de Almashopping sólo están disponibles para aquellas personas que tengan capacidad legal para contratar. Por lo tanto, quienes no cumplan con esta condición deberán abstenerse de suministrar información personal para ser incluida en las bases de datos de Almashopping. Sin embargo, podrán hacerlo a través de sus padres, tutores o curadores, conforme lo establecido en los Términos y Condiciones Generales (punto 01).</p>
+
+<p>–<strong>Referencia a un amigo</strong></p>
+
+<p>De acuerdo a su Política de Privacidad, Almashopping toma los recaudos necesarios para evitar el envío no solicitado de e-mails. Además Almashopping y sus Usuarios no aceptan el "spamming" o envío no solicitado de correos electrónicos. Por ello se establece que está absolutamente prohibida la utilización del servicio "Referencia a un amigo" con fines de spam, o envío indiscriminado de mensajes de cualquier naturaleza por correo electrónico, con cualquier finalidad que esto se realice. Se ruega no enviar este tipo de mensajes a quienes así no se lo soliciten.</p>
+
+<p>Almashopping podrá suspender o inhabilitar definitivamente a aquellos Usuarios que utilicen este servicio con los fines de promocionar sus artículos a la venta o cualquier otro fin distinto al previsto por este servicio y que sean denunciados por aquellas personas que reciben tales mensajes.</p>
+
+<p>–<strong>Cookies</strong></p>
+
+<p>El Usuario y el visitante del sitio web de Almashopping conoce y acepta que Almashopping podrá utilizar un sistema de seguimiento mediante la utilización de cookies (en adelante las "Cookies"). Las Cookies son pequeños archivos que se instalan en el disco rígido, con una duración limitada en el tiempo que ayudan a personalizar los servicios. Almashopping también ofrece ciertas funcionalidades que sólo están disponibles mediante el empleo de Cookies. Las Cookies se utilizan con el fin de conocer los intereses, el comportamiento y la demografía de quienes visitan o son Usuarios del Sitio Web de Almashopping y de esa forma, comprender mejor sus necesidades e intereses y darles un mejor servicio o proveerle información relacionada. Almashopping también utilizará la información obtenida por intermedio de las Cookies para analizar las páginas navegadas por el visitante o Usuario, las búsquedas realizadas, mejorar las iniciativas comerciales y promocionales de Almashopping y/o las empresas, mostrar publicidad o promociones, banners de interés, noticias sobre Almashopping, perfeccionar la oferta de contenidos y artículos, personalizar dichos contenidos, presentación y servicios. Almashopping utiliza adicionalmente las Cookies para que el Usuario no tenga que introducir su clave tan frecuentemente durante una sesión de navegación, así como para contabilizar y corroborar las registraciones, la actividad del Usuario y otros conceptos y acuerdos comerciales, siempre teniendo como objetivo de la instalación de las Cookies, el beneficio del Usuario que la recibe, y no será usado con otros fines ajenos a Almashopping.</p>
+
+<p>Se establece que la instalación, permanencia y existencia de las Cookies en el computador del Usuario depende de su exclusiva voluntad y puede ser eliminada de su computador cuando el Usuario así lo desee. Para saber cómo quitar las Cookies del sistema es necesario revisar la sección Ayuda (Help) del navegador.</p>
+
+<p>Adicionalmente, se pueden encontrar Cookies u otros sistemas similares instalados por terceros en ciertas páginas del sitio web de Almashopping. Almashopping no controla el uso de Cookies por terceros.</p>
+
+<p>–<strong>Seguridad. Almacenamiento de la información </strong></p>
+
+<p>Almashopping está obligada a cumplir con toda la normativa aplicable en materia de medidas de seguridad aplicables a la Información Personal. Adicionalmente, Almashopping usa los estándares de la industria en materia de protección de la confidencialidad de su Información Personal, incluyendo, en otras medidas, cortafuegos ("firewalls") y Secure Socket Layers ("SSL"). Almashopping considera a los datos de sus usuarios como un activo que debe ser protegido de cualquier pérdida o acceso no autorizado. Almashopping emplea variadas técnicas de seguridad para proteger los datos de sus Usuarios de accesos no autorizados por Usuarios de dentro o fuera de la compañía. No obstante ello, resulta sumamente importante que Usted tenga en cuenta que la seguridad perfecta no existe en Internet.</p>
+
+<p>Por ello, Almashopping no se hace responsable por interceptaciones ilegales o violación de sus sistemas o bases de datos por parte de personas no autorizadas. Almashopping, tampoco se hace responsable por la indebida utilización de la información obtenida por esos medios.</p>
+
+<p>– <strong>Orden de autoridades competentes - Requerimientos Legales</strong></p>
+
+<p>Almashopping coopera con las autoridades competentes y con otros terceros para garantizar el cumplimiento de las leyes, por ejemplo en materia de protección de derechos de propiedad industrial e intelectual, prevención del fraude y otras materias.</p>
+
+<p>Almashopping podrá revelar la información personal que nos suministran los Usuarios cuando así lo exijan las autoridades judiciales o gubernamentales competentes para efectos de investigaciones conducidas por ellas, aunque no exista una orden ni una citación ejecutiva o judicial, o por ejemplo (y sin limitación a este supuesto) cuando se trate de investigaciones de carácter penal o de fraude o las relacionadas con piratería informática o la violación de derechos de autor. En tales situaciones, Almashopping colaborará con las autoridades competentes con el fin de salvaguardar la integridad y la seguridad de la Comunidad y la de sus Usuarios.</p>
+
+<p>Almashopping puede (y Ud. la autoriza a ello) comunicar cualquier Información Personal sobre sus Usuarios con la finalidad de dar cumplimiento a la normativa legal aplicable y cooperar con las autoridades competentes en la medida en que discrecionalmente lo entendamos necesario y adecuado en relación con cualquier investigación de un ilícito o un fraude, infracción de derechos de propiedad industrial o intelectual, u otra actividad que sea ilegal o que pueda exponer a Almashopping o a sus Usuarios a cualquier responsabilidad legal. Además, Almashopping puede (y Ud. nos autoriza a ello) comunicar su nombre y apellidos, domicilio, ciudad, región, código postal, país, número de teléfono, dirección de correo electrónico, etc. a los participantes en el Programa de Protección de Propiedad Intelectual de Almashopping en la forma que, a nuestra discreción, entendamos necesaria o adecuada en relación con la investigación del fraude, infracción de derechos de propiedad industrial o intelectual, piratería, o cualquier otra actividad ilegal. Este derecho será ejercido por Almashopping a efectos de cooperar con el cumplimiento y ejecución de la ley, independientemente que no exista una orden judicial o administrativa al efecto.</p>
+
+<p>Además, Almashopping se reserva el derecho (y Ud. la autoriza expresamente a ello) de comunicar información sobre sus Usuarios a otros Usuarios, entidades o terceros cuando haya motivos suficientes para considerar que la actividad de un Usuario sea sospechosa de intentar o cometer un delito o intentar perjudicar a otras personas. Este derecho será utilizado por Almashopping a su entera discreción cuando lo considere apropiado o necesario para mantener la integridad y la seguridad de la Comunidad y la de sus Usuarios, para hacer cumplir los Términos y Condiciones Generales y demás Políticas del sitio y a efectos de cooperar con la ejecución y cumplimiento de la ley. Este derecho será ejercido por Almashopping independientemente que no exista una orden judicial o administrativa al efecto.</p>
+
+<p>–<strong>Derechos de acceso, cancelación y rectificación de la información personal </strong></p>
+
+<p>Los Usuarios tienen derechos reconocidos y podrán ejercitar los derechos de acceder, cancelar y actualizar su Información Personal, así como a oponerse al tratamiento de la misma y a ser informado de las cesiones llevadas a cabo, todo ello de conformidad a lo dispuesto en la normativa aplicable. Los Usuarios garantizan y responden, en cualquier caso, de la exactitud, veracidad, vigencia y autenticidad de los Datos Personales facilitados, y se comprometen a mantenerlos debidamente actualizados.</p>
+
+<p>En determinados casos, Almashopping mantendrá en sus archivos Información Personal cuyo retiro no haya sido solicitado por el Usuario, y ello con la finalidad de resolver disputas o reclamaciones, detectar problemas o incidencias y solucionarlos, y dar cumplimiento a lo dispuesto en los Términos y Condiciones Generales por un período de tiempo determinado por la ley. En cualquier caso, la Información Personal de un Usuario no será inmediatamente retirada de los archivos de Almashopping por motivos legales y técnicos, incluyendo sistemas de soportes de seguridad. Por lo tanto, no se debe esperar que toda la Información Personal sea definitivamente borrada de las bases de datos de Almashopping.</p>
+
+<p>Los Usuarios deben actualizar su Información Personal periódicamente conforme vaya cambiando para que puedan ser ubicados cuando realicen una operación. Almashopping no se responsabiliza por la imposibilidad de realizar la entrega de un pedido si la información del Usuario no se encuentra actualizada.</p>
+
+<p>–<strong>Modificaciones de las Políticas de Privacidad </strong></p>
+
+<p>Almashopping podrá modificar en cualquier momento los términos y condiciones de estas Políticas de Privacidad y confidencialidad y notificará los cambios al Usuario publicando una versión actualizada de dichas Políticas en esta sección informando la fecha de la última actualización. Dentro de los 5 (cinco) días siguientes a la publicación de las modificaciones introducidas, el Usuario si no acepta las mismas deberá solicitar la eliminación de su suscripción y la anulación de su Cuenta. Vencido este plazo, se considerará que el Usuario acepta los nuevos términos y condiciones y las Partes continuarán vinculadas.</p>
+
+<p>–<strong>Registro </strong></p>
+
+<p>La base de datos personales de Almashopping se encuentra debidamente registrada en el Registro Nacional de Bases de Datos, dentro del marco de la Dirección Nacional de Protección de Datos Personales. La dirección web de dicho organismo es <a href="http://www.jus.gov.fix/datospersonales">www.jus.gov.fix/datospersonales</a> .</p>
+
+<p><strong>14 - Violaciones del Sistema o Bases de Datos </strong></p>
+
+<p>No está permitida ninguna acción o uso de dispositivo, software, u otro medio tendiente a interferir tanto en las actividades y operatoria de Almashopping como en las ofertas, descripciones, perfiles de los Usuarios, cuentas o bases de datos de Almashopping. Cualquier intromisión, tentativa o actividad violatoria o contraria a las leyes sobre derecho de propiedad intelectual y/o a las prohibiciones estipuladas en este contrato harán pasible a su responsable de las acciones legales pertinentes, y a las sanciones previstas por este acuerdo, así como lo hará responsable de indemnizar los daños ocasionados.</p>
+
+<p><strong>15 - Propiedad Intelectual </strong></p>
+
+<p>Los contenidos de las pantallas relativas a los servicios de Almashopping.com como así también la información, datos, textos gráficos, imágenes, fotografías, audio y video clips, logotipos, iconos, programas, bases de datos, redes, archivos que permiten al Usuario acceder y usar su Cuenta, son de propiedad de Almashopping y están protegidas por las leyes y los tratados internacionales de derecho de autor, marcas, patentes, modelos y diseños industriales. El uso indebido y la reproducción total o parcial de dichos contenidos quedan prohibidos, salvo autorización previa, expresa y por escrito de Almashopping.</p>
+
+<p><strong>16 - Otros sitios web.</strong></p>
+
+<p>Almashopping no tendrá responsabilidad sobre la información proporcionada por otros sitios web y las consecuencias que de ello se deriven. Almashopping no garantiza, avala ni respalda de ninguna forma el acceso, información o contenido de cualquier otro sitio web o portal en los casos que dicho acceso se efectúe desde o hacia este, ya sea que dicho acceso se efectúe mediante link, banner o mediante cualquier dispositivo disponible en la red.</p>
+
+<p>El Sitio puede contener enlaces a otros sitios web, lo cual no indica que sean propiedad u operados por Almashopping. En virtud que Almashopping no tiene control sobre tales sitios, NO será responsable por los contenidos, materiales, acciones y/o servicios prestados por los mismos, ni por daños o pérdidas ocasionadas por la utilización de los mismos, sean causadas directa o indirectamente. La presencia de enlaces a otros sitios web no implica una sociedad, relación, aprobación ni respaldo de Almashopping a dichos sitios y sus contenidos.</p>
+
+<p><strong>17 - Sanciones. Suspensión de operaciones </strong></p>
+
+<p>Sin perjuicio de otras medidas, Almashopping advertirá, suspenderá temporal o inhabilitará definitivamente la Cuenta de un Usuario e iniciará las acciones que estime pertinentes, y no le prestará sus Servicios si (a) se quebrantara alguna ley, o cualquiera de las estipulaciones de los Términos y Condiciones Generales y demás políticas de Almashopping; (b) si incumpliera sus compromisos como Usuario; (c) si se incurriera a criterio de Almashopping en conductas o actos dolosos o fraudulentos; (d) no pudiera verificarse la identidad del Usuario o cualquier información proporcionada por el mismo fuere errónea.</p>
+
+<p><strong>18 - Fallas en el sistema</strong></p>
+
+<p>Almashopping no se responsabiliza por cualquier daño, perjuicio o pérdida al Usuario causados por fallas en el sistema, en el servidor o en Internet. Almashopping tampoco será responsable por cualquier virus que pudiera infectar el equipo del Usuario como consecuencia del acceso, uso o examen de su sitio web o a raíz de cualquier transferencia de datos, archivos, imágenes, textos, o audio contenidos en el mismo. Es responsabilidad absoluta de los Usuarios el mantener sus computadoras protegidas de esta clase de eventos con los sistemas, softwares y precauciones que se encuentran a su alcance. Los Usuarios no podrán imputarle responsabilidad alguna ni exigir pago por lucro cesante ni resarcimiento ni indemnización alguna, en virtud de perjuicios resultantes de dificultades técnicas o fallas en los sistemas o en Internet. Almashopping no garantiza el acceso y uso continuado o ininterrumpido de su sitio. El sistema puede eventualmente no estar disponible debido a dificultades técnicas o fallas de Internet, o por cualquier otra circunstancia ajena a Almashopping; en tales casos se procurará restablecerlo con la mayor celeridad posible sin que por ello pueda imputársele algún tipo de responsabilidad. Almashopping no será responsable por ningún error u omisión contenidos en su sitio web.</p>
+
+<p><strong>19 - Tarifas. Facturación </strong></p>
+
+<p>La registración en Almashopping.com es gratuita. Al adquirir un producto o contratar una suscripción, el usuario deberá pagar el precio publicado y en caso de corresponder los gastos de envío y entrega.</p>
+
+<p>El precio de los Servicios y los gastos de envío serán aquellos que figuren en la Web excepto en los casos de error obvio. Los Servicios se facturarán al precio en vigor en el momento del registro del pedido.</p>
+
+<p>Los precios de los Servicios y gastos de envío son susceptibles de cambio en cualquier momento, sin que estos cambios afecten a encargos sobre los cuales ya se haya comunicado una “Confirmación de Expedición”.</p>
+
+<p>Almashopping se reserva el derecho de modificar, cambiar, agregar y/o eliminar las tarifas vigentes, en cualquier momento, lo cual será publicado en el sitio. Sin embargo, Almashopping podrá modificar temporalmente la Política de Tarifas y las tarifas por sus servicios por razón de promociones, siendo efectivas estas modificaciones cuando se haga pública la promoción o se realice el anuncio y hasta la fecha de su finalización.</p>
+
+<p>Asimismo, Alma Cosmetics S.A. tiene derecho a realizar durante intervalos temporales definidos, campañas promocionales para promover el registro de nuevos miembros en su servicio. Alma Cosmetics, se reserva el derecho de modificar las condiciones de aplicación de la promociones, prorrogarlas comunicándolo debidamente, o proceder a la exclusión de cualquiera de los participantes de la promoción en el supuesto de detectar cualquier anomalía, abuso o comportamiento poco ético en la participación de los mismos.</p>
+
+<p>El pago por los servicios deberá ser efectuado mediante tarjeta de crédito VISA o MASTERCARD, American, Transferencia o mediante el servicio PayPal.</p>
+
+<p>El primer pago será cargado en su tarjeta de crédito, a la contratación del servicio. Para los sucesivos pagos, el pago será cargado en su tarjeta de crédito, catorce días (14) antes de la expedición del servicio.</p>
+
+<p>En caso de haberse facturado cargos que no hubiesen correspondido, el Usuario deberá comunicarse con nuestro equipo de Atención al Cliente para resolver dicha cuestión.</p>
+
+<p>Almashopping se reserva el derecho de tomar las medidas judiciales y extrajudiciales que estime pertinentes para obtener el pago del monto debido.</p>
+
+<p><strong>20- Jurisdicción y Ley Aplicable </strong></p>
+
+<p>Este acuerdo estará regido en todos sus puntos por las leyes vigentes en la República Argentina, las cuales podrán ser consultadas en el siguiente sitio: <a href="../../../../../AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/Rocket%20Group/Tucany%20SRL/Términos%20y%20condiciones/www.mecon.gov.ar"><u>www.mecon.gov.ar</u></a>. La dirección electrónica del organismo de aplicación de la misma es <a href="http://www.mecon.gov.fix/secdef"><u>http://www.mecon.gov.fix/secdef</u></a> .</p>
+
+<p>Cualquier controversia derivada del presente acuerdo, su existencia, validez, interpretación, alcance o cumplimiento, será sometida a los tribunales ordinarios de Justicia de la Nación con jurisdicción en la Ciudad Autónoma de Buenos Aires y los procedimientos se llevarán a cabo en idioma castellano.</p>
+
+<p><strong>21 - Domicilio</strong></p>
+
+<p>Se fija como domicilio de Alma Cosmetics S.A. CUIT: 30-712219034-6, en la calle Calle Chile s/ n Barrio Las Araucarias de la Ciudad Autónoma de Buenos Aires, República Argentina.</p>
+    ]]>
+
+     </string>
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">

@@ -7,5 +7,6 @@
     <string name="selecciona_una_opcion">Seleccione</string>
     <string name="title_activity_demo_grid">DemoGrid</string>
     <string name="action_search">Buscar</string>
+    <string name="title_activity_scrollhorizontal">scrollhorizontal</string>
 
 </resources>

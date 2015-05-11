@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>SignalR Chat Example</h2>
+<label>Username: </label>
+<input id="username" />
+<label>Message: </label>
+<input id="message" />
+<input type="button" id="send" value="Send" onclick="send();" />
+<div>
+    <h3>Messages</h3>
+    <ul></ul>
+</div>
+@section scripts {
+    <!--<script src="~/Scripts/jquery.signalR-2.0.0.min.js"></script>-->
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        var chatProxie;
+
+        $(document).ready(function () {
+            chatProxie = $.connection.chatHub;
+
+            chatProxie.client.addMessage = function (userName, message) {
+                $("ul").append("<li>" + "<span>" + userName + ": </span>" + message + "</li>")
+            };
+
+            $.connection.hub.start();
+        })
+
+        function send() {
+            debugger;
+            chatProxie.server.sendMessage($("#username").val(), $("#message").val());
+        }
+    </script>
+}
