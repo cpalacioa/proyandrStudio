@@ -3,4 +3,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>news</h2>
+<div class="container">
+    @model IEnumerable<ECA.DAL.EC_News>
+    @foreach (var item in Model)
+    {
+        <div class="content">
+            <div class="col s12">
+                <div class="card-panel grey lighten-5 z-depth-1">
+                    <div class="row valign-wrapper">
+                        <div class="col s2">
+                            <img src="@Html.DisplayFor(modelItem=>item.thumbnail)" alt="" class="circle responsive-img">
+                        </div>
+
+                        <div class="col s10">
+                            <a class="orange-text " href="@item.link" target="_blank">
+
+                                <h5> @Html.DisplayFor(modelItem => item.Title)</h5>
+                            </a><br />
+                            <p class="black-text">
+                                @Html.DisplayFor(modelitem=>item.Description)
+                            </p>
+                            <span class="grey-text">
+                                Publicado por : @Html.DisplayFor(modelItem => item.EC_Users.Username)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

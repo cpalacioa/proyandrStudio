@@ -1,71 +1,45 @@
 ﻿<div class="content">
-    <div class="col s12">
-        <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-                <div class="col s2">
-                    <img src="http://ionicframework.com/img/homepage/ionicview-icon_2x.png" alt="" class="circle responsive-img">
-                </div>
 
-                <div class="col s10">
-                    <a class="orange-text " href="#"><h5> Aprender IONIC Desde 0</h5></a><br />
-                    <span class="black-text ">
-                        Publicado por : Mauro el 11/05/2015
-                    </span>
+
+
+    @model IEnumerable<ECA.DAL.EC_Content>
+
+    @foreach (var item in Model)
+    {
+        String enlace = string.Empty;
+        if (item.IdTypeContent == 1)
+        {
+            enlace = Url.Content("~/Series/serie/" + item.Id + "");
+        }
+        if(item.IdTypeContent==2)
+        {
+            enlace = Url.Content("~/Articles/article/" + item.Id + "");
+            
+        }
+        
+        if(item.IdTypeContent==3)
+        {
+            enlace = Url.Content("~/News/new/" + item.Id + "");
+            
+        }
+        
+        <div class="col s12">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row valign-wrapper">
+                    <div class="col s2">
+                        <img src="@Html.DisplayFor(modelItem=>item.thumbail)" alt="" class="circle responsive-img">
+                    </div>
+
+                    <div class="col s10">
+                        <a class="orange-text " href="@enlace"><h5> @Html.DisplayFor(modelItem => item.Title)</h5></a><br />
+                        <span class="black-text ">
+                            Publicado por : @Html.DisplayFor(modelItem=>item.EC_Users.Username)  el @Html.DisplayFor(modelItem => item.Publishdate)
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="col s12">
-        <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-                <div class="col s2">
-                    <img src="http://ionicframework.com/img/homepage/ionicview-icon_2x.png" alt="" class="circle responsive-img">
-                </div>
-
-                <div class="col s10">
-                    <a class="orange-text " href="#"><h5> Aprender IONIC Desde 0</h5></a><br />
-                    <span class="black-text ">
-                        Publicado por : Mauro el 11/05/2015
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col s12">
-        <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-                <div class="col s2">
-                    <img src="http://ionicframework.com/img/homepage/ionicview-icon_2x.png" alt="" class="circle responsive-img">
-                </div>
-
-                <div class="col s10">
-                    <a class="orange-text " href="#"><h5> Aprender IONIC Desde 0</h5></a><br />
-                    <span class="black-text ">
-                        Publicado por : Mauro el 11/05/2015
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col s12">
-        <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-                <div class="col s2">
-                    <img src="http://ionicframework.com/img/homepage/ionicview-icon_2x.png" alt="" class="circle responsive-img">
-                </div>
-
-                <div class="col s10">
-                    <a class="orange-text " href="#"><h5> Aprender IONIC Desde 0</h5></a><br />
-                    <span class="black-text ">
-                        Publicado por : Mauro el 11/05/2015
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
+    }
 
 </div>
-
-
 

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Serie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model  ECA.Models.Serie
+
+<div class="col s12 ">
+    <div class="red darken-1 z-depth-1 center-align">
+        <span class="white-text text-darken-2 flow-text">@Model.title</span>
+        <div class="left-align"><p class="white-text truncate"> &nbsp;@Model.Description</p></div>
+    </div>
+</div>
+@foreach (var item in Model.series)
+{
+
+    <div class="row">
+        <div class="col s12 m6 l3">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                <a href="@Url.Content("~/Series/Capitulo/"+item.Id+"")">
+                    <img src="@item.thumbail" alt="" class="circle responsive-img">
+                </a>
+                <a href="@Url.Content("~/Series/Capitulo/"+item.Id+"")"> <h6>@item.Title</h6></a>
+                <p>Escrito por: @Model.autor</p>
+            </div>
+        </div>
+    </div>
+}
+

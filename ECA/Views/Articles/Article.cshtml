@@ -1,0 +1,16 @@
+﻿@model ECA.DAL.EC_DetailContent
+
+@{
+    ViewBag.Title = "Article";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Article</h2>
+<div class="row">
+    <div class="content">
+        @Html.Raw(HttpUtility.HtmlDecode(Model.HtmlContent))
+
+    </div>
+</div>
+
+

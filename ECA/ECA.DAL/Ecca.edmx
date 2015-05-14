@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ECAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="EC_Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="140" Nullable="false" />
+          <Property Name="Tag" Type="varchar" MaxLength="50" />
+          <Property Name="IdParent" Type="int" />
+          <Property Name="IdUserAuthor" Type="int" Nullable="false" />
+          <Property Name="IdTypeContent" Type="int" Nullable="false" />
+          <Property Name="Publishdate" Type="datetime" Nullable="false" />
+          <Property Name="thumbail" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="EC_DetailContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HtmlContent" Type="text" Nullable="false" />
+          <Property Name="IdContent" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EC_News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="140" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="140" />
+          <Property Name="thumbnail" Type="varchar" MaxLength="150" />
+          <Property Name="link" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Author" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EC_TypeContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EC_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EC_Content_EC_TypeContent">
+          <End Role="EC_TypeContent" Type="Self.EC_TypeContent" Multiplicity="1" />
+          <End Role="EC_Content" Type="Self.EC_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EC_TypeContent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EC_Content">
+              <PropertyRef Name="IdTypeContent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EC_Content_EC_Users">
+          <End Role="EC_Users" Type="Self.EC_Users" Multiplicity="1" />
+          <End Role="EC_Content" Type="Self.EC_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EC_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EC_Content">
+              <PropertyRef Name="IdUserAuthor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EC_News_EC_Users">
+          <End Role="EC_Users" Type="Self.EC_Users" Multiplicity="1" />
+          <End Role="EC_News" Type="Self.EC_News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EC_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EC_News">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ECAModelStoreContainer">
+          <EntitySet Name="EC_Content" EntityType="Self.EC_Content" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EC_DetailContent" EntityType="Self.EC_DetailContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EC_News" EntityType="Self.EC_News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EC_TypeContent" EntityType="Self.EC_TypeContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EC_Users" EntityType="Self.EC_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EC_Content_EC_TypeContent" Association="Self.FK_EC_Content_EC_TypeContent">
+            <End Role="EC_TypeContent" EntitySet="EC_TypeContent" />
+            <End Role="EC_Content" EntitySet="EC_Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EC_Content_EC_Users" Association="Self.FK_EC_Content_EC_Users">
+            <End Role="EC_Users" EntitySet="EC_Users" />
+            <End Role="EC_Content" EntitySet="EC_Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EC_News_EC_Users" Association="Self.FK_EC_News_EC_Users">
+            <End Role="EC_Users" EntitySet="EC_Users" />
+            <End Role="EC_News" EntitySet="EC_News" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ECAModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ECAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EC_Content" EntityType="ECAModel.EC_Content" />
+          <EntitySet Name="EC_DetailContent" EntityType="ECAModel.EC_DetailContent" />
+          <EntitySet Name="EC_TypeContent" EntityType="ECAModel.EC_TypeContent" />
+          <EntitySet Name="EC_Users" EntityType="ECAModel.EC_Users" />
+          <AssociationSet Name="FK_EC_Content_EC_TypeContent" Association="ECAModel.FK_EC_Content_EC_TypeContent">
+            <End Role="EC_TypeContent" EntitySet="EC_TypeContent" />
+            <End Role="EC_Content" EntitySet="EC_Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EC_Content_EC_Users" Association="ECAModel.FK_EC_Content_EC_Users">
+            <End Role="EC_Users" EntitySet="EC_Users" />
+            <End Role="EC_Content" EntitySet="EC_Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EC_DetailContent_EC_Content" Association="ECAModel.FK_EC_DetailContent_EC_Content">
+            <End Role="EC_Content" EntitySet="EC_Content" />
+            <End Role="EC_DetailContent" EntitySet="EC_DetailContent" />
+          </AssociationSet>
+          <EntitySet Name="EC_News" EntityType="ECAModel.EC_News" />
+          <AssociationSet Name="FK_EC_News_EC_Users" Association="ECAModel.FK_EC_News_EC_Users">
+            <End Role="EC_Users" EntitySet="EC_Users" />
+            <End Role="EC_News" EntitySet="EC_News" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EC_Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Name="Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdParent" Type="Int32" />
+          <Property Name="IdUserAuthor" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeContent" Type="Int32" Nullable="false" />
+          <Property Name="Publishdate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EC_TypeContent" Relationship="ECAModel.FK_EC_Content_EC_TypeContent" FromRole="EC_Content" ToRole="EC_TypeContent" />
+          <NavigationProperty Name="EC_Users" Relationship="ECAModel.FK_EC_Content_EC_Users" FromRole="EC_Content" ToRole="EC_Users" />
+          <NavigationProperty Name="EC_DetailContent" Relationship="ECAModel.FK_EC_DetailContent_EC_Content" FromRole="EC_Content" ToRole="EC_DetailContent" />
+          <Property Name="thumbail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EC_DetailContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HtmlContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdContent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EC_Content" Relationship="ECAModel.FK_EC_DetailContent_EC_Content" FromRole="EC_DetailContent" ToRole="EC_Content" />
+        </EntityType>
+        <EntityType Name="EC_TypeContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EC_Content" Relationship="ECAModel.FK_EC_Content_EC_TypeContent" FromRole="EC_TypeContent" ToRole="EC_Content" />
+        </EntityType>
+        <EntityType Name="EC_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EC_Content" Relationship="ECAModel.FK_EC_Content_EC_Users" FromRole="EC_Users" ToRole="EC_Content" />
+          <NavigationProperty Name="EC_News" Relationship="ECAModel.FK_EC_News_EC_Users" FromRole="EC_Users" ToRole="EC_News" />
+        </EntityType>
+        <Association Name="FK_EC_Content_EC_TypeContent">
+          <End Type="ECAModel.EC_TypeContent" Role="EC_TypeContent" Multiplicity="1" />
+          <End Type="ECAModel.EC_Content" Role="EC_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EC_TypeContent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EC_Content">
+              <PropertyRef Name="IdTypeContent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EC_Content_EC_Users">
+          <End Type="ECAModel.EC_Users" Role="EC_Users" Multiplicity="1" />
+          <End Type="ECAModel.EC_Content" Role="EC_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EC_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EC_Content">
+              <PropertyRef Name="IdUserAuthor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EC_DetailContent_EC_Content">
+          <End Type="ECAModel.EC_Content" Role="EC_Content" Multiplicity="1" />
+          <End Type="ECAModel.EC_DetailContent" Role="EC_DetailContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EC_Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EC_DetailContent">
+              <PropertyRef Name="IdContent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EC_News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Name="thumbnail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EC_Users" Relationship="ECAModel.FK_EC_News_EC_Users" FromRole="EC_News" ToRole="EC_Users" />
+        </EntityType>
+        <Association Name="FK_EC_News_EC_Users">
+          <End Type="ECAModel.EC_Users" Role="EC_Users" Multiplicity="1" />
+          <End Type="ECAModel.EC_News" Role="EC_News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EC_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EC_News">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ECAModelStoreContainer" CdmEntityContainer="ECAEntities">
+          <EntitySetMapping Name="EC_Content">
+            <EntityTypeMapping TypeName="ECAModel.EC_Content">
+              <MappingFragment StoreEntitySet="EC_Content">
+                <ScalarProperty Name="thumbail" ColumnName="thumbail" />
+                <ScalarProperty Name="Publishdate" ColumnName="Publishdate" />
+                <ScalarProperty Name="IdTypeContent" ColumnName="IdTypeContent" />
+                <ScalarProperty Name="IdUserAuthor" ColumnName="IdUserAuthor" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EC_DetailContent">
+            <EntityTypeMapping TypeName="ECAModel.EC_DetailContent">
+              <MappingFragment StoreEntitySet="EC_DetailContent">
+                <ScalarProperty Name="IdContent" ColumnName="IdContent" />
+                <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EC_TypeContent">
+            <EntityTypeMapping TypeName="ECAModel.EC_TypeContent">
+              <MappingFragment StoreEntitySet="EC_TypeContent">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EC_Users">
+            <EntityTypeMapping TypeName="ECAModel.EC_Users">
+              <MappingFragment StoreEntitySet="EC_Users">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EC_News">
+            <EntityTypeMapping TypeName="ECAModel.EC_News">
+              <MappingFragment StoreEntitySet="EC_News">
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="thumbnail" ColumnName="thumbnail" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

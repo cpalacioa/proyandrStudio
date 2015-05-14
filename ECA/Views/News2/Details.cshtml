@@ -1,0 +1,50 @@
+﻿@model ECA.DAL.EC_News
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>EC_News</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.thumbnail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.thumbnail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.link)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.link)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EC_Users.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EC_Users.Username)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
