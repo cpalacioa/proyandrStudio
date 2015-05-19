@@ -17,6 +17,12 @@ namespace ECA.Models
             return contentDal.GetAllContent().Take(take).ToList();
         }
 
+        public static List<EC_Content>getAllContentByType(int type)
+        {
+            ContentDAL contentDal = new ContentDAL();
+            return contentDal.GetAllContentByType(type);
+            
+        }
         public static List<EC_Content>GetContentbyType(int type,int take)
         {
             ContentDAL contentDal = new ContentDAL();

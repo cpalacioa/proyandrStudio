@@ -1,16 +1,17 @@
 ﻿@model ECA.Models.NewsViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear";
 }
 
 <div class="container">
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-
+    <div class="row">
+        <h4>Enlazar Noticia</h4>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+    <div class="col-s12">
         <div class="input-field">
             <input type="text" class="validate" id="Title" name="Title" length="70">
             @Html.LabelFor(model => model.Title)
@@ -21,28 +22,28 @@
             <input type="text" class="validate" id="Description" name="Description" length="140">
             @Html.LabelFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
-           
         </div>
 
         <div class="input-field">
+            <input type="text" class="validate" id="thumbnail" name="thumbnail">
             @Html.LabelFor(model => model.thumbnail)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.thumbnail)
             @Html.ValidationMessageFor(model => model.thumbnail)
         </div>
 
-        <div class="editor-label">
+        <div class="input-field">
+            <input type="text" class="validate" id="link" name="link">
             @Html.LabelFor(model => model.link)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.link)
             @Html.ValidationMessageFor(model => model.link)
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
+        <p style="text-align:center">
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+                Enviar
+                <i class="mdi-content-send right"></i>
+            </button>
         </p>
-    }
+    </div>
+        }
+    </div>
 </div>
 

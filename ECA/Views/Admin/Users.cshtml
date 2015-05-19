@@ -1,6 +1,37 @@
-﻿@{
-    ViewBag.Title = "Users";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model IEnumerable<ECA.DAL.EC_Users>
+
+@{
+    ViewBag.Title = "usuarios";
 }
 
-<h2>Users</h2>
+<div class="container">
+    <h2>usuarios</h2>
+
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enabled)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Enabled)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ECA.DAL;
+using ECA.Models;
 
 namespace ECA.Controllers
 {
@@ -16,7 +18,16 @@ namespace ECA.Controllers
 
         public ActionResult Users()
         {
-            return View();
+            ECAEntities db=new ECAEntities();
+            var usuarios = db.EC_Users.ToList();
+            return View(usuarios);
+        }
+
+        public ActionResult Articles()
+        {
+            var articles = ContentModel.getAllContentByType(2);
+            return View(articles);
+
         }
 
         public ActionResult Categories()
@@ -28,6 +39,7 @@ namespace ECA.Controllers
         {
             return View();
         }
+
 
     }
 }

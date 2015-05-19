@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using ECA.Models;
 using ECA.DAL;
+using System.Data.Entity.Validation;
+using System.Text;
 
 namespace ECA.Controllers
 {
@@ -35,9 +37,35 @@ namespace ECA.Controllers
             {
                 EC_News ec_news = new EC_News();
                 ec_news=NewsViewModel.TranslateNewsViewModel(_new);
+                ec_news.Author = 1;
                 db.EC_News.Add(ec_news);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (var failure in ex.EntityValidationErrors)
+                    {
+                        sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                        foreach (var error in failure.ValidationErrors)
+                        {
+                            sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                            sb.AppendLine();
+                        }
+                    }
+
+                    throw new DbEntityValidationException(
+                        "Entity Validation Failed - errors follow:\n" +
+                        sb.ToString(), ex
+                    ); 
+                }
+               
+               
             }
 
             return View(_new);

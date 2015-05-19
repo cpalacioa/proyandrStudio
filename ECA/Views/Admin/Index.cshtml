@@ -3,4 +3,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <h6 class="center-align">Opciones de Administrador</h6>
+
+    <div class="row">
+        <div class="col s6 m6 l3 center">
+            <i class="large mdi-action-account-child"></i><br />
+            <p class="center"><a href="@Url.Content("~/admin/Users")">Usuarios</a></p>
+        </div>
+        <div class="col s6 m6 l3 center">
+            <i class="large mdi-action-help"></i><br />
+            <p class="center"><a href="@Url.Content("~/admin/Articles")">Articulos</a></p>
+        </div>
+        <div class="col s6 m6 l3 center">
+            <i class="large mdi-social-school"></i><br />
+            <p class="center"><a href="@Url.Content("~/admin/Series")">Series</a></p>
+        </div>
+        <div class="col s6 m6 l3 center">
+            <i class="large mdi-social-whatshot"></i><br />
+            <p class="center"><a href="@Url.Content("~/admin/News")">Noticias</a></p>
+        </div>
+    </div>
+
+</div>
