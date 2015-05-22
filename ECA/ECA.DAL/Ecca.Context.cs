@@ -30,5 +30,6 @@ namespace ECA.DAL
         public DbSet<EC_TypeContent> EC_TypeContent { get; set; }
         public DbSet<EC_Users> EC_Users { get; set; }
         public DbSet<EC_News> EC_News { get; set; }
+        public DbSet<EC_InfoUser> EC_InfoUser { get; set; }
     }
 }

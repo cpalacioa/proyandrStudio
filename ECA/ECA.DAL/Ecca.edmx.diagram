@@ -5,15 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="52185981fd5749538f7d7a2c20b6dd6e" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="ECAModel.EC_Content" Width="1.5" PointX="7.375" PointY="0.5" />
-        <EntityTypeShape EntityType="ECAModel.EC_DetailContent" Width="1.5" PointX="5.125" PointY="3.75" />
-        <EntityTypeShape EntityType="ECAModel.EC_TypeContent" Width="1.5" PointX="4.5" PointY="0.875" />
-        <EntityTypeShape EntityType="ECAModel.EC_Users" Width="1.5" PointX="9.5" PointY="0.5" />
+        <EntityTypeShape EntityType="ECAModel.EC_Content" Width="1.5" PointX="6.375" PointY="0.875" />
+        <EntityTypeShape EntityType="ECAModel.EC_DetailContent" Width="1.5" PointX="3.625" PointY="3.75" />
+        <EntityTypeShape EntityType="ECAModel.EC_TypeContent" Width="1.5" PointX="3.75" PointY="0.875" />
+        <EntityTypeShape EntityType="ECAModel.EC_Users" Width="1.5" PointX="8.625" PointY="1" />
         <AssociationConnector Association="ECAModel.FK_EC_Content_EC_TypeContent" />
         <AssociationConnector Association="ECAModel.FK_EC_Content_EC_Users" />
         <AssociationConnector Association="ECAModel.FK_EC_DetailContent_EC_Content" />
-        <EntityTypeShape EntityType="ECAModel.EC_News" Width="1.5" PointX="9.875" PointY="3.125" />
+        <EntityTypeShape EntityType="ECAModel.EC_News" Width="1.5" PointX="8.375" PointY="4.125" />
         <AssociationConnector Association="ECAModel.FK_EC_News_EC_Users" />
+        <EntityTypeShape EntityType="ECAModel.EC_InfoUser" Width="1.5" PointX="10.875" PointY="1.25" />
+        <AssociationConnector Association="ECAModel.FK_EC_InfoUser_EC_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

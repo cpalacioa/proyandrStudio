@@ -144,8 +144,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ContentModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\NewsViewModel.cs" />
     <Compile Include="Models\Series.cs" />
+    <Compile Include="Models\UsersController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +284,8 @@
     <Content Include="Views\News2\Delete.cshtml" />
     <Content Include="Views\News\Create.cshtml" />
     <Content Include="Views\Admin\Articles.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,8 +23,11 @@ namespace ECA.DAL
         public int Id { get; set; }
         public string Username { get; set; }
         public bool Enabled { get; set; }
+        public string Email { get; set; }
+        public string password { get; set; }
     
         public virtual ICollection<EC_Content> EC_Content { get; set; }
         public virtual ICollection<EC_News> EC_News { get; set; }
+        public virtual EC_InfoUser EC_InfoUser { get; set; }
     }
 }

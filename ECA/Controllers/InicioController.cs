@@ -9,12 +9,17 @@ namespace ECA.Controllers
 {
     public class InicioController : Controller
     {
-        //
-        // GET: /Inicio/
 
         public ActionResult Index()
         {
-            return View();
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Users");
+            }
+            else
+            {
+                return View();
+            }
         }
 
 
@@ -25,5 +30,6 @@ namespace ECA.Controllers
             return PartialView(@"~/Views/Shared/_LastPost.cshtml", post);
 
         }
+
     }
 }

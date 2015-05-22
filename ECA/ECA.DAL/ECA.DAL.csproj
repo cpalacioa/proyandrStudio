@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Log.cs" />
     <Compile Include="ContentDAL.cs" />
     <Compile Include="Ecca.Context.cs">
       <AutoGen>True</AutoGen>
@@ -68,6 +69,9 @@
     <Compile Include="EC_DetailContent.cs">
       <DependentUpon>Ecca.tt</DependentUpon>
     </Compile>
+    <Compile Include="EC_InfoUser.cs">
+      <DependentUpon>Ecca.tt</DependentUpon>
+    </Compile>
     <Compile Include="EC_News.cs">
       <DependentUpon>Ecca.tt</DependentUpon>
     </Compile>
@@ -77,8 +81,11 @@
     <Compile Include="EC_Users.cs">
       <DependentUpon>Ecca.tt</DependentUpon>
     </Compile>
+    <Compile Include="Helpers.cs" />
     <Compile Include="NewsDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersDAL.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Ecca.edmx">

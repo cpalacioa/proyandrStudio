@@ -27,6 +27,16 @@
           <Property Name="HtmlContent" Type="text" Nullable="false" />
           <Property Name="IdContent" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="EC_InfoUser">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="Nombres" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Ocupacion" Type="varchar" MaxLength="250" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="EC_News">
           <Key>
             <PropertyRef Name="Id" />
@@ -52,6 +62,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="password" Type="text" Nullable="false" />
         </EntityType>
         <Association Name="FK_EC_Content_EC_TypeContent">
           <End Role="EC_TypeContent" Type="Self.EC_TypeContent" Multiplicity="1" />
@@ -77,6 +89,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EC_InfoUser_EC_Users">
+          <End Role="EC_Users" Type="Self.EC_Users" Multiplicity="1" />
+          <End Role="EC_InfoUser" Type="Self.EC_InfoUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EC_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EC_InfoUser">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EC_News_EC_Users">
           <End Role="EC_Users" Type="Self.EC_Users" Multiplicity="1" />
           <End Role="EC_News" Type="Self.EC_News" Multiplicity="*" />
@@ -92,6 +116,7 @@
         <EntityContainer Name="ECAModelStoreContainer">
           <EntitySet Name="EC_Content" EntityType="Self.EC_Content" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EC_DetailContent" EntityType="Self.EC_DetailContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EC_InfoUser" EntityType="Self.EC_InfoUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EC_News" EntityType="Self.EC_News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EC_TypeContent" EntityType="Self.EC_TypeContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EC_Users" EntityType="Self.EC_Users" Schema="dbo" store:Type="Tables" />
@@ -102,6 +127,10 @@
           <AssociationSet Name="FK_EC_Content_EC_Users" Association="Self.FK_EC_Content_EC_Users">
             <End Role="EC_Users" EntitySet="EC_Users" />
             <End Role="EC_Content" EntitySet="EC_Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EC_InfoUser_EC_Users" Association="Self.FK_EC_InfoUser_EC_Users">
+            <End Role="EC_Users" EntitySet="EC_Users" />
+            <End Role="EC_InfoUser" EntitySet="EC_InfoUser" />
           </AssociationSet>
           <AssociationSet Name="FK_EC_News_EC_Users" Association="Self.FK_EC_News_EC_Users">
             <End Role="EC_Users" EntitySet="EC_Users" />
@@ -133,6 +162,11 @@
           <AssociationSet Name="FK_EC_News_EC_Users" Association="ECAModel.FK_EC_News_EC_Users">
             <End Role="EC_Users" EntitySet="EC_Users" />
             <End Role="EC_News" EntitySet="EC_News" />
+          </AssociationSet>
+          <EntitySet Name="EC_InfoUser" EntityType="ECAModel.EC_InfoUser" />
+          <AssociationSet Name="FK_EC_InfoUser_EC_Users" Association="ECAModel.FK_EC_InfoUser_EC_Users">
+            <End Role="EC_Users" EntitySet="EC_Users" />
+            <End Role="EC_InfoUser" EntitySet="EC_InfoUser" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="EC_Content">
@@ -178,6 +212,9 @@
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="EC_Content" Relationship="ECAModel.FK_EC_Content_EC_Users" FromRole="EC_Users" ToRole="EC_Content" />
           <NavigationProperty Name="EC_News" Relationship="ECAModel.FK_EC_News_EC_Users" FromRole="EC_Users" ToRole="EC_News" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EC_InfoUser" Relationship="ECAModel.FK_EC_InfoUser_EC_Users" FromRole="EC_Users" ToRole="EC_InfoUser" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_EC_Content_EC_TypeContent">
           <End Type="ECAModel.EC_TypeContent" Role="EC_TypeContent" Multiplicity="1" />
@@ -239,6 +276,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EC_InfoUser">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ocupacion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EC_Users" Relationship="ECAModel.FK_EC_InfoUser_EC_Users" FromRole="EC_InfoUser" ToRole="EC_Users" />
+        </EntityType>
+        <Association Name="FK_EC_InfoUser_EC_Users">
+          <End Type="ECAModel.EC_Users" Role="EC_Users" Multiplicity="1" />
+          <End Type="ECAModel.EC_InfoUser" Role="EC_InfoUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EC_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EC_InfoUser">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -280,6 +340,8 @@
           <EntitySetMapping Name="EC_Users">
             <EntityTypeMapping TypeName="ECAModel.EC_Users">
               <MappingFragment StoreEntitySet="EC_Users">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Enabled" ColumnName="Enabled" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -295,6 +357,17 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EC_InfoUser">
+            <EntityTypeMapping TypeName="ECAModel.EC_InfoUser">
+              <MappingFragment StoreEntitySet="EC_InfoUser">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
