@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECA.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,6 +26,20 @@ namespace ECA.Models
 
         [HttpPost]
         public ActionResult Login(LoginViewModel login)
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(Usuario user)
         {
             return View();
         }

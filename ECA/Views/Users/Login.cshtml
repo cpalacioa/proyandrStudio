@@ -11,32 +11,34 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
 
-        <fieldset>
-            <legend>Iniciar Sesión</legend>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Email)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Email)
-                @Html.ValidationMessageFor(model => model.Email)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Password)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
+        <h4><i class="mdi-action-account-circle"></i>Iniciar Sesión</h4>
+        <div class="col-s12">
+            <div class="row">
+                <div class="input-field">
+                    <i class="blue-grey-text mdi-communication-quick-contacts-mail prefix"></i>
+                    <input type="text" class="validate" id="Email" name="Email" length="70">
+                    @Html.LabelFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
             </div>
 
-            <p>
-                <input type="submit" value="Create" />
-            </p>
-        </fieldset>
+            <div class="row">
+                <div class="input-field">
+                    <i class=" blue-grey-text mdi-communication-vpn-key prefix"></i>
+                    <input type="password" class="validate" id="Password" name="Password">
+                    @Html.LabelFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-s6 center-align">
+                    <button class="waves-effect waves-light btn-large light-blue darken-4" type="submit" name="action">
+                        INGRESAR
+                    </button>
+                </div>
+            </div>
+        </div>
     }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
 </div>
